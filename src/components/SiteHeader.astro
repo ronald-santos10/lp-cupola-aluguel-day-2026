@@ -1,0 +1,73 @@
+---
+import data from "../data/data.json";
+
+const { header } = data;
+---
+
+<header class="relative z-10">
+  <div
+    class="marquee-bar overflow-hidden bg-navy text-sm lg:text-base uppercase tracking-normal text-white"
+  >
+    <div class="marquee-track">
+      <span class="marquee-item">
+        {header.marquee}
+      </span>
+      <span class="marquee-item" aria-hidden="true">
+        {header.marquee}
+      </span>
+    </div>
+  </div>
+  <div
+    class="flex min-h-7.75 items-center justify-center bg-lime px-5 text-center text-sm lg:text-xl font-medium uppercase tracking-normal text-ink md:min-h-13.5"
+  >
+    {header.eventInfo}
+  </div>
+</header>
+
+<style>
+  .marquee-bar {
+    min-height: 28px;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    min-width: 100%;
+    align-items: center;
+    gap: 2rem;
+    min-height: 28px;
+    animation: marquee 32s linear infinite;
+  }
+
+  .marquee-item {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 768px) {
+    .marquee-bar {
+      min-height: 31px;
+    }
+
+    .marquee-track {
+      width: 100%;
+      justify-content: center;
+      min-height: 31px;
+      animation: none;
+    }
+
+    .marquee-item[aria-hidden="true"] {
+      display: none;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(calc(-50% - 1rem));
+    }
+  }
+</style>

@@ -1,0 +1,24 @@
+---
+import Button from "./Button.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+
+const { travel } = data;
+---
+
+<section class="pattern-blue py-16 text-white">
+  <div class="container grid items-center gap-8 md:grid-cols-[1fr_0.8fr]">
+    <div>
+      <Text as="h2" variant="h2" color="white">
+        {travel.title}
+      </Text>
+      <Text class="mt-5 max-w-lg text-white/85" color="white">
+        {travel.description}
+      </Text>
+      <div class="mt-7">
+        <Button>{travel.cta}</Button>
+      </div>
+    </div>
+    <div class="min-h-[220px] rounded-card bg-lime"></div>
+  </div>
+</section>

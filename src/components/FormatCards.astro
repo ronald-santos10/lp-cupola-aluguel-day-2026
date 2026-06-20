@@ -1,0 +1,62 @@
+---
+import Button from "./Button.astro";
+import SectionHeading from "./SectionHeading.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+import backgroundImage from "../assets/bg-red.webp";
+import palestraImg from "../assets/palestras.webp";
+import entrevistasImg from "../assets/entrevistas.webp";
+import insiderImg from "../assets/espaco-insider.webp";
+
+const { formats } = data;
+
+const images = {
+  palestras: palestraImg,
+  entrevistas: entrevistasImg,
+  insider: insiderImg,
+};
+---
+
+<section
+  class="pattern-red py-20 flex flex-col gap-6"
+  style={`
+    background-image: url(${backgroundImage.src});
+    background-size: cover;
+    background-position: top;
+  `}
+>
+  <SectionHeading
+    title={formats.title}
+    titleColor="white"
+    descriptionColor="white"
+  />
+  <div class="container grid gap-5 md:grid-cols-3">
+    {
+      formats.items.map((format) => {
+        const image = images[format.image as keyof typeof images];
+        return (
+          <article class="rounded-card bg-cream text-ink">
+            <img
+              src={image.src}
+              width={image.width}
+              height={image.height}
+              alt={format.title}
+              class="w-full rounded-t-card"
+            />
+
+            <div class="flex flex-col gap-2 p-6">
+              <Text as="h3" variant="h3" color="ink">
+                {format.title}
+              </Text>
+
+              <Text color="muted">{format.description}</Text>
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+  <div class="text-center">
+    <Button>{formats.cta}</Button>
+  </div>
+</section>

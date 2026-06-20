@@ -1,0 +1,94 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+
+const { schedule } = data;
+---
+
+<section class="bg-cream py-20">
+  <SectionHeading title={schedule.title} />
+
+  <div class="container mt-7 flex flex-col gap-6">
+    {
+      schedule.items.map((item) => (
+        <div
+          class="
+            grid
+            grid-cols-[55px_1fr]
+            gap-3
+            md:gap-4
+          "
+        >
+          <div
+            class="
+              flex
+              h-7.75
+              items-center
+              justify-center
+              rounded-[10px]
+              bg-line
+              text-base
+              text-navy
+            "
+          >
+            {item.time}
+          </div>
+
+          <article
+            class:list={[
+              "rounded-[15px] px-5 py-6 md:px-8",
+
+              item.type === "break"
+                ? "bg-line text-navy"
+                : "bg-blue-dark text-white",
+            ]}
+          >
+            {item.speaker ? (
+              <div
+                class="
+                    grid
+                    gap-5
+                    md:grid-cols-[266px_1fr]
+                    md:items-center
+                  "
+              >
+                <div class="flex items-center gap-4">
+                  <div
+                    class="
+                        size-14
+                        shrink-0
+                        rounded-full
+                        bg-white/20
+                      "
+                  />
+
+                  <div>
+                    <Text as="p" variant="h4" color="white">
+                      {item.speaker}
+                    </Text>
+
+                    <Text
+                      as="p"
+                      variant="eyebrow"
+                      color="white"
+                      class="mt-2 text-white/65"
+                    >
+                      {item.role}
+                    </Text>
+                  </div>
+                </div>
+
+                <Text as="h3" variant="h4" color="white">
+                  {item.title}
+                </Text>
+              </div>
+            ) : (
+              <Text color="inherit">{item.title}</Text>
+            )}
+          </article>
+        </div>
+      ))
+    }
+  </div>
+</section>

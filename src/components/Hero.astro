@@ -1,0 +1,80 @@
+---
+import { getImage } from "astro:assets";
+import Button from "./Button.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+import heroBgDesktop from "../assets/bg-hero-desktop.webp";
+import heroBgMobile from "../assets/bg-hero-mobile.webp";
+import AluguelDayLogo from "../assets/logos/aluguel-day.svg";
+
+const { hero } = data;
+
+const desktopBg = await getImage({
+  src: heroBgDesktop,
+  width: 1440,
+  format: "webp",
+  quality: 100,
+});
+
+const mobileBg = await getImage({
+  src: heroBgMobile,
+  width: 768,
+  format: "webp",
+  quality: 100,
+});
+
+const {
+  backgroundImage = desktopBg.src,
+  mobileBackgroundImage = mobileBg.src,
+} = Astro.props;
+---
+
+<section
+  class="hero-section w-full overflow-hidden rounded-b-[64px] bg-navy bg-cover bg-center bg-no-repeat"
+  style={`--hero-bg-desktop: url("${backgroundImage}"); --hero-bg-mobile: url("${mobileBackgroundImage}");`}
+>
+  <div
+    class="container flex min-h-192 max-w-140 flex-col items-center gap-7 pt-12 text-center lg:min-h-180 lg:justify-center lg:pt-0"
+  >
+    <img
+      src={AluguelDayLogo.src}
+      alt="Aluguel Day Logo"
+      class="h-11 w-auto md:h-16"
+    />
+
+    <Text
+      as="p"
+      variant="h4"
+      color="white"
+      align="center"
+      class="w-fit max-w-full rounded-button border-b border-white px-5 py-2"
+    >
+      {hero.preSale}
+    </Text>
+    <Text as="h1" variant="h1" color="white" align="center">
+      {hero.title}
+    </Text>
+    <Text
+      as="p"
+      variant="body"
+      color="white"
+      align="center"
+      class="max-w-2xs lg:max-w-full"
+    >
+      {hero.description}
+    </Text>
+    <Button>{hero.cta}</Button>
+  </div>
+</section>
+
+<style>
+  .hero-section {
+    background-image: var(--hero-bg-mobile);
+  }
+
+  @media (min-width: 1024px) {
+    .hero-section {
+      background-image: var(--hero-bg-desktop);
+    }
+  }
+</style>

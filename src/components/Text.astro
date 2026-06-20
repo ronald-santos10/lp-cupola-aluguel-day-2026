@@ -1,0 +1,61 @@
+---
+const {
+  as = "p",
+  variant = "body" as const,
+  color = "inherit" as const,
+  align = "inherit" as const,
+  class: className = "",
+} = Astro.props as {
+  as?: string;
+  variant?: keyof typeof variants;
+  color?: keyof typeof colors;
+  align?: keyof typeof aligns;
+  class?: string;
+};
+
+const Tag = as;
+
+const variants = {
+  h1: "font-display text-[32px] font-bold leading-[30px] tracking-normal md:text-[40px] md:leading-[40px] lg:text-[45px] lg:leading-[45px]",
+  h2: "font-display text-[32px] font-bold leading-[30px] tracking-normal",
+  h3: "font-display text-base font-extrabold leading-5 tracking-normal md:text-xl md:leading-[22px]",
+  h4: "font-display text-basefont-medium leading-5 tracking-normal md:text-2xl md:leading-7",
+  display:
+    "font-display text-2xl font-bold uppercase leading-none tracking-normal md:text-3xl",
+  price: "font-display text-2xl font-medium leading-7 tracking-normal",
+  body: "font-sans text-base leading-normal tracking-[-0.04em]",
+  small: "font-sans text-xs leading-normal tracking-[-0.04em] md:text-sm",
+  eyebrow: "font-sans text-xs uppercase leading-normal tracking-[-0.04em]",
+  button: "font-sans text-base uppercase leading-normal tracking-normal",
+} as const;
+
+const colors = {
+  inherit: "text-inherit",
+  ink: "text-ink",
+  white: "text-white",
+  blue: "text-blue",
+  lime: "text-lime",
+  orange: "text-orange",
+  purple: "text-purple",
+  red: "text-red",
+  muted: "text-muted",
+} as const;
+
+const aligns = {
+  inherit: "",
+  left: "text-left",
+  center: "text-center",
+  right: "text-right",
+} as const;
+---
+
+<Tag
+  class:list={[
+    variants[variant] ?? variants.body,
+    colors[color] ?? colors.inherit,
+    aligns[align] ?? "",
+    className,
+  ]}
+>
+  <slot />
+</Tag>

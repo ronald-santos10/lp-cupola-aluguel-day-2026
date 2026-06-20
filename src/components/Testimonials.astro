@@ -1,0 +1,30 @@
+---
+import Button from "./Button.astro";
+import SectionHeading from "./SectionHeading.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+
+const { testimonials } = data;
+---
+
+<section class="pattern-red py-20 text-white">
+  <SectionHeading tone="light" title={testimonials.title} />
+  <div class="container mt-7 grid gap-5 md:grid-cols-3">
+    {testimonials.items.map((item) => (
+      <article class="rounded-card bg-cream p-6 text-ink">
+        <div class="mb-4 flex items-center gap-3">
+          <div class="size-12 rounded-full bg-navy/20"></div>
+          <div>
+            <Text as="p" variant="button" color="ink">{item.name}</Text>
+            <Text as="p" variant="small" color="muted">{item.company}</Text>
+          </div>
+        </div>
+        <p class="text-yellow-500">★★★★★</p>
+        <Text class="mt-4" color="muted">{item.quote}</Text>
+      </article>
+    ))}
+  </div>
+  <div class="mt-7 text-center">
+    <Button>{testimonials.cta}</Button>
+  </div>
+</section>

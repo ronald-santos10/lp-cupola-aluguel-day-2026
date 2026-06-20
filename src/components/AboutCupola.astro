@@ -1,0 +1,27 @@
+---
+import Button from "./Button.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+
+const { about } = data;
+---
+
+<section class="bg-black py-20 text-white">
+  <div class="container grid items-center gap-10 rounded-card bg-lime p-8 text-ink md:grid-cols-[1fr_0.9fr] md:p-12">
+    <div>
+      <Text as="h2" variant="h2" color="ink">
+        {about.title}
+      </Text>
+      <Text class="mt-6" color="ink">
+        {about.description}
+      </Text>
+      <div class="mt-7">
+        <Button variant="blue">{about.cta}</Button>
+      </div>
+    </div>
+    <div class="min-h-[260px] rounded-[16px] bg-navy/20"></div>
+  </div>
+  <Text as="p" variant="display" color="white" align="center" class="container mt-8">
+    {about.taglinePrefix} <span class="text-lime">{about.taglineHighlight}</span>
+  </Text>
+</section>

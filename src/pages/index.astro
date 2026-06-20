@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import AboutCupola from "../components/AboutCupola.astro";
+import FAQ from "../components/FAQ.astro";
+import FormatCards from "../components/FormatCards.astro";
+import Hero from "../components/Hero.astro";
+import IntroSection from "../components/IntroSection.astro";
+import Schedule from "../components/Schedule.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import Sponsors from "../components/Sponsors.astro";
+import Testimonials from "../components/Testimonials.astro";
+import TicketComparison from "../components/TicketComparison.astro";
+import Tickets from "../components/Tickets.astro";
+import TopicGrid from "../components/TopicGrid.astro";
+import TravelBanner from "../components/TravelBanner.astro";
+---
+
+<BaseLayout>
+  <header>
+    <SiteHeader />
+  </header>
+  <main>
+    <Hero />
+    <IntroSection />
+    <TopicGrid />
+    <FormatCards />
+    <Schedule />
+    <Tickets />
+    <TicketComparison />
+    <Testimonials />
+    <AboutCupola />
+    <FAQ />
+    <TravelBanner />
+    <Sponsors />
+  </main>
+  <footer>
+    <SiteFooter />
+  </footer>
+</BaseLayout>

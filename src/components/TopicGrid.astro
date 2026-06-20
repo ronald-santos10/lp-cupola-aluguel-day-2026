@@ -1,0 +1,45 @@
+---
+import Button from "./Button.astro";
+import SectionHeading from "./SectionHeading.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+import backgroundImage from "../assets/bg-blue.webp";
+
+const { market } = data;
+---
+
+<section
+  class="py-20"
+  style={`
+    background-image: url(${backgroundImage.src});
+    background-size: cover;
+    background-position: bottom;
+  `}
+>
+  <SectionHeading
+    title={market.title}
+    description={market.description}
+    titleColor="white"
+    descriptionColor="white"
+  />
+
+  <div class="container mt-7 grid gap-5 md:grid-cols-2">
+    {
+      market.items.map((topic) => (
+        <article class="rounded-card bg-cream p-6 text-ink">
+          <Text as="h3" variant="h3" color="ink">
+            {topic.title}
+          </Text>
+
+          <Text class="mt-4" color="muted">
+            {topic.description}
+          </Text>
+        </article>
+      ))
+    }
+  </div>
+
+  <div class="mt-7 text-center">
+    <Button>{market.cta}</Button>
+  </div>
+</section>

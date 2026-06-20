@@ -1,0 +1,25 @@
+---
+import Text from "./Text.astro";
+import data from "../data/data.json";
+
+const { footer } = data;
+---
+
+<footer class="rounded-t-[32px] bg-black py-16 text-white">
+  <div class="container grid gap-10 md:grid-cols-3">
+    {footer.columns.map((column) => (
+      <div>
+        <Text as="p" variant="h4" color="white">{column.title}</Text>
+        <div class="mt-6 h-px bg-white/30"></div>
+        <Text
+          as="p"
+          variant={column.color === "white" ? "body" : "price"}
+          color={column.color}
+          class:list={["mt-6", column.color === "white" && "whitespace-pre-line text-white/70"]}
+        >
+          {column.content}
+        </Text>
+      </div>
+    ))}
+  </div>
+</footer>

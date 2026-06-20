@@ -1,0 +1,257 @@
+---
+import { getImage } from "astro:assets";
+import Button from "./Button.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+
+import slide1 from "../assets/slider/1.webp";
+import slide2 from "../assets/slider/2.webp";
+import slide3 from "../assets/slider/3.webp";
+import slide4 from "../assets/slider/4.webp";
+import slide5 from "../assets/slider/5.webp";
+import slide6 from "../assets/slider/6.webp";
+import slide7 from "../assets/slider/7.webp";
+import slide8 from "../assets/slider/8.webp";
+import slide9 from "../assets/slider/9.webp";
+
+import SectionHeading from "./SectionHeading.astro";
+
+const { intro } = data;
+
+const slideAssets = [
+  [slide1, slide2, slide3],
+  [slide4, slide5, slide6],
+  [slide7, slide8, slide9],
+];
+
+const slideGroups = await Promise.all(
+  slideAssets.map((group) =>
+    Promise.all(
+      group.map((src) =>
+        getImage({
+          src,
+          width: 620,
+          format: "webp",
+          quality: 100,
+        }),
+      ),
+    ),
+  ),
+);
+---
+
+<section 
+  class="bg-cream py-20 flex flex-col gap-6" 
+  data-intro-section
+>
+  <SectionHeading
+    title={intro.title}
+    description={intro.description}
+    titleColor="blue"
+    descriptionColor="ink"
+  />
+
+
+  <div class="intro-slider" aria-label="Fotos do evento">
+    {
+      slideGroups.map((group, groupIndex) => (
+        <div
+          class:list={[
+            "intro-slide-group",
+            groupIndex === 0 && "is-active",
+          ]}
+          data-intro-slide
+        >
+          {group.map((image) => (
+            <figure class="intro-slide-frame">
+              <img
+                src={image.src}
+                width={image.attributes.width}
+                height={image.attributes.height}
+                alt=""
+                loading={groupIndex === 0 ? "eager" : "lazy"}
+                decoding="async"
+              />
+            </figure>
+          ))}
+        </div>
+      ))
+    }
+  </div>
+
+
+  <div class="container grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+    {
+      intro.audiences.map((item) => (
+        <div class="flex min-h-19.25 items-center justify-center rounded-card bg-blue px-3 text-center">
+          <Text as="h4" color="white">
+            {item}
+          </Text>
+        </div>
+      ))
+    }
+  </div>
+
+
+  <div class="text-center">
+    <Button>{intro.cta}</Button>
+  </div>
+</section>
+
+
+<script>
+  const introSections = document.querySelectorAll(
+    "[data-intro-section]"
+  );
+
+  introSections.forEach((section) => {
+    const slides = Array.from(
+      section.querySelectorAll("[data-intro-slide]")
+    );
+
+    if (slides.length <= 1) return;
+
+
+    let activeIndex = 0;
+    let interval: number | null | undefined = null;
+
+
+    const startSlider = () => {
+      if (interval) return;
+
+
+      interval = window.setInterval(() => {
+        slides[activeIndex].classList.remove(
+          "is-active"
+        );
+
+
+        activeIndex =
+          (activeIndex + 1) % slides.length;
+
+
+        slides[activeIndex].classList.add(
+          "is-active"
+        );
+      }, 4000);
+    };
+
+
+    const stopSlider = () => {
+      if (!interval) return;
+
+      clearInterval(interval);
+      interval = null;
+    };
+
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        entry.isIntersecting
+          ? startSlider()
+          : stopSlider();
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+
+    observer.observe(section);
+  });
+</script>
+
+
+<style>
+  .intro-slider {
+    display: grid;
+    width: 100%;
+    overflow: hidden;
+  }
+
+
+  .intro-slide-group {
+    grid-area: 1 / 1;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    align-items: center;
+    gap: clamp(10px, 1.25vw, 18px);
+
+    opacity: 0;
+
+    transform: translateX(80px);
+
+    transition:
+      opacity 800ms ease,
+      transform 900ms cubic-bezier(.22,1,.36,1);
+
+    pointer-events: none;
+  }
+
+
+  .intro-slide-group.is-active {
+    opacity: 1;
+
+    transform: translateX(0);
+
+    pointer-events: auto;
+    z-index: 1;
+  }
+
+
+  .intro-slide-frame {
+    margin: 0;
+    overflow: hidden;
+
+    opacity: 0;
+
+    transition:
+      opacity 900ms ease;
+  }
+
+
+  .intro-slide-group.is-active 
+  .intro-slide-frame {
+    opacity: 1;
+  }
+
+
+  .intro-slide-frame img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+
+  @media (max-width: 767px) {
+    .intro-slide-group {
+      grid-template-columns: 1fr;
+      gap: 12px;
+
+      transform: translateX(40px);
+    }
+
+
+    .intro-slide-group.is-active {
+      transform: translateX(0);
+    }
+
+
+    .intro-slide-frame {
+      display: none;
+    }
+
+
+    .intro-slide-frame:first-child {
+      display: block;
+    }
+
+
+    .intro-slide-frame img {
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+  }
+</style>

@@ -1,0 +1,34 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+
+const { sponsors } = data;
+---
+
+<section class="bg-cream py-20">
+  <SectionHeading tone="dark" title={sponsors.realizationTitle} />
+  <Text as="p" variant="price" color="ink" align="center" class="mt-5">
+    {sponsors.realizationName}
+  </Text>
+
+  <div class="container mt-16 max-w-[672px]">
+    <Text as="h2" variant="price" color="ink" align="center">{sponsors.title}</Text>
+    <div class="mt-10">
+      <Text class="border-y border-ink/30 py-3" variant="small" color="ink" align="center">
+        {sponsors.goldLabel}
+      </Text>
+      <div class="mt-8 grid grid-cols-2 gap-8 text-center font-display text-xl font-bold tracking-normal md:grid-cols-3">
+        {sponsors.gold.map((name) => <div>{name}</div>)}
+      </div>
+    </div>
+    <div class="mt-12">
+      <Text class="border-y border-ink/30 py-3" variant="small" color="ink" align="center">
+        {sponsors.silverLabel}
+      </Text>
+      <div class="mt-8 grid grid-cols-2 gap-8 text-center font-display text-lg font-bold tracking-normal md:grid-cols-3">
+        {sponsors.silver.map((name) => <div>{name}</div>)}
+      </div>
+    </div>
+  </div>
+</section>

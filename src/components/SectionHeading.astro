@@ -1,0 +1,38 @@
+---
+import Text from "./Text.astro";
+
+const {
+  eyebrow,
+  title,
+  description,
+  align = "center",
+  tone = "blue",
+  eyebrowColor,
+  titleColor,
+  descriptionColor,
+} = Astro.props;
+const toneColor = tone === "light" ? "white" : tone === "dark" ? "ink" : "blue";
+const resolvedEyebrowColor = eyebrowColor ?? toneColor;
+const resolvedTitleColor = titleColor ?? toneColor;
+const resolvedDescriptionColor = descriptionColor ?? toneColor;
+const alignClass =
+  align === "left" ? "items-start text-left" : "items-center text-center";
+---
+
+<div class:list={["mx-auto flex max-w-2xl flex-col gap-5", alignClass]}>
+  {
+    eyebrow && (
+      <Text as="span" variant="eyebrow" color={resolvedEyebrowColor}>
+        {eyebrow}
+      </Text>
+    )
+  }
+  <Text as="h2" variant="h2" color={resolvedTitleColor}>{title}</Text>
+  {
+    description && (
+      <Text class="max-w-xl" color={resolvedDescriptionColor}>
+        {description}
+      </Text>
+    )
+  }
+</div>

@@ -1,0 +1,23 @@
+---
+import SectionHeading from "./SectionHeading.astro";
+import Text from "./Text.astro";
+import data from "../data/data.json";
+
+const { faq } = data;
+---
+
+<section class="bg-cream py-20">
+  <SectionHeading title={faq.title} />
+  <div class="container mt-8 max-w-[1000px] divide-y divide-ink/30">
+    {faq.items.map((item, index) => (
+      <details class="group py-6" open={index === 0}>
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-6 font-medium tracking-normal">
+          <Text as="span" color="ink">{item.question}</Text>
+          <span class="text-xl group-open:hidden">+</span>
+          <span class="hidden text-xl group-open:block">-</span>
+        </summary>
+        <Text class="mt-6 max-w-3xl" color="muted">{item.answer}</Text>
+      </details>
+    ))}
+  </div>
+</section>

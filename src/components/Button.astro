@@ -1,0 +1,87 @@
+---
+import defaultButtonIcon from "../assets/arrow-button-vector.svg";
+
+const {
+  href = "#ingressos",
+  variant = "lime",
+  size = "md",
+  icon = true,
+  iconSrc = defaultButtonIcon,
+} = Astro.props;
+
+const variants = {
+  lime: {
+    className: "bg-lime text-ink border-lime/35",
+    glow: "rgb(176 249 10 / 0.35)",
+  },
+
+  orange: {
+    className: "bg-orange text-cream border-orange/35",
+    glow: "rgb(205 107 3 / 0.35)",
+  },
+
+  purple: {
+    className: "bg-purple text-cream border-purple/35",
+    glow: "rgb(97 49 226 / 0.35)",
+  },
+
+  red: {
+    className: "bg-red text-cream border-red/40",
+    glow: "rgb(254 18 42 / 0.35)",
+  },
+
+  blue: {
+    className: "bg-blue text-cream border-blue/35",
+    glow: "rgb(61 54 255 / 0.35)",
+  },
+};
+
+const sizes = {
+  sm: {
+    className: "min-h-10 px-5 text-sm gap-2",
+    iconClass: "size-3",
+  },
+
+  md: {
+    className: "min-h-11 px-7 text-base gap-3",
+    iconClass: "size-4",
+  },
+};
+
+const currentVariant =
+  variants[variant as keyof typeof variants] ?? variants.lime;
+
+const currentSize = sizes[size as keyof typeof sizes] ?? sizes.md;
+
+const resolvedIconSrc = typeof iconSrc === "string" ? iconSrc : iconSrc.src;
+---
+
+<a
+  href={href}
+  class:list={[
+    "inline-flex w-fit max-w-full items-center justify-center rounded-button border font-sans uppercase tracking-normal transition hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2 focus:ring-offset-navy",
+
+    currentVariant.className,
+
+    currentSize.className,
+  ]}
+  style={`
+    box-shadow: 0 0 0 3px ${currentVariant.glow};
+    --button-icon: url("${resolvedIconSrc}");
+  `}
+>
+  <slot />
+
+  {
+    icon && (
+      <span
+        aria-hidden="true"
+        class:list={[
+          "shrink-0 bg-current mask-(--button-icon) mask-center mask-no-repeat mask-contain",
+
+          currentSize.iconClass,
+        ]}
+      />
+    )
+  }
+</a>
