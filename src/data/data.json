@@ -22,52 +22,52 @@
   },
   "market": {
     "title": "O mercado de locação está mudando. Você está dentro da conversa?",
-    "description": "O CUPOLA Aluguel Day foi criado para discutir os pontos que mais impactam a operação, a gestão e o crescimento das imobiliárias.",
-    "cta": "Faça sua inscrição",
+    "description": "O CUPOLA Aluguel Day foi construído em torno dos temas que mais impactam quem opera locação hoje.",
+    "cta": "Ver Ingressos",
     "items": [
       {
         "title": "Inadimplência e gestão de risco",
-        "description": "Processos travam, o proprietário cobra resposta e a operação precisa ganhar previsibilidade."
+        "description": "Os índices de inadimplência sobem, os processos travam e o proprietário cobra resposta. O que as imobiliárias que estão controlando isso estão fazendo diferente?"
       },
       {
         "title": "Concorrência e crescimento de mercado",
-        "description": "Crescer em locação exige clareza sobre posicionamento, carteira e próximos movimentos."
+        "description": "As imobiliárias de venda estão de olho na sua carteira, e as proptech também. Crescer em locação hoje exige estratégia clara sobre onde você quer estar daqui a dois anos."
       },
       {
         "title": "Reforma tributária e impacto na locação",
-        "description": "Mudanças chegam rápido. Quem entende antes consegue se posicionar melhor."
+        "description": "As mudanças já estão chegando. Quem entende as regras antes consegue se posicionar melhor. O que sua operação precisa ajustar agora?"
       },
       {
-        "title": "Inquilino mais informado",
-        "description": "Atendimento, direito do consumidor e operação precisam evoluir juntos."
+        "title": "Inquilino mais informado, operação mais exigida",
+        "description": "O inquilino pesquisa, compara e sabe dos próprios direitos. A judicialização cresce. Seu time está preparado para atender esse perfil sem aumentar o custo operacional?"
       },
       {
         "title": "Locação direta e novas formas de captação",
-        "description": "O papel da imobiliária muda, mas também abre janelas para captação e recorrência."
+        "description": "Proprietários indo direto ao mercado e plataformas digitais facilitando o processo. O que muda no papel da imobiliária e como transformar essa ameaça em janela de captação?"
       },
       {
         "title": "Saúde mental e clima organizacional",
-        "description": "Locação é operação pesada. Liderança, processo e cultura entram na pauta."
+        "description": "Locação é operação pesada. Alta rotatividade, pressão constante e time esgotado comprometem resultado. Como os líderes que estão resolvendo isso estruturaram a gestão de pessoas?"
       }
     ]
   },
   "formats": {
     "title": "Um dia. Três formatos",
-    "cta": "Faça sua inscrição",
+    "cta": "Ver Ingressos",
     "items": [
       {
         "title": "Palestras",
-        "description": "Conteúdos objetivos com especialistas e líderes que vivem a rotina da locação.",
+        "description": "Especialistas apresentam análises, dados e perspectivas sobre os temas que mais impactam quem opera locação hoje.",
         "image": "palestras"
       },
       {
         "title": "Entrevistas com imobiliárias",
-        "description": "Imobiliárias abrem a caixa-preta da operação e mostram aprendizados práticos.",
+        "description": "Imobiliárias de destaque abrem a caixa-preta da própria operação. O que está funcionando, o que não funcionou e por quê. ",
         "image": "entrevistas"
       },
       {
         "title": "Espaço Insider",
-        "description": "Troca direta, consultoria e conversa entre pares para aprofundar decisões.",
+        "description": "Sessões temáticas em grupo conduzidas por consultores CUPOLA, exclusivas para o presencial e com vagas limitadas. É troca entre pares que vivem os mesmos desafios operacionais.",
         "image": "insider"
       }
     ]
@@ -240,97 +240,155 @@
   "testimonials": {
     "title": "Quem foi, recomenda!",
     "cta": "Saiba mais",
+    "link": "#",
     "items": [
       {
         "name": "Sidenir Barroso",
-        "company": "Participante",
-        "quote": "Um evento essencial para quem precisa tomar decisões melhores na operação de locação."
+        "quote": "Se você busca conteúdos exclusivos para imobiliárias, você está no caminho certo. Seu próximo passo é o CUPOLA Aluguel Day",
+        "image": "sidenir",
+        "stars": 5
       },
       {
         "name": "Marília Gonzaga",
         "company": "MAFI Imóveis",
-        "quote": "Conteúdo direto, aplicável e conectado com os desafios reais das imobiliárias."
+        "quote": "Eu participo dos eventos da CUPOLA desde o início, tenho uma grande amizade com a empresa e pelo que ela faz no mercado imobiliário.",
+        "image": "marilia",
+        "stars": 5
       },
       {
         "name": "Sidnei Clay",
         "company": "SDG Imóveis",
-        "quote": "A curadoria da CUPOLA ajuda a enxergar caminhos práticos para crescer com consistência."
+        "quote": "Estou gostando muito dessa troca de ideias, essa convivência com os amigos do ramo imobiliário. A CUPOLA vem com um conteúdo muito interessante para nos trazer segurança.",
+        "image": "sidnei",
+        "stars": 5
       }
     ]
   },
   "about": {
     "title": "Evento realizado por: CUPOLA",
-    "description": "A CUPOLA é um ecossistema de estratégias para gestão imobiliária com frentes integradas de educação, consultoria e marketing. No CUPOLA Aluguel Day, essa curadoria se dedica inteiramente ao mercado de locação.",
+    "description1": "A CUPOLA é um ecossistema de estratégias para gestão imobiliária com frentes integradas de educação, consultoria e marketing que atuam dentro do mercado. Há 19 anos organiza a complexidade do setor em direção clara: forma visão, estrutura operação e conecta líderes que escolhem crescer com consistência.",
+    "description2": "É o mesmo ecossistema que realiza o CUPOLA Summit, o evento imobiliário mais estratégico para líderes do setor, com mais de 2,5 mil participantes por edição. No CUPOLA Aluguel Day, essa mesma curadoria se dedica inteiramente ao mercado de locação: viajando, trocando e conversando com imobiliárias de todo o Brasil todos os dias.",
     "cta": "Saiba mais",
-    "taglinePrefix": "Onde o mercado imobiliário se",
-    "taglineHighlight": "forma e transforma"
+    "taglinePart1": "ONDE O MERCADO IMOBILIÁRIO SE",
+    "taglineHighlight1": "FORMA",
+    "taglinePart2": "E SE",
+    "taglineHighlight2": "TRANSFORMA",
+    "href": "https://cupola.com.br/",
+    "variant": "blue"
   },
   "faq": {
     "title": "FAQ",
     "items": [
       {
         "question": "O que é o CUPOLA Aluguel Day?",
-        "answer": "É um evento imobiliário 100% focado em locação, realizado pela CUPOLA, com programação presencial em Curitiba e transmissão online simultânea."
+        "answer": "O CUPOLA Aluguel Day é um evento imobiliário 100% focado em locação, realizado pela CUPOLA, o mesmo ecossistema por trás do CUPOLA Summit. Em um único dia, gestores, donos e times de imobiliárias se reúnem em Curitiba (com transmissão online simultânea) para acompanhar palestras com especialistas, painéis onde imobiliárias de destaque abrem a caixa-preta da operação e sessões de troca entre pares no Espaço Insider. A edição de 2026 acontece em 30 de setembro."
       },
       {
         "question": "Quais temas serão abordados no CUPOLA Aluguel Day 2026?",
-        "answer": "Gestão de risco, crescimento de carteira, operação, liderança, tecnologia, experiência do cliente e novos modelos de captação."
+        "answer": ""
       },
       {
         "question": "Qual a diferença entre o Ingresso Líder e o Ingresso Time?",
-        "answer": "O ingresso Líder é presencial. O ingresso Time é online e pensado para acesso ampliado da equipe."
+        "answer": ""
+      },
+      {
+        "question": "Quem comprar o Ingresso Líder (presencial) terá acesso às gravações?",
+        "answer": ""
+      },
+      {
+        "question": "O Ingresso Time permite que toda a equipe assista?",
+        "answer": ""
+      },
+      {
+        "question": "Quando o certificado fica disponível?",
+        "answer": ""
+      },
+      {
+        "question": "Existe desconto para compras em grupo?",
+        "answer": ""
       },
       {
         "question": "Onde acontece o evento presencial?",
-        "answer": "A edição presencial acontece em Curitiba, Paraná."
+        "answer": ""
       },
       {
         "question": "Haverá gravações disponíveis após o evento?",
-        "answer": "As gravações ficam disponíveis conforme o tipo de ingresso escolhido."
+        "answer": ""
+      },
+      {
+        "question": "O CUPOLA Aluguel Day é diferente da Imersão CUPOLA Aluguel?",
+        "answer": ""
       }
     ]
   },
   "travel": {
     "title": "Agência de Viagens Oficial do CUPOLA Aluguel Day",
     "description": "Para passagens e hospedagens em Curitiba, conte com a Destino Viagens.",
-    "cta": "Entrar em contato"
+    "contacts": [
+      {
+        "type": "phone",
+        "text": "(41) 99999-9999",
+        "href": "https://wa.me/5541999999999"
+      },
+      {
+        "type": "email",
+        "text": "contato@destinoviagens.com.br",
+        "href": "mailto:contato@destinoviagens.com.br"
+      }
+    ],
+    "cta": "ENTRE EM CONTATO",
+    "href": "https://wa.me/5541999999999"
   },
   "sponsors": {
     "realizationTitle": "Realização",
-    "realizationName": "CUPOLA",
+    "realizationLogo": "cupola",
     "title": "Patrocinadores",
-    "goldLabel": "Ouro",
-    "silverLabel": "Prata",
+    "goldLabel": "OURO",
+    "silverLabel": "PRATA",
     "gold": [
-      "Credaluga",
-      "FC Análise",
-      "Grazon",
-      "Pipemob",
-      "Realmate",
-      "UP Estate"
+      "credaluga",
+      "fcanalise",
+      "grazon",
+      "pipeimob",
+      "realmate",
+      "upstate"
     ],
     "silver": [
-      "Compagno",
-      "FlexPro",
-      "Lugui"
+      "compagno",
+      "flexpro",
+      "lugui"
     ]
   },
   "footer": {
     "columns": [
       {
         "title": "Realização",
-        "content": "CUPOLA",
-        "color": "lime"
+        "logo": "cupola",
+        "href": "https://cupola.com.br"
       },
       {
-        "title": "Plataforma oficial de vendas",
-        "content": "Sympla",
-        "color": "blue"
+        "title": "Plataforma Oficial de Vendas",
+        "logo": "sympla",
+        "href": "https://sympla.com.br"
       },
       {
         "title": "CUPOLA Aluguel Day",
-        "content": "Termos de uso\nPolítica de privacidade",
-        "color": "white"
+        "links": [
+          {
+            "label": "Termos de uso",
+            "href": "#"
+          },
+          {
+            "label": "Política de privacidade",
+            "href": "#"
+          }
+        ],
+        "social": [
+          {
+            "type": "instagram",
+            "href": "https://instagram.com"
+          }
+        ]
       }
     ]
   }

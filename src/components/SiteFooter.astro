@@ -2,24 +2,119 @@
 import Text from "./Text.astro";
 import data from "../data/data.json";
 
+import cupolaLogo from "../assets/logos/cupola-white.svg";
+import symplaLogo from "../assets/logos/sympla.svg";
+import instagramIcon from "../assets/logos/instagram.svg";
+
 const { footer } = data;
+
+const logos = {
+  cupola: cupolaLogo,
+  sympla: symplaLogo,
+};
+
+const socials = {
+  instagram: instagramIcon,
+};
 ---
 
-<footer class="rounded-t-[32px] bg-black py-16 text-white">
-  <div class="container grid gap-10 md:grid-cols-3">
-    {footer.columns.map((column) => (
-      <div>
-        <Text as="p" variant="h4" color="white">{column.title}</Text>
-        <div class="mt-6 h-px bg-white/30"></div>
-        <Text
-          as="p"
-          variant={column.color === "white" ? "body" : "price"}
-          color={column.color}
-          class:list={["mt-6", column.color === "white" && "whitespace-pre-line text-white/70"]}
+<footer class="rounded-t-[45px]
+    bg-black
+    py-14
+    text-white">
+  <div
+    class="container
+      grid
+      gap-14
+      text-center
+      md:grid-cols-3
+      md:text-left"
+  >
+    {
+      footer.columns.map((column) => (
+        <div
+          class="
+            flex
+            flex-col
+            items-center
+            md:items-start
+          "
         >
-          {column.content}
-        </Text>
-      </div>
-    ))}
+          <Text as="p" variant="body" color="white">
+            {column.title}
+          </Text>
+
+          <div
+            class="
+              mt-4
+              h-px
+              w-32
+              bg-white/50
+              md:w-full
+              md:max-w-62.5
+            "
+          />
+
+          {column.logo && (
+            <a href={column.href} target="_blank" class="mt-6">
+              <img
+                src={logos[column.logo as keyof typeof logos].src}
+                alt={column.title}
+                class="
+                    h-8
+                    w-auto
+                  "
+              />
+            </a>
+          )}
+
+          {column.links && (
+            <div
+              class="
+                  mt-6
+                  flex
+                  flex-col
+                  gap-3
+                "
+            >
+              {column.links.map((link) => (
+                <a
+                  href={link.href}
+                  class="
+                        text-sm
+                        text-white/70
+                        transition
+                        hover:text-white
+                      "
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          )}
+
+          {column.social && (
+            <div
+              class="
+                  mt-6
+                  flex
+                  justify-center
+                  gap-3
+                "
+            >
+              {column.social.map((item) => {
+                const icon = socials[item.type as keyof typeof socials];
+
+                return (
+                  <a href={item.href} target="_blank">
+                    <img src={icon.src} width="22" height="22" alt="" />
+                  </a>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      ))
+    }
   </div>
 </footer>

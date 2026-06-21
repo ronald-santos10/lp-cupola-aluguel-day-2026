@@ -1,33 +1,142 @@
 ---
-import SectionHeading from "./SectionHeading.astro";
 import Text from "./Text.astro";
 import data from "../data/data.json";
 
+import cupolaLogo from "../assets/logos/cupola.svg";
+
+import credalugaLogo from "../assets/logos/credaluga.svg";
+import fcanaliseLogo from "../assets/logos/fcanalise.svg";
+import grazonLogo from "../assets/logos/grazon.svg";
+import pipeimobLogo from "../assets/logos/pipeimob.svg";
+import realmateLogo from "../assets/logos/realmate.svg";
+import upstateLogo from "../assets/logos/upstate.svg";
+
+import compagnoLogo from "../assets/logos/compagno.svg";
+import flexproLogo from "../assets/logos/flexpro.svg";
+import luguiLogo from "../assets/logos/lugui.svg";
+
 const { sponsors } = data;
+
+const logos = {
+  cupola: cupolaLogo,
+
+  credaluga: credalugaLogo,
+  fcanalise: fcanaliseLogo,
+  grazon: grazonLogo,
+  pipeimob: pipeimobLogo,
+  realmate: realmateLogo,
+  upstate: upstateLogo,
+
+  compagno: compagnoLogo,
+  flexpro: flexproLogo,
+  lugui: luguiLogo,
+};
+
+type LogoKey = keyof typeof logos;
+const realizationLogo = sponsors.realizationLogo as LogoKey;
 ---
 
-<section class="bg-cream py-20">
-  <SectionHeading tone="dark" title={sponsors.realizationTitle} />
-  <Text as="p" variant="price" color="ink" align="center" class="mt-5">
-    {sponsors.realizationName}
-  </Text>
+<section class="bg-cream py-12 lg:py-20">
+  <div class="container flex flex-col items-center">
+    <!-- REALIZAÇÃO -->
 
-  <div class="container mt-16 max-w-[672px]">
-    <Text as="h2" variant="price" color="ink" align="center">{sponsors.title}</Text>
-    <div class="mt-10">
-      <Text class="border-y border-ink/30 py-3" variant="small" color="ink" align="center">
-        {sponsors.goldLabel}
-      </Text>
-      <div class="mt-8 grid grid-cols-2 gap-8 text-center font-display text-xl font-bold tracking-normal md:grid-cols-3">
-        {sponsors.gold.map((name) => <div>{name}</div>)}
+    <Text as="h2" variant="h3" color="ink" align="center">
+      {sponsors.realizationTitle}
+    </Text>
+
+    <img
+      src={logos[realizationLogo].src}
+      alt="CUPOLA"
+      class="mt-5 h-12 w-auto"
+    />
+
+    <!-- PATROCINADORES -->
+
+    <Text as="h2" variant="h3" color="ink" align="center" class="mt-20">
+      {sponsors.title}
+    </Text>
+
+    <!-- OURO -->
+
+    <div class="mt-10 w-full max-w-155">
+      <div class="flex items-center gap-6">
+        <span class="h-px flex-1 bg-ink/40"></span>
+
+        <Text variant="small" color="ink" class="uppercase">
+          {sponsors.goldLabel}
+        </Text>
+
+        <span class="h-px flex-1 bg-ink/40"></span>
+      </div>
+
+      <div
+        class="mt-8
+        grid
+        grid-cols-2
+        items-center
+        gap-x-14
+        gap-y-10
+        md:grid-cols-3"
+      >
+        {
+          sponsors.gold.map((item) => {
+            const logo = logos[item as keyof typeof logos];
+
+            return (
+              <img
+                src={logo.src}
+                alt={item}
+                class="
+                mx-auto
+                max-h-10
+                w-auto
+                "
+              />
+            );
+          })
+        }
       </div>
     </div>
-    <div class="mt-12">
-      <Text class="border-y border-ink/30 py-3" variant="small" color="ink" align="center">
-        {sponsors.silverLabel}
-      </Text>
-      <div class="mt-8 grid grid-cols-2 gap-8 text-center font-display text-lg font-bold tracking-normal md:grid-cols-3">
-        {sponsors.silver.map((name) => <div>{name}</div>)}
+
+    <!-- PRATA -->
+
+    <div class="mt-14 w-full max-w-155">
+      <div class="flex items-center gap-6">
+        <span class="h-px flex-1 bg-ink/40"></span>
+
+        <Text variant="small" color="ink" class="uppercase">
+          {sponsors.silverLabel}
+        </Text>
+
+        <span class="h-px flex-1 bg-ink/40"></span>
+      </div>
+
+      <div
+        class="mt-8
+        grid
+        grid-cols-2
+        items-center
+        gap-x-14
+        gap-y-10
+        md:grid-cols-3"
+      >
+        {
+          sponsors.silver.map((item) => {
+            const logo = logos[item as keyof typeof logos];
+
+            return (
+              <img
+                src={logo.src}
+                alt={item}
+                class="
+                  mx-auto
+                  max-h-10
+                  w-auto
+                "
+              />
+            );
+          })
+        }
       </div>
     </div>
   </div>

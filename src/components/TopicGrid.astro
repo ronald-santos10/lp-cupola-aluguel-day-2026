@@ -9,7 +9,7 @@ const { market } = data;
 ---
 
 <section
-  class="py-20"
+  class="py-12 lg:py-20 flex flex-col gap-6"
   style={`
     background-image: url(${backgroundImage.src});
     background-size: cover;
@@ -23,7 +23,7 @@ const { market } = data;
     descriptionColor="white"
   />
 
-  <div class="container mt-7 grid gap-5 md:grid-cols-2">
+  <div class="container grid gap-5 md:grid-cols-2">
     {
       market.items.map((topic) => (
         <article class="rounded-card bg-cream p-6 text-ink">
@@ -39,7 +39,7 @@ const { market } = data;
     }
   </div>
 
-  <div class="mt-7 text-center">
+  <div class="text-center">
     <Button>{market.cta}</Button>
   </div>
 </section>

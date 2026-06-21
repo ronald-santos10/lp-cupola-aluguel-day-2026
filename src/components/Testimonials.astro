@@ -2,29 +2,105 @@
 import Button from "./Button.astro";
 import SectionHeading from "./SectionHeading.astro";
 import Text from "./Text.astro";
+
 import data from "../data/data.json";
 
-const { testimonials } = data;
+import backgroundImage from "../assets/bg-red.webp";
+
+import sidenirImg from "../assets/sidenir-image.webp";
+import mariliaImg from "../assets/marilia-image.webp";
+import sidneiImg from "../assets/sidnei-clay-image.webp";
+
+const images = {
+  sidenir: sidenirImg,
+  marilia: mariliaImg,
+  sidnei: sidneiImg,
+};
+
+type TestimonialItem = {
+  name: string;
+  company: string;
+  quote: string;
+  image: keyof typeof images;
+  stars: number;
+};
+
+const { testimonials } = data as unknown as {
+  testimonials: {
+    title: string;
+    items: TestimonialItem[];
+    link: string;
+    cta: string;
+  };
+};
 ---
 
-<section class="pattern-red py-20 text-white">
+<section
+  class="py-12 lg:py-20 flex flex-col gap-6"
+  style={`
+    background-image: url(${backgroundImage.src});
+    background-size: cover;
+    background-position: bottom;
+  `}
+>
   <SectionHeading tone="light" title={testimonials.title} />
-  <div class="container mt-7 grid gap-5 md:grid-cols-3">
-    {testimonials.items.map((item) => (
-      <article class="rounded-card bg-cream p-6 text-ink">
-        <div class="mb-4 flex items-center gap-3">
-          <div class="size-12 rounded-full bg-navy/20"></div>
-          <div>
-            <Text as="p" variant="button" color="ink">{item.name}</Text>
-            <Text as="p" variant="small" color="muted">{item.company}</Text>
-          </div>
-        </div>
-        <p class="text-yellow-500">★★★★★</p>
-        <Text class="mt-4" color="muted">{item.quote}</Text>
-      </article>
-    ))}
+
+  <div class="container mt-7 grid gap-5 lg:grid-cols-3">
+    {
+      testimonials.items.map((item) => {
+        const image = images[item.image];
+
+        return (
+          <article
+            class="
+              rounded-card
+              bg-cream
+              p-6
+              text-ink
+              flex flex-col
+              gap-5
+            "
+          >
+            <img
+              src={image.src}
+              width={56}
+              height={56}
+              alt={item.name}
+              class="
+                size-14
+                rounded-full
+                object-cover
+              "
+            />
+
+            <div
+              class="
+              text-yellow-500
+              text-xl
+              tracking-wide
+              "
+            >
+              {"★".repeat(item.stars)}
+            </div>
+
+            <Text color="ink">
+              "{item.quote}"
+            </Text>
+
+            <hr class="border-line" />
+
+            <Text as="p" variant="button" color="ink" class="uppercase">
+              {item.name} - {item.company}
+            </Text>
+          </article>
+        );
+      })
+    }
   </div>
+
   <div class="mt-7 text-center">
-    <Button>{testimonials.cta}</Button>
+    <Button href={testimonials.link}>
+      {testimonials.cta}
+    </Button>
   </div>
 </section>
