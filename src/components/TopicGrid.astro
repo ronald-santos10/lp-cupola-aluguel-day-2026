@@ -2,7 +2,7 @@
 import Button from "./Button.astro";
 import SectionHeading from "./SectionHeading.astro";
 import Text from "./Text.astro";
-import data from "../data/data.json";
+const { data } = Astro.props;
 import backgroundImage from "../assets/bg-blue.webp";
 
 const { market } = data;
@@ -25,7 +25,7 @@ const { market } = data;
 
   <div class="container grid gap-5 md:grid-cols-2">
     {
-      market.items.map((topic) => (
+      market.items.map((topic: { title: unknown; description: unknown; }) => (
         <article class="rounded-card bg-cream p-6 text-ink">
           <Text as="h3" variant="h3" color="ink">
             {topic.title}

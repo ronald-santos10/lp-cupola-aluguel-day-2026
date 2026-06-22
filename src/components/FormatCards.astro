@@ -2,7 +2,7 @@
 import Button from "./Button.astro";
 import SectionHeading from "./SectionHeading.astro";
 import Text from "./Text.astro";
-import data from "../data/data.json";
+const { data } = Astro.props;
 import backgroundImage from "../assets/bg-red.webp";
 import palestraImg from "../assets/palestras.webp";
 import entrevistasImg from "../assets/entrevistas.webp";
@@ -36,7 +36,7 @@ const images = {
     md:grid-cols-2
     lg:grid-cols-3">
     {
-      formats.items.map((format) => {
+      formats.items.map((format: { image: string; title: string; description: string; }) => {
         const image = images[format.image as keyof typeof images];
         return (
           <article

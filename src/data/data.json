@@ -7,7 +7,7 @@
     "preSale": "PRÉ-VENDA CLIENTES CUPOLA 24 A 30 JUN",
     "title": "O evento imobiliário de quem vive a locação",
     "description": "Um dia inteiro sobre locação para quem opera, decide e quer crescer.",
-    "cta": "Garantir ingresso"
+    "cta": "INGRESSOS EM BREVE"
   },
   "intro": {
     "title": "Evento imobiliário feito para quem faz a locação acontecer",
@@ -18,12 +18,12 @@
       "Para imobiliárias de vendas que desejam iniciar a operação de locação",
       "Para startups e empresas do mercado imobiliário"
     ],
-    "cta": "Ver ingressos"
+    "cta": "INGRESSOS EM BREVE"
   },
   "market": {
     "title": "O mercado de locação está mudando. Você está dentro da conversa?",
     "description": "O CUPOLA Aluguel Day foi construído em torno dos temas que mais impactam quem opera locação hoje.",
-    "cta": "Ver Ingressos",
+    "cta": "INGRESSOS EM BREVE",
     "items": [
       {
         "title": "Inadimplência e gestão de risco",
@@ -53,7 +53,7 @@
   },
   "formats": {
     "title": "Um dia. Três formatos",
-    "cta": "Ver Ingressos",
+    "cta": "INGRESSOS EM BREVE",
     "items": [
       {
         "title": "Palestras",
@@ -131,37 +131,42 @@
         "label": "Para quem decide",
         "name": "Líder",
         "mode": "Presencial",
-        "price": "R$99,00",
+        "price": "EM BREVE",
         "colorClass": "text-orange",
         "variant": "orange",
-        "cta": "COMPRAR INGRESSO LÍDER",
+        "cta": "",
         "vector": "lider",
-        "href": "#lider"
+        "href": ""
       },
       {
         "label": "Para toda equipe",
         "name": "Time",
         "mode": "ONLINE",
-        "price": "R$199,00",
+        "price": "EM BREVE",
         "colorClass": "text-purple",
         "variant": "purple",
-        "cta": "COMPRAR INGRESSO TIME",
+        "cta": "",
         "vector": "time",
-        "href": "#time"
+        "href": ""
       },
       {
-        "label": "Para a imobiliárioa inteira",
+        "label": "Para a imobiliária inteira",
         "name": "Combo",
         "mode": "Presencial + ONLINE",
-        "price": "R$248,00",
+        "price": "EM BREVE",
         "colorClass": "text-red",
         "variant": "red",
-        "cta": "COMPRAR INGRESSO COMBO",
+        "cta": "",
         "vector": "combo",
-        "href": "#combo"
+        "href": ""
       }
     ],
-    "obs": "O INGRESSO LÍDER NÃO INCLUI ACESSO ÀS GRAVAÇÕES. PARA GARANTIR QUE SEU TIME TENHA ACESSO AO CONTEÚDO GRAVADO, ESCOLHA O INGRESSO TIME OU O COMBO."
+    "obs": "O INGRESSO LÍDER NÃO INCLUI ACESSO ÀS GRAVAÇÕES. PARA GARANTIR QUE SEU TIME TENHA ACESSO AO CONTEÚDO GRAVADO, ESCOLHA O INGRESSO TIME OU O COMBO.",
+    "form": {
+      "enabled": true,
+      "title": "Cadastre-se e seja o primeiro a saber sobre a abertura",
+      "embedId": "rd-form"
+    }
   },
   "comparison": {
     "title": "Compare os ingressos",

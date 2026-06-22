@@ -2,7 +2,7 @@
 import { getImage } from "astro:assets";
 import Button from "./Button.astro";
 import Text from "./Text.astro";
-import data from "../data/data.json";
+const { data } = Astro.props;
 import heroBgDesktop from "../assets/bg-hero-desktop.webp";
 import heroBgMobile from "../assets/bg-hero-mobile.webp";
 import AluguelDayLogo from "../assets/logos/aluguel-day.svg";

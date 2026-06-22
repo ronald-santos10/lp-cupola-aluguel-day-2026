@@ -5,7 +5,7 @@ import comboIcon from "../assets/vectors/combo.svg";
 import Button from "./Button.astro";
 import SectionHeading from "./SectionHeading.astro";
 import Text from "./Text.astro";
-import data from "../data/data.json";
+import data from "../data/dataPrevenda.json";
 import backgroundImage from "../assets/bg-dark-blue.webp";
 
 const { tickets } = data;
@@ -17,7 +17,8 @@ const icons = {
 };
 ---
 
-<section id="ingressos"
+<section
+  id="ingressos"
   class="bg-navy py-20 flex flex-col gap-6"
   style={`
     background-image: url(${backgroundImage.src});
@@ -71,9 +72,14 @@ const icons = {
             </Text>
 
             <div class="mt-6 text-white">
-              {/* <Button variant={ticket.variant} size="sm" class="w-full " href={ticket.href}>
+              <Button
+                variant={ticket.variant}
+                size="sm"
+                class="w-full "
+                href={ticket.href}
+              >
                 {ticket.cta}
-              </Button> */}
+              </Button>
             </div>
           </article>
         );
@@ -81,58 +87,7 @@ const icons = {
     }
   </div>
 
-  <Text as="p" variant="small" color="white" class="text-center ">
+  <Text as="p" variant="small" color="white" class="text-center">
     {tickets.obs}
   </Text>
-
-  <div>
-    {
-  tickets.form?.enabled && (
-
-    <div
-      class="
-        container
-        mt-6
-        rounded-card
-        bg-blue
-        px-6
-        py-10
-        md:px-20
-      "
-    >
-
-      <Text
-        as="h2"
-        variant="h2"
-        color="white"
-        align="center"
-        class="
-          mx-auto
-          max-w-xl
-        "
-      >
-        {tickets.form.title}
-      </Text>
-
-
-
-      <div
-        id={tickets.form.embedId}
-        class="
-          mx-auto
-          mt-8
-          max-w-3xl
-        "
-      >
-
-        <!-- RD Station entra aqui -->
-
-      </div>
-
-
-    </div>
-
-  )
-}
-  </div>
 </section>

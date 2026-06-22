@@ -2,7 +2,7 @@
 import { getImage } from "astro:assets";
 import Button from "./Button.astro";
 import Text from "./Text.astro";
-import data from "../data/data.json";
+const { data } = Astro.props;
 
 import slide1 from "../assets/slider/1.webp";
 import slide2 from "../assets/slider/2.webp";
@@ -82,7 +82,7 @@ const slideGroups = await Promise.all(
 
   <div class="container grid gap-3 md:grid-cols-2 xl:grid-cols-4">
     {
-      intro.audiences.map((item) => (
+      intro.audiences.map((item: unknown) => (
         <div class="flex min-h-19.25 items-center justify-center rounded-card bg-blue px-3 text-center">
           <Text as="h4" color="white">
             {item}
