@@ -3,6 +3,7 @@ import Button from "./Button.astro";
 import Text from "./Text.astro";
 
 import data from "../data/data.json";
+import { routes } from "../data/routes";
 
 import backgroundImage from "../assets/bg-blue.webp";
 import travelImage from "../assets/banner_destinos.webp";
@@ -15,6 +16,11 @@ const { travel } = data;
 const icons = {
   phone: phoneIcon,
   email: emailIcon,
+};
+
+const contactRoutes = {
+  phone: routes.external.travelWhatsApp,
+  email: routes.external.travelEmail,
 };
 ---
 
@@ -59,8 +65,9 @@ const icons = {
 
             return (
               <a
-                href={contact.href}
+                href={contactRoutes[contact.type as keyof typeof contactRoutes]}
                 target="_blank"
+                rel="noopener noreferrer"
                 class="
                   flex
                   items-center
@@ -77,7 +84,7 @@ const icons = {
         }
       </div>
 
-      <Button href={travel.href} target="_blank">
+      <Button href={routes.external.travelWhatsApp} target="_blank">
         {travel.cta}
       </Button>
     </div>

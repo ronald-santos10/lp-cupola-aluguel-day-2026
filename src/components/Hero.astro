@@ -30,7 +30,7 @@ const {
 ---
 
 <section
-  class="hero-section w-full overflow-hidden rounded-b-[64px] bg-navy bg-cover bg-center bg-no-repeat"
+  class="hero-section relative w-full overflow-visible rounded-b-[64px] bg-navy bg-cover bg-center bg-no-repeat"
   style={`--hero-bg-desktop: url("${backgroundImage}"); --hero-bg-mobile: url("${mobileBackgroundImage}");`}
 >
   <div
@@ -64,6 +64,28 @@ const {
       {hero.description}
     </Text>
     <Button>{hero.cta}</Button>
+  </div>
+
+  <div
+    class="absolute
+    left-1/2
+    bottom-0
+    z-20
+    -translate-x-1/2
+    translate-y-1/2"
+  >
+    <div
+      class="whitespace-nowrap
+      rounded-xl
+      bg-blue
+      px-8
+      py-3
+      text-base
+      text-white
+      shadow-lg"
+    >
+      {hero.preSale}
+    </div>
   </div>
 </section>
 

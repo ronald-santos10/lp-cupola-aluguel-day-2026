@@ -1,138 +1,453 @@
 ---
-import liderIcon from "../assets/vectors/lider.svg";
-import timeIcon from "../assets/vectors/time.svg";
-import comboIcon from "../assets/vectors/combo.svg";
-import Button from "./Button.astro";
 import SectionHeading from "./SectionHeading.astro";
 import Text from "./Text.astro";
 import data from "../data/data.json";
-import backgroundImage from "../assets/bg-dark-blue.webp";
+import { routes } from "../data/routes";
 
 const { tickets } = data;
-
-const icons = {
-  lider: liderIcon,
-  time: timeIcon,
-  combo: comboIcon,
-};
+const initialPriceIndex = tickets.presential.initialPriceIndex ?? 0;
+const initialPrice = tickets.presential.prices[initialPriceIndex];
+const priceFormatter = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+});
 ---
 
-<section id="ingressos"
-  class="bg-navy py-20 flex flex-col gap-6"
-  style={`
-    background-image: url(${backgroundImage.src});
-    background-size: cover;
-    background-position: bottom;
-  `}
->
-  <Text
-    as="span"
-    variant="eyebrow"
-    color="ink"
-    class="rounded-full bg-cream px-3 py-1 w-fit mx-auto"
-  >
-    {tickets.eyebrow}
-  </Text>
-
-  <SectionHeading title={tickets.title} titleColor="white" />
-
-  <div class="container grid gap-5 md:grid-cols-3">
-    {
-      tickets.items.map((ticket) => {
-        const Icon = icons[ticket.vector as keyof typeof icons];
-
-        return (
-          <article class="rounded-card bg-cream p-6 text-ink">
-            <Text as="span" variant="eyebrow" color="ink">
-              {ticket.label}
-            </Text>
-
-            <hr class="my-2 border-ink/40" />
-
-            <div class="flex items-center gap-2">
-              <img src={Icon.src} width={24} height={24} alt="" />
-
-              <h3
-                class:list={[
-                  "font-display text-[28px] font-extrabold leading-none",
-                  ticket.colorClass,
-                ]}
-              >
-                {ticket.name}
-              </h3>
-            </div>
-
-            <Text as="p" variant="eyebrow" color="ink" class="mt-1 uppercase">
-              ({ticket.mode})
-            </Text>
-
-            <Text as="p" variant="price" color="ink" class="mt-4">
-              {ticket.price}
-            </Text>
-
-            <div class="mt-6 text-white">
-              {/* <Button variant={ticket.variant} size="sm" class="w-full " href={ticket.href}>
-                {ticket.cta}
-              </Button> */}
-            </div>
-          </article>
-        );
-      })
-    }
-  </div>
-
-  <Text as="p" variant="small" color="white" class="text-center ">
-    {tickets.obs}
-  </Text>
-
-  <div>
-    {
-  tickets.form?.enabled && (
-
-    <div
-      class="
-        container
-        mt-6
-        rounded-card
-        bg-blue
-        px-6
-        py-10
-        md:px-20
-      "
+<section id="ingressos" class="tickets bg-navy py-20">
+  <div class="container flex max-w-169.5 flex-col items-center">
+    <Text
+      as="span"
+      class="mx-auto mb-3.75 flex h-4.5 w-fit items-center rounded-full bg-cream px-2 text-[12px] uppercase leading-none text-ink"
     >
+      {tickets.eyebrow}
+    </Text>
 
-      <Text
-        as="h2"
-        variant="h2"
-        color="white"
-        align="center"
-        class="
-          mx-auto
-          max-w-xl
-        "
+    <SectionHeading
+      title={tickets.title}
+      description={tickets.description}
+      titleColor="white"
+      descriptionColor="white"
+    />
+
+    <div class="mt-5 w-full rounded-card bg-cream px-6.25 pb-10 pt-10 text-center">
+      <span
+        class="inline-flex h-5 items-center rounded-full bg-navy px-2.5 text-[12px] font-bold uppercase leading-none tracking-[-0.04em] text-white"
       >
-        {tickets.form.title}
-      </Text>
+        {tickets.presential.badge}
+      </span>
 
-
-
-      <div
-        id={tickets.form.embedId}
-        class="
-          mx-auto
-          mt-8
-          max-w-3xl
-        "
+      <h3
+        class="mt-2.5 font-display text-[32px] font-bold leading-7.5 tracking-normal text-purple"
       >
+        {tickets.presential.title}
+      </h3>
 
-        <!-- RD Station entra aqui -->
+      <p
+        class="mt-7.5 text-[12px] uppercase leading-none tracking-[-0.04em] text-muted"
+      >
+        {tickets.presential.quantityInstruction}
+      </p>
 
+      <div class="mt-2.5 flex items-start justify-center gap-5 md:gap-4.75">
+        <button
+          id="minus-btn"
+          class="ticket-step-button"
+          aria-label={tickets.labels.decreaseQuantity}
+          type="button"
+        >
+          {tickets.labels.collapse}
+        </button>
+
+        <div class="ticket-slider-wrap">
+          <div class="ticket-slider-track" aria-hidden="true">
+            {
+              tickets.presential.prices.map((_, index) => (
+                <span
+                  style={`left: ${(index / (tickets.presential.prices.length - 1)) * 100}%`}
+                />
+              ))
+            }
+            <span id="slider-thumb-visual" class="ticket-slider-thumb"></span>
+          </div>
+
+          <input
+            id="people-slider"
+            type="range"
+            min="0"
+            max={tickets.presential.prices.length - 1}
+            value={initialPriceIndex}
+            step="1"
+            class="ticket-range"
+            aria-label={tickets.labels.quantity}
+          />
+
+          <div class="ticket-slider-labels">
+            {
+              tickets.presential.prices.map((item, index) => (
+                <div
+                  class="ticket-slider-label"
+                  style={`left: ${(index / (tickets.presential.prices.length - 1)) * 100}%`}
+                >
+                  <p class="text-[16px] font-normal leading-3.5 tracking-[-0.04em] text-muted">
+                    {item.label}
+                  </p>
+
+                  {item.discount && (
+                    <span class="inline-flex h-4.5 items-center rounded-[10px] bg-[#6a9506] px-1.25 text-[12px] font-normal uppercase leading-none tracking-[-0.04em] text-white whitespace-nowrap">
+                      {item.discount}% {tickets.labels.discountSuffix}
+                    </span>
+                  )}
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <button
+          id="plus-btn"
+          class="ticket-step-button"
+          aria-label={tickets.labels.increaseQuantity}
+          type="button"
+        >
+          {tickets.labels.expand}
+        </button>
       </div>
 
+      <div class="mt-6 flex flex-col items-center">
+        <div class="flex items-center justify-center gap-1.5">
+          <p class="text-[16px] leading-2.75 tracking-[-0.04em] text-black">
+            {tickets.labels.oldPricePrefix}
+          </p>
+          <p
+            id="old-price"
+            class="text-[16px] leading-2.75 tracking-[-0.04em] text-black line-through"
+          >
+            {initialPrice.oldPrice ? priceFormatter.format(initialPrice.oldPrice) : ""}
+          </p>
+        </div>
 
+        <div class="mt-2.5 flex items-end justify-center gap-1.5">
+          <p class="pb-1 text-[16px] leading-2.75 tracking-[-0.04em] text-black">
+            {tickets.labels.currentPricePrefix}
+          </p>
+          <p
+            id="current-price"
+            class="font-display text-[28px] font-extrabold leading-6.25 tracking-normal text-[#6a9506]"
+          >
+            {priceFormatter.format(initialPrice.price)}
+          </p>
+        </div>
+
+        <p
+          id="people-label"
+          class="mt-3.25 text-[16px] leading-2.75 tracking-[-0.04em] text-black"
+        >
+          ({initialPrice.label} {tickets.labels.peopleSuffix})
+        </p>
+      </div>
+
+      <div class="mt-7.25 flex justify-center">
+        <a
+          href={routes.external.symplaTickets}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ticket-cta ticket-cta--purple"
+        >
+          {tickets.presential.cta}
+        </a>
+      </div>
+
+      <details class="ticket-included group mt-7.5">
+        <summary>
+          <span>{tickets.included.title}</span>
+          <span class="group-open:hidden">{tickets.labels.expand}</span>
+          <span class="hidden group-open:inline">{tickets.labels.collapse}</span>
+        </summary>
+
+        <ul>
+          {tickets.included.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </details>
     </div>
 
-  )
-}
+    <div
+      class="mt-5 w-full rounded-card bg-[#1c2034] px-6.25 pb-7.5 pt-7.5 text-center"
+    >
+      <h3 class="font-display text-[32px] font-bold leading-5.5 tracking-normal text-white">
+        {tickets.online.title}
+      </h3>
+
+      <p class="mt-5 font-display text-[24px] font-medium leading-7 tracking-normal text-white">
+        {tickets.online.price}
+      </p>
+
+      <div class="mt-4.75 flex justify-center">
+        <a
+          href={routes.external.symplaTickets}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ticket-cta ticket-cta--muted"
+        >
+          {tickets.online.cta}
+        </a>
+      </div>
+
+      <details class="ticket-included ticket-included--dark group mt-6.75">
+        <summary>
+          <span>{tickets.included.title}</span>
+          <span class="group-open:hidden">{tickets.labels.expand}</span>
+          <span class="hidden group-open:inline">{tickets.labels.collapse}</span>
+        </summary>
+
+        <ul>
+          {tickets.included.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </details>
+    </div>
   </div>
 </section>
+
+<script define:vars={{ prices: tickets.presential.prices, labels: tickets.labels }}>
+  const slider = document.getElementById("people-slider");
+  const minus = document.getElementById("minus-btn");
+  const plus = document.getElementById("plus-btn");
+
+  const currentPrice = document.getElementById("current-price");
+  const oldPrice = document.getElementById("old-price");
+  const peopleLabel = document.getElementById("people-label");
+  const thumbVisual = document.getElementById("slider-thumb-visual");
+
+  const formatter = new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
+
+  const updatePrice = () => {
+    const item = prices[slider.value];
+    const max = Number(slider.max);
+    const value = Number(slider.value);
+
+    currentPrice.textContent = formatter.format(item.price);
+    peopleLabel.textContent = `(${item.label} ${labels.peopleSuffix})`;
+
+    if (item.oldPrice) {
+      oldPrice.style.display = "inline";
+      oldPrice.textContent = formatter.format(item.oldPrice);
+    } else {
+      oldPrice.style.display = "none";
+    }
+
+    thumbVisual.style.left = `${(value / max) * 100}%`;
+  };
+
+  slider.addEventListener("input", updatePrice);
+
+  plus.addEventListener("click", () => {
+    if (+slider.value < prices.length - 1) {
+      slider.value = +slider.value + 1;
+      updatePrice();
+    }
+  });
+
+  minus.addEventListener("click", () => {
+    if (+slider.value > 0) {
+      slider.value = +slider.value - 1;
+      updatePrice();
+    }
+  });
+
+  updatePrice();
+</script>
+
+<style>
+  .ticket-step-button {
+    align-items: center;
+    background: transparent;
+    border: 2px solid #000;
+    border-radius: 999px;
+    color: #000;
+    cursor: pointer;
+    display: inline-flex;
+    flex: 0 0 auto;
+    font: 400 26px/1 var(--font-sans);
+    height: 26px;
+    justify-content: center;
+    letter-spacing: 0;
+    margin-top: -2px;
+    padding: 0 0 3px;
+    width: 26px;
+  }
+
+  .ticket-slider-wrap {
+    position: relative;
+    width: min(435px, calc(100vw - 156px));
+  }
+
+  .ticket-slider-labels {
+    height: 36px;
+    margin-top: 13px;
+    position: relative;
+    width: 100%;
+  }
+
+  .ticket-slider-label {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 36px;
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    width: 64px;
+  }
+
+  .ticket-slider-track {
+    background: #ded5c5;
+    border-radius: 999px;
+    height: 15px;
+    position: relative;
+    width: 100%;
+  }
+
+  .ticket-slider-track span:not(.ticket-slider-thumb) {
+    background: #bbb3a6;
+    border-radius: 999px;
+    height: 7px;
+    position: absolute;
+    top: 4px;
+    transform: translateX(-50%);
+    width: 7px;
+  }
+
+  .ticket-slider-thumb {
+    background: #f9f3e9;
+    border: 3px solid #6a9506;
+    border-radius: 999px;
+    height: 26px;
+    left: 33.333%;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 26px;
+    z-index: 2;
+  }
+
+  .ticket-range {
+    cursor: pointer;
+    height: 26px;
+    inset: -5.5px 0 auto;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+  }
+
+  .ticket-range::-webkit-slider-thumb {
+    height: 26px;
+    width: 26px;
+  }
+
+  .ticket-range::-moz-range-thumb {
+    height: 26px;
+    width: 26px;
+  }
+
+  .ticket-cta {
+    align-items: center;
+    border: 3px solid transparent;
+    border-radius: var(--radius-button);
+    display: inline-flex;
+    font-size: 16px;
+    height: 39px;
+    justify-content: center;
+    letter-spacing: 0;
+    line-height: 1;
+    max-width: 100%;
+    text-transform: uppercase;
+    transition: transform 180ms ease;
+    width: 307px;
+  }
+
+  .ticket-cta:hover {
+    transform: translateY(-1px);
+  }
+
+  .ticket-cta--purple {
+    background: var(--color-purple);
+    border-color: rgb(61 54 255 / 0.35);
+    color: var(--color-cream);
+  }
+
+  .ticket-cta--muted {
+    background: #424760;
+    border-color: rgb(66 71 96 / 0.42);
+    color: #fff;
+    width: 412px;
+  }
+
+  .ticket-included {
+    color: #000;
+    margin-inline: auto;
+    max-width: 430px;
+    text-align: left;
+  }
+
+  .ticket-included summary {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    list-style: none;
+    text-align: center;
+  }
+
+  .ticket-included summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .ticket-included summary span {
+    font-size: 16px;
+    line-height: 11px;
+    letter-spacing: -0.04em;
+  }
+
+  .ticket-included ul {
+    display: grid;
+    gap: 8px;
+    list-style-position: outside;
+    list-style-type: disc;
+    margin: 18px 0 0;
+    padding-left: 22px;
+  }
+
+  .ticket-included li {
+    font-size: 14px;
+    line-height: 1.25;
+    letter-spacing: -0.04em;
+  }
+
+  .ticket-included--dark {
+    color: #fff;
+  }
+
+  @media (max-width: 640px) {
+    .tickets {
+      padding-block: 56px;
+    }
+
+    .ticket-slider-wrap {
+      width: min(100%, calc(100vw - 136px));
+    }
+
+    .ticket-slider-label {
+      width: 68px;
+    }
+
+    .ticket-included {
+      max-width: 100%;
+    }
+  }
+</style>

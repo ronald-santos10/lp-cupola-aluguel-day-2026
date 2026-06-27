@@ -1,0 +1,58 @@
+---
+import Text from "./Text.astro";
+
+import theaterImage from "../assets/teatro.webp";
+import locationIcon from "../assets/vectors/location.svg";
+
+const { venue } = Astro.props;
+---
+
+<section class="bg-cream py-12 lg:py-20">
+  <div class="container flex flex-col items-center text-center">
+    <img src={locationIcon.src} alt="" class="mb-4 h-10 w-10" />
+
+    <Text as="h2" variant="h2" color="blue" class="mb-4">
+      {venue.title}
+    </Text>
+
+    <Text
+      as="p"
+      color="ink"
+      class="max-w-3xl text-center text-sm leading-relaxed md:text-base"
+    >
+      {venue.description.pre}
+      <span class="font-bold">{venue.description.date}</span>
+      {venue.description.middle}
+      <span class="font-bold">{venue.description.venue}</span>
+      {venue.description.post}
+    </Text>
+  </div>
+
+  <div class="mt-10 grid grid-cols-1 lg:grid-cols-2">
+    <div class="h-55 md:h-75 lg:h-95 w-full">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3602.698321691768!2d-49.35829319999999!3d-25.4483475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94dce329c21e27d7%3A0x243f6e9c35c6706c!2sTeatro%20UP%20Experience!5e0!3m2!1spt-BR!2sbr!4v1782573033196!5m2!1spt-BR!2sbr"
+        class="h-full w-full border-0"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </div>
+    <img
+      src={theaterImage.src}
+      width={800}
+      height={380}
+      alt={venue.imageAlt}
+      class="h-95 w-full object-cover"
+    />
+  </div>
+
+  <div class="container mt-2 text-center">
+    <p class="text-[10px] uppercase tracking-widest text-muted">
+      {venue.address}
+    </p>
+
+    <Text as="p" color="ink" class="mx-auto mt-6 max-w-3xl text-center">
+      {venue.online}
+    </Text>
+  </div>
+</section>

@@ -2,11 +2,14 @@
 import Button from "./Button.astro";
 import SectionHeading from "./SectionHeading.astro";
 import Text from "./Text.astro";
+
 const { data } = Astro.props;
-import backgroundImage from "../assets/bg-red.webp";
+
+import backgroundImage from "../assets/bg-blue.webp";
 import palestraImg from "../assets/palestras.webp";
 import entrevistasImg from "../assets/entrevistas.webp";
 import insiderImg from "../assets/espaco-insider.webp";
+import networkingImg from "../assets/networking.webp";
 
 const { formats } = data;
 
@@ -14,15 +17,16 @@ const images = {
   palestras: palestraImg,
   entrevistas: entrevistasImg,
   insider: insiderImg,
+  networking: networkingImg,
 };
 ---
 
 <section
-  class="py-12 lg:py-20 flex flex-col gap-6"
+  class="flex flex-col gap-8 bg-blue py-12 lg:py-20"
   style={`
     background-image: url(${backgroundImage.src});
     background-size: cover;
-    background-position: top;
+    background-position: center;
   `}
 >
   <SectionHeading
@@ -30,51 +34,65 @@ const images = {
     titleColor="white"
     descriptionColor="white"
   />
-  <div class="container
-    grid
-    gap-5
-    md:grid-cols-2
-    lg:grid-cols-3">
+
+  <div class="container grid gap-5 md:grid-cols-2">
     {
-      formats.items.map((format: { image: string; title: string; description: string; }) => {
-        const image = images[format.image as keyof typeof images];
-        return (
-          <article
-            class="
-            mx-auto
-            w-full
-            max-w-105
-            overflow-hidden
-            rounded-card
-            bg-cream
-            text-ink
-            lg:max-w-none
-          "
-          >
-            <img
-              src={image.src}
-              width={image.width}
-              height={image.height}
-              alt={format.title}
+      formats.items.map(
+        (format: {
+          image: string;
+          title: string;
+          description: string;
+        }) => {
+          const image = images[format.image as keyof typeof images];
+
+          return (
+            <article
               class="
-              aspect-16/10
-              w-full
-              object-cover
-            "
-            />
+                overflow-hidden
+                rounded-3xl
+                bg-cream
+                shadow-lg/10
+                transition-transform
+                duration-300
+                hover:-translate-y-1
+              "
+            >
+              <img
+                src={image.src}
+                width={image.width}
+                height={image.height}
+                alt={format.title}
+                class="
+                  aspect-video
+                  w-full
+                  object-cover
+                "
+              />
 
-            <div class="flex flex-col gap-2 p-5 md:p-6">
-              <Text as="h3" variant="h3" color="ink">
-                {format.title}
-              </Text>
+              <div class="flex flex-col gap-2 p-5 md:p-6">
+                <Text
+                  as="h3"
+                  color="ink"
+                  class="text-xl font-bold leading-tight"
+                >
+                  {format.title}
+                </Text>
 
-              <Text color="muted">{format.description}</Text>
-            </div>
-          </article>
-        );
-      })
+                <Text
+                  as="p"
+                  color="muted"
+                  class="text-sm leading-relaxed"
+                >
+                  {format.description}
+                </Text>
+              </div>
+            </article>
+          );
+        },
+      )
     }
   </div>
+
   <div class="text-center">
     <Button>{formats.cta}</Button>
   </div>

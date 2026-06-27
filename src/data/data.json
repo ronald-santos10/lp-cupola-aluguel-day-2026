@@ -1,59 +1,43 @@
 {
   "header": {
     "marquee": "Dos realizadores do CUPOLA Summit, o evento mais estratégico para líderes do imobiliário",
-    "eventInfo": "30 de setembro | Curitiba (PR) | Presencial e Online"
+    "eventInfo": "30 de setembro | Curitiba (PR) | Presencial e Online",
+    "preSale": "Pré-venda clientes CUPOLA aberta - 29/06 a 05/07"
   },
   "hero": {
     "preSale": "PRÉ-VENDA CLIENTES CUPOLA 24 A 30 JUN",
     "title": "O evento imobiliário de quem vive a locação",
     "description": "Um dia inteiro sobre locação para quem opera, decide e quer crescer.",
-    "cta": "INGRESSOS EM BREVE"
-  },
-  "intro": {
-    "title": "Evento imobiliário feito para quem faz a locação acontecer",
-    "description": "O CUPOLA Aluguel Day reúne gestores, líderes e times de imobiliárias para uma programação 100% dedicada ao mercado de locação.",
-    "audiences": [
-      "Para líderes e donos de imobiliárias que atuam com locação",
-      "Para os times administrativos que fazem a operação acontecer",
-      "Para imobiliárias de vendas que desejam iniciar a operação de locação",
-      "Para startups e empresas do mercado imobiliário"
-    ],
-    "cta": "INGRESSOS EM BREVE"
+    "cta": "GARANTIR INGRESSOS"
   },
   "market": {
-    "title": "O mercado de locação está mudando. Você está dentro da conversa?",
-    "description": "O CUPOLA Aluguel Day foi construído em torno dos temas que mais impactam quem opera locação hoje.",
-    "cta": "INGRESSOS EM BREVE",
+    "title": "O mercado de locação mudou mais nos últimos dois anos do que na década anterior. Você e o seu time estão acompanhando?",
+    "cta": "QUERO ESTAR PRESENTE",
     "items": [
       {
-        "title": "Inadimplência e gestão de risco",
-        "description": "Os índices de inadimplência sobem, os processos travam e o proprietário cobra resposta. O que as imobiliárias que estão controlando isso estão fazendo diferente?"
+        "title": "Inadimplência e gestão de risco"
       },
       {
-        "title": "Concorrência e crescimento de mercado",
-        "description": "As imobiliárias de venda estão de olho na sua carteira, e as proptech também. Crescer em locação hoje exige estratégia clara sobre onde você quer estar daqui a dois anos."
+        "title": "Concorrência e crescimento de mercado"
       },
       {
-        "title": "Reforma tributária e impacto na locação",
-        "description": "As mudanças já estão chegando. Quem entende as regras antes consegue se posicionar melhor. O que sua operação precisa ajustar agora?"
+        "title": "Reforma tributária e impacto na locação"
       },
       {
-        "title": "Inquilino mais informado, operação mais exigida",
-        "description": "O inquilino pesquisa, compara e sabe dos próprios direitos. A judicialização cresce. Seu time está preparado para atender esse perfil sem aumentar o custo operacional?"
+        "title": "Inquilino mais informado, operação mais exigida"
       },
       {
-        "title": "Locação direta e novas formas de captação",
-        "description": "Proprietários indo direto ao mercado e plataformas digitais facilitando o processo. O que muda no papel da imobiliária e como transformar essa ameaça em janela de captação?"
+        "title": "Locação direta e novas formas de captação"
       },
       {
-        "title": "Saúde mental e clima organizacional",
-        "description": "Locação é operação pesada. Alta rotatividade, pressão constante e time esgotado comprometem resultado. Como os líderes que estão resolvendo isso estruturaram a gestão de pessoas?"
+        "title": "Saúde mental e clima organizacional"
       }
-    ]
+    ],
+    "text": "No dia 30 de setembro, você e o seu time vão estar dentro das conversas que mais importam para quem opera locação hoje."
   },
   "formats": {
-    "title": "Um dia. Três formatos",
-    "cta": "INGRESSOS EM BREVE",
+    "title": "Como o CUPOLA Aluguel Day prepara você e o seu time",
+    "cta": "VER INGRESSOS",
     "items": [
       {
         "title": "Palestras",
@@ -69,178 +53,102 @@
         "title": "Espaço Insider",
         "description": "Sessões temáticas em grupo conduzidas por consultores CUPOLA, exclusivas para o presencial e com vagas limitadas. É troca entre pares que vivem os mesmos desafios operacionais.",
         "image": "insider"
+      },
+      {
+        "title": "Networking e feira de negócios",
+        "description": "A feira de negócios reúne fornecedores e parceiros do mercado de locação em um espaço dedicado a conexões e condições exclusivas. Trocar com pessoas que estão vivendo as mesmas dores que você vale tanto quanto qualquer palestra.",
+        "image": "networking"
       }
     ]
   },
-  "schedule": {
-    "title": "Conheça a programação do evento",
+  "intro": {
+    "title": "O CUPOLA Aluguel Day faz sentido para:",
+    "description": "O CUPOLA Aluguel Day foi pensado para ser vivido em grupo. Quanto mais pessoas da sua imobiliária estiverem presentes, mais a experiência se multiplica dentro da operação de locação.",
     "items": [
       {
-        "time": "08:30",
-        "title": "Abertura oficial",
-        "type": "break"
+        "title": "Donos e sócios",
+        "description": "Que entendem que visão de mercado não pode ficar presa em uma cabeça só."
       },
       {
-        "time": "09:00",
-        "title": "Título da palestra/painel",
-        "speaker": "Nome Sobrenome",
-        "role": "Empresa ou cargo"
+        "title": "Gestores e coordenadores",
+        "description": "Que sabem que a mudança real acontece quando todo o time está alinhado."
       },
       {
-        "time": "10:00",
-        "title": "Título da palestra/painel",
-        "speaker": "Nome Sobrenome",
-        "role": "Empresa ou cargo"
+        "title": "Times de locação",
+        "description": "Que atendem, vistoriam, cobram e renovam e que precisam estar dentro da conversa."
       },
       {
-        "time": "11:00",
-        "title": "Título da palestra/painel",
-        "speaker": "Nome Sobrenome",
-        "role": "Empresa ou cargo"
-      },
-      {
-        "time": "12:00",
-        "title": "Intervalo",
-        "type": "break"
-      },
-      {
-        "time": "14:00",
-        "title": "Título da palestra/painel",
-        "speaker": "Nome Sobrenome",
-        "role": "Empresa ou cargo"
-      },
-      {
-        "time": "15:00",
-        "title": "Título da palestra/painel",
-        "speaker": "Nome Sobrenome",
-        "role": "Empresa ou cargo"
-      },
-      {
-        "time": "16:00",
-        "title": "Título da palestra/painel",
-        "speaker": "Nome Sobrenome",
-        "role": "Empresa ou cargo"
+        "title": "Imobiliárias de venda, startups e fornecedores ",
+        "description": "Que estão iniciando ou já atuam no mercado de locação e querem entender para onde o mercado está indo."
       }
-    ]
+    ],
+    "cta": "VER INGRESSOS"
   },
   "tickets": {
-    "eyebrow": "Pré-Venda",
-    "title": "Escolha como participar do CUPOLA Aluguel Day",
-    "items": [
-      {
-        "label": "Para quem decide",
-        "name": "Líder",
-        "mode": "Presencial",
-        "price": "EM BREVE",
-        "colorClass": "text-orange",
-        "variant": "orange",
-        "cta": "",
-        "vector": "lider",
-        "href": ""
-      },
-      {
-        "label": "Para toda equipe",
-        "name": "Time",
-        "mode": "ONLINE",
-        "price": "EM BREVE",
-        "colorClass": "text-purple",
-        "variant": "purple",
-        "cta": "",
-        "vector": "time",
-        "href": ""
-      },
-      {
-        "label": "Para a imobiliária inteira",
-        "name": "Combo",
-        "mode": "Presencial + ONLINE",
-        "price": "EM BREVE",
-        "colorClass": "text-red",
-        "variant": "red",
-        "cta": "",
-        "vector": "combo",
-        "href": ""
-      }
-    ],
-    "obs": "O INGRESSO LÍDER NÃO INCLUI ACESSO ÀS GRAVAÇÕES. PARA GARANTIR QUE SEU TIME TENHA ACESSO AO CONTEÚDO GRAVADO, ESCOLHA O INGRESSO TIME OU O COMBO.",
-    "form": {
-      "enabled": true,
-      "title": "Cadastre-se e seja o primeiro a saber sobre a abertura",
-      "embedId": "rd-form"
+    "eyebrow": "PRÉ-VENDA",
+    "title": "Compre seu ingresso ou monte seu combo e venha com seu time",
+    "description": "Os combos de ingresso presencial oferecem desconto progressivo: 20% para grupos de 2 a 5 pessoas, 30% para grupos de 6 a 9 e 40% para grupos de 10 ou mais, quanto mais pessoas da imobiliária participam, maior o desconto e maior o impacto dentro da operação.",
+    "presential": {
+      "title": "Ingressos presenciais",
+      "badge": "Até 40% OFF",
+      "quantityInstruction": "Selecione a quantidade de pessoas que você deseja levar",
+      "initialPriceIndex": 1,
+      "cta": "COMPRAR INGRESSO PRESENCIAL",
+      "prices": [
+        {
+          "label": "1",
+          "price": 516,
+          "oldPrice": null,
+          "discount": null
+        },
+        {
+          "label": "2 a 5",
+          "price": 430,
+          "oldPrice": 516,
+          "discount": 20
+        },
+        {
+          "label": "6 a 9",
+          "price": 361,
+          "oldPrice": 516,
+          "discount": 30
+        },
+        {
+          "label": "10+",
+          "price": 309,
+          "oldPrice": 516,
+          "discount": 40
+        }
+      ]
+    },
+    "online": {
+      "title": "Ingresso Online",
+      "price": "R$169,00",
+      "cta": "COMPRAR INGRESSO ONLINE"
+    },
+    "included": {
+      "title": "Confira o que está incluso",
+      "items": [
+        "Acesso presencial à programação completa",
+        "Participação nas sessões do Espaço Insider (mediante inscrição prévia)",
+        "Acesso à feira de negócios com condições exclusivas dos patrocinadores",
+        "Inscrição para perguntas aos palestrantes e painelistas",
+        "Coffee-break nos intervalos",
+        "Participação nos sorteios de prêmios dos patrocinadores",
+        "Certificado individual de participação"
+      ]
+    },
+    "labels": {
+      "decreaseQuantity": "Diminuir quantidade de pessoas",
+      "increaseQuantity": "Aumentar quantidade de pessoas",
+      "quantity": "Quantidade de pessoas",
+      "oldPricePrefix": "de",
+      "currentPricePrefix": "por",
+      "peopleSuffix": "pessoas",
+      "discountSuffix": "Off",
+      "expand": "+",
+      "collapse": "-"
     }
-  },
-  "comparison": {
-    "title": "Compare os ingressos",
-    "buttons": [
-      "COMPRAR LÍDER",
-      "COMPRAR TIME",
-      "COMPRAR COMBO"
-    ],
-    "rows": [
-      {
-        "label": "Acesso ao vivo à programação de conteúdos",
-        "values": [
-          true,
-          true,
-          true
-        ]
-      },
-      {
-        "label": "Acesso à gravação dos conteúdos por 30 dias",
-        "values": [
-          false,
-          true,
-          true
-        ]
-      },
-      {
-        "label": "Certificado individual",
-        "values": [
-          true,
-          true,
-          true
-        ]
-      },
-      {
-        "label": "Inscrição para perguntas aos palestrantes",
-        "values": [
-          true,
-          false,
-          true
-        ]
-      },
-      {
-        "label": "Coffee-break nos dois intervalos (manhã e tarde)",
-        "values": [
-          true,
-          false,
-          true
-        ]
-      },
-      {
-        "label": "Acesso ao Espaço Insider com consultores CUPOLA (mediante inscrição prévia)",
-        "values": [
-          true,
-          false,
-          true
-        ]
-      },
-      {
-        "label": "Acesso à feira de negócios com apresentação de soluções de empresas fornecedoras",
-        "values": [
-          true,
-          false,
-          true
-        ]
-      },
-      {
-        "label": "Inscrição para sorteio de prêmios dos patrocinadores",
-        "values": [
-          true,
-          false,
-          true
-        ]
-      }
-    ]
   },
   "testimonials": {
     "title": "Quem foi, recomenda!",
@@ -278,8 +186,20 @@
     "taglineHighlight1": "FORMA",
     "taglinePart2": "E SE",
     "taglineHighlight2": "TRANSFORMA",
-    "href": "https://cupola.com.br/",
     "variant": "blue"
+  },
+  "venue": {
+    "title": "Nos vemos em Curitiba!",
+    "description": {
+      "pre": "Para quem garantir o ingresso presencial, o encontro acontece no dia ",
+      "date": "30 de setembro, das 8h às 18h",
+      "middle": ", no ",
+      "venue": "Teatro UP Experience",
+      "post": " — em frente ao Estacionamento 8, no bairro Campo Comprido."
+    },
+    "imageAlt": "Teatro UP Experience",
+    "address": "R. Prof. Pedro Viriato Parigot de Souza, 5300, Estacionamento, 8 - Campo Comprido",
+    "online": "Para quem acompanha de qualquer lugar do Brasil, a transmissão ao vivo começa no mesmo horário."
   },
   "faq": {
     "title": "FAQ",
@@ -290,59 +210,41 @@
       },
       {
         "question": "Quais temas serão abordados no CUPOLA Aluguel Day 2026?",
-        "answer": ""
+        "answer": "A programação é construída em torno dos temas que mais impactam quem trabalha com locação hoje: inadimplência e gestão de risco, concorrência e crescimento de mercado, impacto da reforma tributária na locação, empoderamento do inquilino e judicialização crescente, locação direta e sonegação como janela de captação, e saúde mental e clima organizacional em operações de locação. A curadoria é da CUPOLA, que acompanha e conversa com imobiliárias de todo o Brasil todos os dias."
       },
       {
-        "question": "Qual a diferença entre o Ingresso Líder e o Ingresso Time?",
-        "answer": ""
+        "question": "O que são os Workshops do CUPOLA Aluguel Day?",
+        "answer": "Os Workshops são sessões temáticas em grupos pequenos, conduzidas por consultores CUPOLA, exclusivas para participantes presenciais. Ao longo do dia acontecem múltiplas sessões com temas diferentes, com inscrição prévia no evento."
       },
       {
-        "question": "Quem comprar o Ingresso Líder (presencial) terá acesso às gravações?",
-        "answer": ""
+        "question": "Como funcionam os combos de ingresso em grupo?",
+        "answer": "Os combos são voltados para times de imobiliárias que vêm juntos ao presencial em Curitiba. Quanto mais pessoas, maior o desconto: 20% para grupos de 2 a 5 pessoas, 30% para grupos de 6 a 9 e 40% para grupos de 10 ou mais. O desconto é calculado sobre o valor do ingresso presencial individual vigente no momento da compra."
       },
       {
-        "question": "O Ingresso Time permite que toda a equipe assista?",
-        "answer": ""
+        "question": "O ingresso presencial inclui acesso às gravações?",
+        "answer": "Sim. Tanto o ingresso presencial quanto o online incluem acesso às gravações de toda a programação, disponíveis por 30 dias após a realização do encontro."
+      },
+      {
+        "question": "O acesso online permite que toda a equipe assista?",
+        "answer": "Sim. O acesso online é compartilhado. Qualquer número de pessoas pode assistir junto pelo mesmo link, ao vivo no dia 30 de setembro e nas gravações por 30 dias. O certificado de participação é emitido em nome do titular do acesso. Para certificados individuais para cada membro da equipe, é necessário adquirir um ingresso por pessoa."
       },
       {
         "question": "Quando o certificado fica disponível?",
-        "answer": ""
-      },
-      {
-        "question": "Existe desconto para compras em grupo?",
-        "answer": ""
+        "answer": "O certificado individual é emitido pelo Sympla e fica disponível 7 dias após a realização do evento."
       },
       {
         "question": "Onde acontece o evento presencial?",
-        "answer": ""
+        "answer": "O CUPOLA Aluguel Day 2026 acontece no Teatro UP Experience, na Rua Professor Pedro Viriato Parigot de Souza, 5300, em frente ao Estacionamento 8, no bairro Campo Comprido, em Curitiba (PR). Atenção: não é o Teatro Positivo, são espaços distintos no mesmo campus universitário. Para quem vem de fora, a CUPOLA indica a Destinos Turismo como agência oficial para passagens e hospedagem."
       },
       {
         "question": "Haverá gravações disponíveis após o evento?",
-        "answer": ""
+        "answer": "Sim. Todos os ingressos (presencial e online) incluem acesso às gravações de todo o conteúdo apresentado no encontro, disponíveis por 30 dias após a realização do CUPOLA Aluguel Day."
       },
       {
         "question": "O CUPOLA Aluguel Day é diferente da Imersão CUPOLA Aluguel?",
-        "answer": ""
+        "answer": "Sim, são produtos com propostas distintas. O CUPOLA Aluguel Day é um encontro imobiliário de um dia, com programação aberta para qualquer profissional do mercado de locação, independentemente do porte da carteira ou estágio da operação. A Imersão CUPOLA Aluguel é um programa de imersão mais aprofundado, voltado para quem busca transformação estruturada na gestão. Os dois são complementares: muitos participantes do Aluguel Day seguem para a Imersão no ciclo seguinte."
       }
     ]
-  },
-  "travel": {
-    "title": "Agência de Viagens Oficial do CUPOLA Aluguel Day",
-    "description": "Para passagens e hospedagens em Curitiba, conte com a Destino Viagens.",
-    "contacts": [
-      {
-        "type": "phone",
-        "text": "(41) 99999-9999",
-        "href": "https://wa.me/5541999999999"
-      },
-      {
-        "type": "email",
-        "text": "contato@destinoviagens.com.br",
-        "href": "mailto:contato@destinoviagens.com.br"
-      }
-    ],
-    "cta": "ENTRE EM CONTATO",
-    "href": "https://wa.me/5541999999999"
   },
   "sponsors": {
     "realizationTitle": "Realização",
@@ -368,13 +270,11 @@
     "columns": [
       {
         "title": "Realização",
-        "logo": "cupola",
-        "href": "https://cupola.com.br"
+        "logo": "cupola"
       },
       {
         "title": "Plataforma Oficial de Vendas",
-        "logo": "sympla",
-        "href": "https://sympla.com.br"
+        "logo": "sympla"
       },
       {
         "title": "CUPOLA Aluguel Day",
@@ -390,8 +290,7 @@
         ],
         "social": [
           {
-            "type": "instagram",
-            "href": "https://instagram.com"
+            "type": "instagram"
           }
         ]
       }

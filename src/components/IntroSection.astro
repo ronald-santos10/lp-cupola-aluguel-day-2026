@@ -2,6 +2,7 @@
 import { getImage } from "astro:assets";
 import Button from "./Button.astro";
 import Text from "./Text.astro";
+
 const { data } = Astro.props;
 
 import slide1 from "../assets/slider/1.webp";
@@ -40,10 +41,7 @@ const slideGroups = await Promise.all(
 );
 ---
 
-<section 
-  class="bg-cream py-12 lg:py-20 flex flex-col gap-6" 
-  data-intro-section
->
+<section class="bg-cream py-12 lg:py-20 flex flex-col gap-6" data-intro-section>
   <SectionHeading
     title={intro.title}
     description={intro.description}
@@ -51,15 +49,35 @@ const slideGroups = await Promise.all(
     descriptionColor="ink"
   />
 
+  <div class="container grid gap-4 md:grid-cols-2">
+    {
+      intro.items.map((item: any) => (
+        <div class="flex min-h-31 flex-col justify-center rounded-3xl bg-blue px-8 py-7 text-left">
+          <Text
+            as="h4"
+            color="white"
+            class="mb-2 text-xl font-bold leading-tight"
+          >
+            {item.title}
+          </Text>
+
+          <Text as="p" color="white" class="text-sm leading-relaxed opacity-95">
+            {item.description}
+          </Text>
+        </div>
+      ))
+    }
+  </div>
+  
+  <div class="text-center">
+    <Button>{intro.cta}</Button>
+  </div>
 
   <div class="intro-slider" aria-label="Fotos do evento">
     {
       slideGroups.map((group, groupIndex) => (
         <div
-          class:list={[
-            "intro-slide-group",
-            groupIndex === 0 && "is-active",
-          ]}
+          class:list={["intro-slide-group", groupIndex === 0 && "is-active"]}
           data-intro-slide
         >
           {group.map((image) => (
@@ -78,64 +96,30 @@ const slideGroups = await Promise.all(
       ))
     }
   </div>
-
-
-  <div class="container grid gap-3 md:grid-cols-2 xl:grid-cols-4">
-    {
-      intro.audiences.map((item: unknown) => (
-        <div class="flex min-h-19.25 items-center justify-center rounded-card bg-blue px-3 text-center">
-          <Text as="h4" color="white">
-            {item}
-          </Text>
-        </div>
-      ))
-    }
-  </div>
-
-
-  <div class="text-center">
-    <Button>{intro.cta}</Button>
-  </div>
 </section>
 
-
 <script>
-  const introSections = document.querySelectorAll(
-    "[data-intro-section]"
-  );
+  const introSections = document.querySelectorAll("[data-intro-section]");
 
   introSections.forEach((section) => {
-    const slides = Array.from(
-      section.querySelectorAll("[data-intro-slide]")
-    );
+    const slides = Array.from(section.querySelectorAll("[data-intro-slide]"));
 
     if (slides.length <= 1) return;
-
 
     let activeIndex = 0;
     let interval: number | null | undefined = null;
 
-
     const startSlider = () => {
       if (interval) return;
 
-
       interval = window.setInterval(() => {
-        slides[activeIndex].classList.remove(
-          "is-active"
-        );
+        slides[activeIndex].classList.remove("is-active");
 
+        activeIndex = (activeIndex + 1) % slides.length;
 
-        activeIndex =
-          (activeIndex + 1) % slides.length;
-
-
-        slides[activeIndex].classList.add(
-          "is-active"
-        );
+        slides[activeIndex].classList.add("is-active");
       }, 4000);
     };
-
 
     const stopSlider = () => {
       if (!interval) return;
@@ -144,23 +128,18 @@ const slideGroups = await Promise.all(
       interval = null;
     };
 
-
     const observer = new IntersectionObserver(
       ([entry]) => {
-        entry.isIntersecting
-          ? startSlider()
-          : stopSlider();
+        entry.isIntersecting ? startSlider() : stopSlider();
       },
       {
         threshold: 0.3,
-      }
+      },
     );
-
 
     observer.observe(section);
   });
 </script>
-
 
 <style>
   .intro-slider {
@@ -168,7 +147,6 @@ const slideGroups = await Promise.all(
     width: 100%;
     overflow: hidden;
   }
-
 
   .intro-slide-group {
     grid-area: 1 / 1;
@@ -185,11 +163,10 @@ const slideGroups = await Promise.all(
 
     transition:
       opacity 800ms ease,
-      transform 900ms cubic-bezier(.22,1,.36,1);
+      transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 
     pointer-events: none;
   }
-
 
   .intro-slide-group.is-active {
     opacity: 1;
@@ -200,30 +177,24 @@ const slideGroups = await Promise.all(
     z-index: 1;
   }
 
-
   .intro-slide-frame {
     margin: 0;
     overflow: hidden;
 
     opacity: 0;
 
-    transition:
-      opacity 900ms ease;
+    transition: opacity 900ms ease;
   }
 
-
-  .intro-slide-group.is-active 
-  .intro-slide-frame {
+  .intro-slide-group.is-active .intro-slide-frame {
     opacity: 1;
   }
-
 
   .intro-slide-frame img {
     width: 100%;
     height: auto;
     display: block;
   }
-
 
   @media (max-width: 767px) {
     .intro-slide-group {
@@ -233,21 +204,17 @@ const slideGroups = await Promise.all(
       transform: translateX(40px);
     }
 
-
     .intro-slide-group.is-active {
       transform: translateX(0);
     }
-
 
     .intro-slide-frame {
       display: none;
     }
 
-
     .intro-slide-frame:first-child {
       display: block;
     }
-
 
     .intro-slide-frame img {
       aspect-ratio: 16 / 10;

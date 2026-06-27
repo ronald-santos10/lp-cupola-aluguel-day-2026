@@ -14,6 +14,7 @@ import TicketComparison from "../components/TicketComparison.astro";
 import Tickets from "../components/Tickets.astro";
 import TopicGrid from "../components/TopicGrid.astro";
 import TravelBanner from "../components/TravelBanner.astro";
+import VenueSection from "../components/VenueSection.astro";
 import data from "../data/data.json";
 ---
 
@@ -22,17 +23,18 @@ import data from "../data/data.json";
     <SiteHeader />
   </header>
   <main>
-    <Hero data={data}/>
-    <IntroSection data={data}/>
-    <TopicGrid data={data}/>
-    <FormatCards data={data}/>
+    <Hero data={data} />
+    <TopicGrid data={data} />
+    <FormatCards data={data} />
+    <IntroSection data={data} />
     <!-- <Schedule /> -->
     <Tickets />
     <!-- <TicketComparison /> -->
     <Testimonials />
-    <AboutCupola />
+    <VenueSection venue={data.venue} />
     <FAQ />
-    <TravelBanner />
+    <AboutCupola />
+    <!-- <TravelBanner /> -->
     <Sponsors />
   </main>
   <footer>
