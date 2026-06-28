@@ -10,6 +10,7 @@ import backgroundImage from "../assets/bg-blue.webp";
 import sidenirImg from "../assets/sidenir-image.webp";
 import mariliaImg from "../assets/marilia-image.webp";
 import sidneiImg from "../assets/sidnei-clay-image.webp";
+import star from "../assets/vectors/stars-rating.svg";
 
 const images = {
   sidenir: sidenirImg,
@@ -29,7 +30,7 @@ const { testimonials } = data as unknown as {
   testimonials: {
     title: string;
     items: TestimonialItem[];
-    link: string;
+    href: string;
     cta: string;
   };
 };
@@ -73,19 +74,14 @@ const { testimonials } = data as unknown as {
               "
             />
 
-            <div
-              class="
-              text-yellow-500
-              text-xl
-              tracking-wide
-              "
-            >
-              {"★".repeat(item.stars)}
-            </div>
+            <img
+              src={star.src}
+              width={115}
+              height={30}
+              alt="5 stars"
+            />
 
-            <Text color="ink">
-              "{item.quote}"
-            </Text>
+            <Text color="ink">"{item.quote}"</Text>
 
             <hr class="border-line" />
 
@@ -99,7 +95,7 @@ const { testimonials } = data as unknown as {
   </div>
 
   <div class="mt-7 text-center">
-    <Button href={testimonials.link}>
+    <Button href={testimonials.href}>
       {testimonials.cta}
     </Button>
   </div>

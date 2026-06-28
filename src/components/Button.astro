@@ -1,14 +1,14 @@
 ---
 import defaultButtonIcon from "../assets/arrow-button-vector.svg";
-import { routes } from "../data/routes";
 
 const {
-  href = routes.sections.tickets,
-  target = "_self",
+  href = "#ingressos",
+  target,
   variant = "lime",
   size = "md",
   icon = true,
   iconSrc = defaultButtonIcon,
+  class: className,
 } = Astro.props;
 
 const variants = {
@@ -36,6 +36,11 @@ const variants = {
     className: "bg-blue text-cream border-blue/35",
     glow: "rgb(61 54 255 / 0.35)",
   },
+
+  muted: {
+    className: "bg-[#424760] text-white border-[rgb(66_71_96/0.42)]",
+    glow: "rgb(66 71 96 / 0.42)",
+  },
 };
 
 const sizes = {
@@ -56,13 +61,15 @@ const currentVariant =
 const currentSize = sizes[size as keyof typeof sizes] ?? sizes.md;
 
 const resolvedIconSrc = typeof iconSrc === "string" ? iconSrc : iconSrc.src;
-
-const rel = target === "_blank" ? "noopener noreferrer" : undefined;
+const hasExternalHref =
+  typeof href === "string" && /^(https?:\/\/|mailto:)/i.test(href);
+const resolvedTarget = target ?? (hasExternalHref ? "_blank" : undefined);
+const rel = resolvedTarget === "_blank" ? "noopener noreferrer" : undefined;
 ---
 
 <a
   href={href}
-  target={target}
+  target={resolvedTarget}
   rel={rel}
   class:list={[
     "inline-flex w-fit max-w-full items-center justify-center rounded-button border font-sans uppercase tracking-normal transition hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2 focus:ring-offset-navy",
@@ -70,6 +77,7 @@ const rel = target === "_blank" ? "noopener noreferrer" : undefined;
     currentVariant.className,
 
     currentSize.className,
+    className,
   ]}
   style={`
     box-shadow: 0 0 0 3px ${currentVariant.glow};

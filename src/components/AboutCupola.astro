@@ -2,7 +2,6 @@
 import Button from "./Button.astro";
 import Text from "./Text.astro";
 import data from "../data/data.json";
-import { routes } from "../data/routes";
 import cupolaimage from "../assets/cupola-image.webp";
 
 const { about } = data;
@@ -22,7 +21,7 @@ const { about } = data;
         {about.description2}
       </Text>
       <div>
-        <Button target="_blank" href={routes.external.cupola} variant={about.variant}>
+        <Button target="_blank" href={about.href} variant={about.variant}>
           {about.cta}
         </Button>
       </div>

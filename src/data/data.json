@@ -94,6 +94,7 @@
       "quantityInstruction": "Selecione a quantidade de pessoas que você deseja levar",
       "initialPriceIndex": 1,
       "cta": "COMPRAR INGRESSO PRESENCIAL",
+      "href": "https://www.sympla.com.br/evento/cupola-aluguel-day/3465310?_gl=1*1y313uh*_gcl_au*NDY0NzIyODgxLjE3ODIxNTY1MjA.*_ga*MjEwODk2MTQwOS4xNzgyMTU2NTIw*_ga_KXH10SQTZF*czE3ODI1MDExMDckbzQkZzEkdDE3ODI1MDI4OTkkajU0JGwwJGgzODczMDM5MzU",
       "prices": [
         {
           "label": "1",
@@ -124,7 +125,8 @@
     "online": {
       "title": "Ingresso Online",
       "price": "R$169,00",
-      "cta": "COMPRAR INGRESSO ONLINE"
+      "cta": "COMPRAR INGRESSO ONLINE",
+      "href": "https://www.sympla.com.br/evento/cupola-aluguel-day/3465310?_gl=1*1y313uh*_gcl_au*NDY0NzIyODgxLjE3ODIxNTY1MjA.*_ga*MjEwODk2MTQwOS4xNzgyMTU2NTIw*_ga_KXH10SQTZF*czE3ODI1MDExMDckbzQkZzEkdDE3ODI1MDI4OTkkajU0JGwwJGgzODczMDM5MzU"
     },
     "included": {
       "title": "Confira o que está incluso",
@@ -153,7 +155,7 @@
   "testimonials": {
     "title": "Quem foi, recomenda!",
     "cta": "Saiba mais",
-    "link": "#",
+    "href": "https://cupola.com.br/",
     "items": [
       {
         "name": "Sidenir Barroso",
@@ -182,6 +184,7 @@
     "description1": "A CUPOLA é um ecossistema de estratégias para gestão imobiliária com frentes integradas de educação, consultoria e marketing que atuam dentro do mercado. Há 19 anos organiza a complexidade do setor em direção clara: forma visão, estrutura operação e conecta líderes que escolhem crescer com consistência.",
     "description2": "É o mesmo ecossistema que realiza o CUPOLA Summit, o evento imobiliário mais estratégico para líderes do setor, com mais de 2,5 mil participantes por edição. No CUPOLA Aluguel Day, essa mesma curadoria se dedica inteiramente ao mercado de locação: viajando, trocando e conversando com imobiliárias de todo o Brasil todos os dias.",
     "cta": "Saiba mais",
+    "href": "https://cupola.com.br/",
     "taglinePart1": "ONDE O MERCADO IMOBILIÁRIO SE",
     "taglineHighlight1": "FORMA",
     "taglinePart2": "E SE",
@@ -270,11 +273,13 @@
     "columns": [
       {
         "title": "Realização",
-        "logo": "cupola"
+        "logo": "cupola",
+        "href": "https://cupola.com.br/"
       },
       {
         "title": "Plataforma Oficial de Vendas",
-        "logo": "sympla"
+        "logo": "sympla",
+        "href": "https://sympla.com.br"
       },
       {
         "title": "CUPOLA Aluguel Day",
@@ -290,7 +295,8 @@
         ],
         "social": [
           {
-            "type": "instagram"
+            "type": "instagram",
+            "href": "https://instagram.com"
           }
         ]
       }
