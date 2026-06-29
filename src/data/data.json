@@ -5,7 +5,7 @@
     "preSale": "Pré-venda clientes CUPOLA aberta - 29/06 a 05/07"
   },
   "hero": {
-    "preSale": "PRÉ-VENDA CLIENTES CUPOLA 24 A 30 JUN",
+    "preSale": "Pré-venda clientes CUPOLA aberta - 29/06 a 05/07",
     "title": "O evento imobiliário de quem vive a locação",
     "description": "Um dia inteiro sobre locação para quem opera, decide e quer crescer.",
     "cta": "GARANTIR INGRESSOS"
@@ -41,22 +41,58 @@
     "items": [
       {
         "title": "Palestras",
-        "description": "Especialistas apresentam análises, dados e perspectivas sobre os temas que mais impactam quem opera locação hoje.",
+        "description": [
+          {
+            "text": "Especialistas apresentam análises, dados e perspectivas sobre os temas que mais impactam quem opera locação hoje. ",
+            "bold": false
+          },
+          {
+            "text": "Você sai com leitura de mercado atualizada para tomar decisões melhores.",
+            "bold": true
+          }
+        ],
         "image": "palestras"
       },
       {
         "title": "Entrevistas com imobiliárias",
-        "description": "Imobiliárias de destaque abrem a caixa-preta da própria operação. O que está funcionando, o que não funcionou e por quê. ",
+        "description": [
+          {
+            "text": "Imobiliárias de destaque abrem a caixa-preta da própria operação: o que está funcionando, o que não funciona e por quê. ",
+            "bold": false
+          },
+          {
+            "text": "Você aprende com os erros e acertos de quem já passou pelo que você está passando.",
+            "bold": true
+          }
+        ],
         "image": "entrevistas"
       },
       {
-        "title": "Espaço Insider",
-        "description": "Sessões temáticas em grupo conduzidas por consultores CUPOLA, exclusivas para o presencial e com vagas limitadas. É troca entre pares que vivem os mesmos desafios operacionais.",
+        "title": "Workshops",
+        "description": [
+          {
+            "text": "Sessões temáticas em grupos pequenos, conduzidas por consultores CUPOLA. Exclusivas para o presencial e com vagas limitadas. ",
+            "bold": false
+          },
+          {
+            "text": "Você e o seu time aprendem juntos e saem com insights práticos.",
+            "bold": true
+          }
+        ],
         "image": "insider"
       },
       {
         "title": "Networking e feira de negócios",
-        "description": "A feira de negócios reúne fornecedores e parceiros do mercado de locação em um espaço dedicado a conexões e condições exclusivas. Trocar com pessoas que estão vivendo as mesmas dores que você vale tanto quanto qualquer palestra.",
+        "description": [
+          {
+            "text": "A feira de negócios reúne fornecedores e parceiros do mercado de locação em um espaço dedicado a conexões e condições exclusivas. ",
+            "bold": false
+          },
+          {
+            "text": "Trocar com pessoas que estão vivendo as mesmas dores que você vale tanto quanto qualquer palestra.",
+            "bold": true
+          }
+        ],
         "image": "networking"
       }
     ]
@@ -98,47 +134,55 @@
       "prices": [
         {
           "label": "1",
-          "price": 516,
+          "price": 269,
           "oldPrice": null,
           "discount": null
         },
         {
           "label": "2 a 5",
-          "price": 430,
-          "oldPrice": 516,
+          "price": 215,
+          "oldPrice": 269,
           "discount": 20
         },
         {
           "label": "6 a 9",
-          "price": 361,
-          "oldPrice": 516,
+          "price": 188,
+          "oldPrice": 269,
           "discount": 30
         },
         {
           "label": "10+",
-          "price": 309,
-          "oldPrice": 516,
+          "price": 161,
+          "oldPrice": 269,
           "discount": 40
         }
-      ]
+      ],
+      "included": {
+        "title": "Confira o que está incluso",
+        "items": [
+          "Acesso presencial à programação completa",
+          "Participação nos Workshops em grupo com mentores CUPOLA (mediante inscrição prévia)",
+          "Acesso à feira de negócios com condições exclusivas dos patrocinadores",
+          "Inscrição para perguntas aos palestrantes e painelistas",
+          "Coffee-break nos intervalos",
+          "Participação nos sorteios de prêmios dos patrocinadores",
+          "Certificado individual de participação"
+        ]
+      }
     },
     "online": {
       "title": "Ingresso Online",
       "price": "R$169,00",
       "cta": "COMPRAR INGRESSO ONLINE",
-      "href": "https://www.sympla.com.br/evento/cupola-aluguel-day/3465310?_gl=1*1y313uh*_gcl_au*NDY0NzIyODgxLjE3ODIxNTY1MjA.*_ga*MjEwODk2MTQwOS4xNzgyMTU2NTIw*_ga_KXH10SQTZF*czE3ODI1MDExMDckbzQkZzEkdDE3ODI1MDI4OTkkajU0JGwwJGgzODczMDM5MzU"
-    },
-    "included": {
-      "title": "Confira o que está incluso",
-      "items": [
-        "Acesso presencial à programação completa",
-        "Participação nas sessões do Espaço Insider (mediante inscrição prévia)",
-        "Acesso à feira de negócios com condições exclusivas dos patrocinadores",
-        "Inscrição para perguntas aos palestrantes e painelistas",
-        "Coffee-break nos intervalos",
-        "Participação nos sorteios de prêmios dos patrocinadores",
-        "Certificado individual de participação"
-      ]
+      "href": "https://www.sympla.com.br/evento/cupola-aluguel-day/3465310?_gl=1*1y313uh*_gcl_au*NDY0NzIyODgxLjE3ODIxNTY1MjA.*_ga*MjEwODk2MTQwOS4xNzgyMTU2NTIw*_ga_KXH10SQTZF*czE3ODI1MDExMDckbzQkZzEkdDE3ODI1MDI4OTkkajU0JGwwJGgzODczMDM5MzU",
+      "included": {
+        "title": "Confira o que está incluso",
+        "items": [
+          "Acesso online e ao vivo às palestras e entrevistas com imobiliárias",
+          "Acesso às gravações por 30 dias após o evento",
+          "Certificado individual em nome do titular do ingresso"
+        ]
+      }
     },
     "labels": {
       "decreaseQuantity": "Diminuir quantidade de pessoas",
@@ -254,15 +298,15 @@
     "realizationLogo": "cupola",
     "title": "Patrocinadores",
     "goldLabel": "OURO",
-    "silverLabel": "PRATA",
     "gold": [
       "credaluga",
-      "fcanalise",
-      "grazon",
-      "pipeimob",
       "realmate",
-      "upstate"
+      "pipeimob",
+      "grazon",
+      "upstate",
+      "fcanalise"
     ],
+    "silverLabel": "PRATA",
     "silver": [
       "compagno",
       "flexpro",
@@ -286,17 +330,17 @@
         "links": [
           {
             "label": "Termos de uso",
-            "href": "#"
+            "href": "https://assets.goadopt.io/organization/10112218-ac72-4623-81d4-42c3c65e7e42/documents/privacy/01KS03C70E0WSXS7N583C2E72E.pdf"
           },
           {
             "label": "Política de privacidade",
-            "href": "#"
+            "href": "https://assets.goadopt.io/organization/10112218-ac72-4623-81d4-42c3c65e7e42/documents/privacy/01KS03C70E0WSXS7N583C2E72E.pdf"
           }
         ],
         "social": [
           {
             "type": "instagram",
-            "href": "https://instagram.com"
+            "href": "https://www.instagram.com/cupolaimobi"
           }
         ]
       }

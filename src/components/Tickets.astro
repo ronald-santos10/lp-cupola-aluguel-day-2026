@@ -116,21 +116,21 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
       </div>
 
       <div class="mt-6 flex flex-col items-center">
-        <div class="flex items-center justify-center gap-1.5">
-          <p class="text-[16px] leading-2.75 tracking-[-0.04em] text-black">
-            {tickets.labels.oldPricePrefix}
-          </p>
-          <p
-            id="old-price"
-            class="text-[16px] leading-2.75 tracking-[-0.04em] text-black line-through"
-          >
-            {
-              initialPrice.oldPrice
-                ? priceFormatter.format(initialPrice.oldPrice)
-                : ""
-            }
-          </p>
-        </div>
+        {
+          initialPrice.oldPrice && (
+            <div class="flex items-center justify-center gap-1.5">
+              <p class="text-[16px] leading-2.75 tracking-[-0.04em] text-black">
+                {tickets.labels.oldPricePrefix}
+              </p>
+              <p
+                id="old-price"
+                class="text-[16px] leading-2.75 tracking-[-0.04em] text-black line-through"
+              >
+                {priceFormatter.format(initialPrice.oldPrice)}
+              </p>
+            </div>
+          )
+        }
 
         <div class="mt-2.5 flex items-end justify-center gap-1.5">
           <p
@@ -143,6 +143,11 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
             class="font-display text-[28px] font-extrabold leading-6.25 tracking-normal text-[#6a9506]"
           >
             {priceFormatter.format(initialPrice.price)}
+          </p>
+          <p
+            class="pb-1 text-[16px] leading-2.75 tracking-[-0.04em] text-black"
+          >
+            cada
           </p>
         </div>
 
@@ -161,7 +166,7 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
           variant="purple"
           size="sm"
           icon={false}
-          class="w-[307px]"
+          class="w-76.75"
         >
           {tickets.presential.cta}
         </Button>
@@ -169,14 +174,14 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
 
       <details class="ticket-included group mt-7.5">
         <summary>
-          <span>{tickets.included.title}</span>
+          <span>{tickets.presential.included.title}</span>
           <span class="group-open:hidden">{tickets.labels.expand}</span>
           <span class="hidden group-open:inline">{tickets.labels.collapse}</span
           >
         </summary>
 
         <ul>
-          {tickets.included.items.map((item) => <li>{item}</li>)}
+          {tickets.presential.included.items.map((item) => <li>{item}</li>)}
         </ul>
       </details>
     </div>
@@ -202,11 +207,24 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
           variant="muted"
           size="sm"
           icon={false}
-          class="w-[412px]"
+          class="w-103"
         >
           {tickets.online.cta}
         </Button>
       </div>
+
+      <details class="ticket-included group mt-7.5 ticket-included--dark">
+        <summary>
+          <span>{tickets.online.included.title}</span>
+          <span class="group-open:hidden">{tickets.labels.expand}</span>
+          <span class="hidden group-open:inline">{tickets.labels.collapse}</span
+          >
+        </summary>
+
+        <ul>
+          {tickets.online.included.items.map((item) => <li>{item}</li>)}
+        </ul>
+      </details>
     </div>
   </div>
 
@@ -221,6 +239,7 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
     const oldPrice = document.getElementById("old-price");
     const peopleLabel = document.getElementById("people-label");
     const thumbVisual = document.getElementById("slider-thumb-visual");
+    const oldPriceContainer = oldPrice?.parentElement;
 
     const formatter = new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -236,10 +255,10 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
       peopleLabel.textContent = `(${item.label} ${labels.peopleSuffix})`;
 
       if (item.oldPrice) {
-        oldPrice.style.display = "inline";
+        if (oldPriceContainer) oldPriceContainer.style.display = "flex";
         oldPrice.textContent = formatter.format(item.oldPrice);
       } else {
-        oldPrice.style.display = "none";
+        if (oldPriceContainer) oldPriceContainer.style.display = "none";
       }
 
       thumbVisual.style.left = `${(value / max) * 100}%`;
