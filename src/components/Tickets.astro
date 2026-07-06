@@ -5,7 +5,7 @@ import Text from "./Text.astro";
 import data from "../data/data.json";
 
 const { tickets } = data;
-const initialPriceIndex = tickets.presential.initialPriceIndex ?? 0;
+const initialPriceIndex = 0;
 const initialPrice = tickets.presential.prices[initialPriceIndex];
 const priceFormatter = new Intl.NumberFormat("pt-BR", {
   style: "currency",
@@ -61,7 +61,8 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
         </button>
 
         <div class="ticket-slider-wrap">
-          <div class="ticket-slider-track" aria-hidden="true">
+          <div id="slider-track" class="ticket-slider-track" aria-hidden="true">
+            <span id="slider-fill" class="ticket-slider-fill"></span>
             {
               tickets.presential.prices.map((_, index) => (
                 <span
@@ -116,21 +117,21 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
       </div>
 
       <div class="mt-6 flex flex-col items-center">
-        {
-          initialPrice.oldPrice && (
-            <div class="flex items-center justify-center gap-1.5">
-              <p class="text-[16px] leading-2.75 tracking-[-0.04em] text-black">
-                {tickets.labels.oldPricePrefix}
-              </p>
-              <p
-                id="old-price"
-                class="text-[16px] leading-2.75 tracking-[-0.04em] text-black line-through"
-              >
-                {priceFormatter.format(initialPrice.oldPrice)}
-              </p>
-            </div>
-          )
-        }
+        <div
+        id="old-price-container"
+        class="flex items-center justify-center gap-1.5"
+        style={`display: ${initialPrice.oldPrice ? "flex" : "none"}`}
+      >
+        <p class="text-[16px] leading-2.75 tracking-[-0.04em] text-black">
+          {tickets.labels.oldPricePrefix}
+        </p>
+        <p
+          id="old-price"
+          class="text-[16px] leading-2.75 tracking-[-0.04em] text-black line-through"
+        >
+          {initialPrice.oldPrice ? priceFormatter.format(initialPrice.oldPrice) : ""}
+        </p>
+      </div>
 
         <div class="mt-2.5 flex items-end justify-center gap-1.5">
           <p
@@ -155,8 +156,7 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
           id="people-label"
           class="mt-3.25 text-[16px] leading-2.75 tracking-[-0.04em] text-black"
         >
-          ({initialPrice.label}
-          {tickets.labels.peopleSuffix})
+          ({initialPrice.label} {initialPrice.label === "1" ? tickets.labels.peopleSingular : tickets.labels.peopleSuffix})
         </p>
       </div>
 
@@ -237,9 +237,14 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
 
     const currentPrice = document.getElementById("current-price");
     const oldPrice = document.getElementById("old-price");
+    const oldPriceContainer = document.getElementById("old-price-container");
     const peopleLabel = document.getElementById("people-label");
     const thumbVisual = document.getElementById("slider-thumb-visual");
-    const oldPriceContainer = oldPrice?.parentElement;
+    const sliderTrack = document.getElementById("slider-track");
+
+    if (!slider || !currentPrice || !peopleLabel || !thumbVisual || !sliderTrack) {
+      return;
+    }
 
     const formatter = new Intl.NumberFormat("pt-BR", {
       style: "currency",
@@ -248,20 +253,28 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
 
     const updatePrice = () => {
       const item = prices[slider.value];
-      const max = Number(slider.max);
-      const value = Number(slider.value);
+      const max = Number(slider.max) || 1;
+      const value = Number(slider.value) || 0;
+      const progress = (value / max) * 100;
+      const sliderFill = document.getElementById("slider-fill");
 
       currentPrice.textContent = formatter.format(item.price);
-      peopleLabel.textContent = `(${item.label} ${labels.peopleSuffix})`;
+      peopleLabel.textContent = `(${item.label} ${item.label === "1" ? labels.peopleSingular : labels.peopleSuffix})`;
 
       if (item.oldPrice) {
         if (oldPriceContainer) oldPriceContainer.style.display = "flex";
-        oldPrice.textContent = formatter.format(item.oldPrice);
+        if (oldPrice) oldPrice.textContent = formatter.format(item.oldPrice);
       } else {
         if (oldPriceContainer) oldPriceContainer.style.display = "none";
       }
 
-      thumbVisual.style.left = `${(value / max) * 100}%`;
+      if (sliderTrack) {
+        sliderTrack.style.setProperty("--slider-progress", `${progress}%`);
+      }
+      thumbVisual.style.left = `${progress}%`;
+      if (sliderFill) {
+        sliderFill.style.width = `${progress}%`;
+      }
     };
 
     slider.addEventListener("input", updatePrice);
@@ -327,6 +340,7 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
     }
 
     .ticket-slider-track {
+      --slider-progress: 0%;
       background: #ded5c5;
       border-radius: 999px;
       height: 15px;
@@ -334,7 +348,19 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
       width: 100%;
     }
 
-    .ticket-slider-track span:not(.ticket-slider-thumb) {
+    .ticket-slider-fill {
+      background: #6a9506;
+      border-radius: 999px;
+      height: 100%;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: var(--slider-progress);
+      z-index: 1;
+      transition: width 120ms ease;
+    }
+
+    .ticket-slider-track span:not(.ticket-slider-thumb):not(.ticket-slider-fill) {
       background: #bbb3a6;
       border-radius: 999px;
       height: 7px;
@@ -342,6 +368,7 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
       top: 4px;
       transform: translateX(-50%);
       width: 7px;
+      z-index: 2;
     }
 
     .ticket-slider-thumb {
@@ -349,11 +376,12 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
       border: 3px solid #6a9506;
       border-radius: 999px;
       height: 26px;
-      left: 33.333%;
+      left: var(--slider-progress);
       pointer-events: none;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
+      transition: left 120ms ease;
       width: 26px;
       z-index: 2;
     }
