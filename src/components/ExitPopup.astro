@@ -1,0 +1,211 @@
+---
+import Text from "./Text.astro";
+
+import bgBottom from "../assets/popup-bottom.webp";
+import logo from "../assets/logos/aluguel-day.svg";
+---
+
+<style>
+  @keyframes popupBounceIn {
+    from,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+    0% {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    20% {
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+
+    40% {
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+
+    60% {
+      opacity: 1;
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    80% {
+      transform: scale3d(0.97, 0.97, 0.97);
+    }
+
+    to {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+  @keyframes popupFadeOut {
+    from {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+
+    to {
+      opacity: 0;
+      transform: scale3d(0.92, 0.92, 0.92);
+    }
+  }
+
+  .popup-bounce-in {
+    animation: popupBounceIn 0.8s both;
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+
+  .popup-fade-out {
+    animation: popupFadeOut 0.2s ease both;
+  }
+</style>
+
+<div
+  id="exit-popup"
+  class="pointer-events-none fixed inset-0 z-9999 flex items-center justify-center bg-black/60 p-5 opacity-0 transition-opacity duration-300"
+>
+  <div
+    id="exit-popup-card"
+    class="relative w-full max-w-180 overflow-hidden rounded-card bg-navy shadow-2xl"
+  >
+    <div id="exit-popup-content">
+      <button
+        id="exit-popup-close"
+        class="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+      >
+        ✕
+      </button>
+
+      <div class="absolute -left-17.5 top-8 rotate-[-35deg] bg-red px-24 py-2">
+        <Text variant="button" color="white"> PRÉ-VENDA </Text>
+      </div>
+
+      <div class="relative z-10 px-8 pt-16 pb-44 text-center md:px-14">
+        <img
+          src={logo.src}
+          alt="CUPOLA Aluguel Day"
+          class="mx-auto mt-4 w-48 md:w-64"
+        />
+
+        <Text
+          variant="h1"
+          color="white"
+          class="mx-auto mt-4 max-w-145 leading-[1.05]"
+        >
+          VAI MESMO SAIR SEM
+          <br />
+          O
+          <span class="underline decoration-4 underline-offset-6">
+            MENOR PREÇO
+          </span>
+          DO
+          <br />
+          <strong>CUPOLA ALUGUEL DAY?</strong>
+        </Text>
+
+        <a
+          id="exit-popup-action"
+          href="#ingressos"
+          class="mx-auto mt-10 inline-flex min-h-11 items-center justify-center rounded-button border border-lime/35 bg-lime px-7 font-sans text-base uppercase tracking-normal text-ink transition hover:-translate-y-0.5"
+          style="box-shadow:0 0 0 3px rgb(176 249 10 / .35)"
+        >
+          QUERO GARANTIR
+        </a>
+      </div>
+
+      <img
+        src={bgBottom.src}
+        alt=""
+        class="pointer-events-none absolute bottom-0 left-1/2 w-full -translate-x-1/2"
+      />
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const STORAGE_KEY = "exit-popup-opened";
+
+    const popup = document.getElementById("exit-popup")!;
+    const content = document.getElementById("exit-popup-content")!;
+    const close = document.getElementById("exit-popup-close");
+    const action = document.getElementById("exit-popup-action");
+    const popupEl = popup;
+    const cardEl = document.getElementById("exit-popup-card")!;
+
+    if (!popup || !content || sessionStorage.getItem(STORAGE_KEY)) return;
+
+    let opened = false;
+
+    function openPopup() {
+      if (opened) return;
+
+      opened = true;
+
+      sessionStorage.setItem(STORAGE_KEY, "1");
+
+      popupEl.classList.remove("pointer-events-none", "opacity-0");
+
+      cardEl.classList.remove("popup-fade-out");
+
+      // Reinicia a animação sempre que abrir
+      cardEl.classList.remove("popup-bounce-in");
+      void cardEl.offsetWidth;
+      cardEl.classList.add("popup-bounce-in");
+
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePopup() {
+      cardEl.classList.remove("popup-bounce-in");
+      cardEl.classList.add("popup-fade-out");
+
+      popupEl.classList.add("opacity-0");
+
+      setTimeout(() => {
+        popupEl.classList.add("pointer-events-none");
+        cardEl.classList.remove("popup-fade-out");
+        document.body.style.overflow = "";
+      }, 200);
+    }
+
+    document.addEventListener("mouseout", (e) => {
+      if (e.relatedTarget) return;
+
+      if (e.clientY <= 5) {
+        openPopup();
+      }
+    });
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") {
+        openPopup();
+      }
+    });
+
+    close?.addEventListener("click", closePopup);
+
+    action?.addEventListener("click", () => {
+      closePopup();
+    });
+
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) {
+        closePopup();
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closePopup();
+      }
+    });
+  })();
+</script>

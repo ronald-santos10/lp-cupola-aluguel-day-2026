@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ExitPopup from "../components/ExitPopup.astro";
 const GTM_ID = import.meta.env.PUBLIC_GTM_ID;
 const isProd = import.meta.env.MODE === "production";
 
@@ -57,5 +58,6 @@ const {
       ) : null
     }
     <slot />
+    <ExitPopup />
   </body>
 </html>
