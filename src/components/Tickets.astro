@@ -5,7 +5,7 @@ import Text from "./Text.astro";
 import data from "../data/data.json";
 
 const { tickets } = data;
-const initialPriceIndex = 0;
+const initialPriceIndex = tickets.presential.initialPriceIndex ?? 0;
 const initialPrice = tickets.presential.prices[initialPriceIndex];
 const priceFormatter = new Intl.NumberFormat("pt-BR", {
   style: "currency",
@@ -14,7 +14,7 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
 ---
 
 <section id="ingressos" class="tickets bg-navy py-20">
-  <div class="container flex max-w-169.5 flex-col items-center">
+  <div class="container flex max-w-204.5 flex-col items-center">
     <Text
       as="span"
       class="mx-auto mb-3.75 flex h-4.5 w-fit items-center rounded-full bg-cream px-2 text-[12px] uppercase leading-none text-ink"
@@ -118,20 +118,24 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
 
       <div class="mt-6 flex flex-col items-center">
         <div
-        id="old-price-container"
-        class="flex items-center justify-center gap-1.5"
-        style={`display: ${initialPrice.oldPrice ? "flex" : "none"}`}
-      >
-        <p class="text-[16px] leading-2.75 tracking-[-0.04em] text-black">
-          {tickets.labels.oldPricePrefix}
-        </p>
-        <p
-          id="old-price"
-          class="text-[16px] leading-2.75 tracking-[-0.04em] text-black line-through"
+          id="old-price-container"
+          class="flex items-center justify-center gap-1.5"
+          style={`display: ${initialPrice.oldPrice ? "flex" : "none"}`}
         >
-          {initialPrice.oldPrice ? priceFormatter.format(initialPrice.oldPrice) : ""}
-        </p>
-      </div>
+          <p class="text-[16px] leading-2.75 tracking-[-0.04em] text-black">
+            {tickets.labels.oldPricePrefix}
+          </p>
+          <p
+            id="old-price"
+            class="text-[16px] leading-2.75 tracking-[-0.04em] text-black line-through"
+          >
+            {
+              initialPrice.oldPrice
+                ? priceFormatter.format(initialPrice.oldPrice)
+                : ""
+            }
+          </p>
+        </div>
 
         <div class="mt-2.5 flex items-end justify-center gap-1.5">
           <p
@@ -156,7 +160,12 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
           id="people-label"
           class="mt-3.25 text-[16px] leading-2.75 tracking-[-0.04em] text-black"
         >
-          ({initialPrice.label} {initialPrice.label === "1" ? tickets.labels.peopleSingular : tickets.labels.peopleSuffix})
+          ({initialPrice.label}
+          {
+            initialPrice.label === "1"
+              ? tickets.labels.peopleSingular
+              : tickets.labels.peopleSuffix
+          })
         </p>
       </div>
 
@@ -187,44 +196,99 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
     </div>
 
     <div
-      class="mt-5 w-full rounded-card bg-[#1c2034] px-6.25 pb-7.5 pt-7.5 text-center"
+      class="mt-5 mx-auto grid w-full max-w-204.5 gap-5 md:grid-cols-2 items-stretch"
     >
-      <h3
-        class="font-display text-[32px] font-bold leading-5.5 tracking-normal text-white"
+      <div
+        class="flex flex-col rounded-card bg-cream px-6.25 pb-7.5 pt-7.5 text-center"
       >
-        {tickets.online.title}
-      </h3>
-
-      <p
-        class="mt-5 font-display text-[24px] font-medium leading-7 tracking-normal text-white"
-      >
-        {tickets.online.price}
-      </p>
-
-      <div class="mt-4.75 flex justify-center">
-        <Button
-          href={tickets.online.href}
-          variant="muted"
-          size="sm"
-          icon={false}
-          class="w-103"
+        <h3
+          class="font-display text-[32px] font-bold leading-5.5 tracking-normal text-purple"
         >
-          {tickets.online.cta}
-        </Button>
+          {tickets.presential.individual.title}
+        </h3>
+
+        <p
+          class="mt-5 font-display text-[24px] font-bold leading-7 tracking-normal text-[#6a9506]"
+        >
+          {priceFormatter.format(tickets.presential.individual.price)}
+        </p>
+
+        <p
+          class="mt-2.5 text-[16px] leading-2.75 tracking-[-0.04em] text-black"
+        >
+          {tickets.presential.individual.priceDescription}
+        </p>
+
+        <div class="mt-4.75 flex justify-center">
+          <Button
+            href={tickets.presential.individual.href}
+            variant="purple"
+            size="sm"
+            icon={false}
+            class="w-103"
+          >
+            {tickets.presential.individual.cta}
+          </Button>
+        </div>
+
+        <details class="ticket-included group mt-7.5">
+          <summary>
+            <span>{tickets.presential.individual.included.title}</span>
+            <span class="group-open:hidden">{tickets.labels.expand}</span>
+            <span class="hidden group-open:inline"
+              >{tickets.labels.collapse}</span
+            >
+          </summary>
+
+          <ul>
+            {
+              tickets.presential.individual.included.items.map((item) => (
+                <li>{item}</li>
+              ))
+            }
+          </ul>
+        </details>
       </div>
 
-      <details class="ticket-included group mt-7.5 ticket-included--dark">
-        <summary>
-          <span>{tickets.online.included.title}</span>
-          <span class="group-open:hidden">{tickets.labels.expand}</span>
-          <span class="hidden group-open:inline">{tickets.labels.collapse}</span
-          >
-        </summary>
+      <div class="rounded-card bg-[#1c2034] px-6.25 pb-7.5 pt-7.5 text-center">
+        <h3
+          class="font-display text-[32px] font-bold leading-5.5 tracking-normal text-white"
+        >
+          {tickets.online.title}
+        </h3>
 
-        <ul>
-          {tickets.online.included.items.map((item) => <li>{item}</li>)}
-        </ul>
-      </details>
+        <p
+          class="mt-5 font-display text-[24px] font-medium leading-7 tracking-normal text-white"
+        >
+          {tickets.online.price}
+        </p>
+
+        <div class="mt-4.75 flex justify-center">
+          <Button
+            href={tickets.online.href}
+            variant="muted"
+            size="sm"
+            icon={false}
+            class="w-103"
+          >
+            {tickets.online.cta}
+          </Button>
+        </div>
+
+        <details class="ticket-included group mt-7.5 ticket-included--dark">
+          <summary>
+            <span>{tickets.online.included.title}</span>
+            <span class="group-open:hidden">{tickets.labels.expand}</span>
+            <span class="hidden group-open:inline"
+              >{tickets.labels.collapse}</span
+            >
+          </summary>
+
+          <ul>
+            {tickets.online.included.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </details>
+      </div>
     </div>
   </div>
 
@@ -242,7 +306,13 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
     const thumbVisual = document.getElementById("slider-thumb-visual");
     const sliderTrack = document.getElementById("slider-track");
 
-    if (!slider || !currentPrice || !peopleLabel || !thumbVisual || !sliderTrack) {
+    if (
+      !slider ||
+      !currentPrice ||
+      !peopleLabel ||
+      !thumbVisual ||
+      !sliderTrack
+    ) {
       return;
     }
 
@@ -360,7 +430,8 @@ const priceFormatter = new Intl.NumberFormat("pt-BR", {
       transition: width 120ms ease;
     }
 
-    .ticket-slider-track span:not(.ticket-slider-thumb):not(.ticket-slider-fill) {
+    .ticket-slider-track
+      span:not(.ticket-slider-thumb):not(.ticket-slider-fill) {
       background: #bbb3a6;
       border-radius: 999px;
       height: 7px;

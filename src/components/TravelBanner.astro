@@ -1,0 +1,73 @@
+---
+import Button from "./Button.astro";
+import Text from "./Text.astro";
+import phoneIcon from "../assets/vectors/phone.svg";
+import emailIcon from "../assets/vectors/email.svg";
+import bgBlue from "../assets/bg-blue.webp";
+import bannerDestinos from "../assets/banner_destinos.webp";
+
+const { data } = Astro.props;
+const { travelBanner } = data;
+---
+
+<section
+  class="bg-blue bg-cover bg-center bg-no-repeat"
+  style={`background-image: url("${bgBlue.src}");`}
+>
+  <div class="container">
+    <div class="px-8 py-10 md:px-16 lg:px-22 lg:py-14">
+      <div
+        class="grid items-center gap-10 md:grid-cols-[0.86fr_1.14fr] lg:gap-16"
+      >
+        <div class="flex flex-col items-start gap-6">
+          <Text
+            as="h2"
+            variant="h2"
+            color="lime"
+            class="max-w-78 text-[32px] leading-[30px]"
+          >
+            {travelBanner.title}
+          </Text>
+
+          <Text color="white" class="max-w-78 text-base leading-5">
+            {travelBanner.description}
+          </Text>
+
+          <address class="flex flex-col gap-2 not-italic">
+            <a
+              href={`tel:${travelBanner.phone.replace(/\D/g, "")}`}
+              class="flex items-center gap-2 text-base leading-none tracking-normal text-white transition hover:text-lime"
+            >
+              <img src={phoneIcon.src} alt="" class="size-3.5" />
+              {travelBanner.phone}
+            </a>
+
+            <a
+              href={`mailto:${travelBanner.email}`}
+              class="flex items-center gap-2 text-base leading-none tracking-normal text-white transition hover:text-lime"
+            >
+              <img src={emailIcon.src} alt="" class="size-3.5" />
+              {travelBanner.email}
+            </a>
+          </address>
+
+          <Button
+            href={travelBanner.href}
+            target="_blank"
+          >
+            {travelBanner.cta}
+          </Button>
+        </div>
+
+        <div class="flex justify-center md:justify-end">
+          <img
+            src={bannerDestinos.src}
+            alt={travelBanner.imageAlt}
+            class="w-full max-w-[430px] md:max-w-[500px]"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

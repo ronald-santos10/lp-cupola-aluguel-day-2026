@@ -13,6 +13,7 @@ import Testimonials from "../components/Testimonials.astro";
 import Tickets from "../components/Tickets.astro";
 import TopicGrid from "../components/TopicGrid.astro";
 import VenueSection from "../components/VenueSection.astro";
+import TravelBanner from "../components/TravelBanner.astro";
 import data from "../data/data.json";
 ---
 
@@ -32,7 +33,7 @@ import data from "../data/data.json";
     <VenueSection venue={data.venue} />
     <FAQ />
     <AboutCupola />
-    <!-- <TravelBanner /> -->
+    <TravelBanner data={data} />
     <Sponsors />
   </main>
   <footer>

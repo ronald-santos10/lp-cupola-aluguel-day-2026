@@ -34,7 +34,7 @@ const {
   style={`--hero-bg-desktop: url("${backgroundImage}"); --hero-bg-mobile: url("${mobileBackgroundImage}");`}
 >
   <div
-    class="container flex min-h-192 max-w-140 flex-col items-center gap-7 pt-12 text-center lg:min-h-180 lg:justify-center lg:pt-0"
+    class="flex min-h-192 max-w-216 flex-col items-center gap-7 pt-12 text-center lg:min-h-180 lg:justify-center lg:pt-0 lg:pl-80"
   >
     <img
       src={AluguelDayLogo.src}
@@ -42,7 +42,6 @@ const {
       class="h-11 w-auto md:h-16"
     />
 
-    
     <Text as="h1" variant="h1" color="white" align="center">
       {hero.title}
     </Text>

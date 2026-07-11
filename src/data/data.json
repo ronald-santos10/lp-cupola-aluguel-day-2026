@@ -5,7 +5,7 @@
     "preSale": "Pré-venda clientes CUPOLA aberta - 29/06 a 05/07"
   },
   "hero": {
-    "preSale": "PRÉ-VENDA ABERTA",
+    "preSale": "VENDAS ABERTAS",
     "title": "O evento imobiliário de quem vive a locação",
     "description": "Um dia inteiro sobre locação para quem opera, decide e quer crescer.",
     "cta": "GARANTIR INGRESSOS"
@@ -121,39 +121,39 @@
     "cta": "VER INGRESSOS"
   },
   "tickets": {
-    "eyebrow": "PRÉ-VENDA",
+    "eyebrow": "lOTE 1",
     "title": "Compre seu ingresso ou monte seu combo e venha com seu time",
     "description": "Os combos de ingresso presencial oferecem desconto progressivo: 20% para grupos de 2 a 5 pessoas, 30% para grupos de 6 a 9 e 40% para grupos de 10 ou mais, quanto mais pessoas da imobiliária participam, maior o desconto e maior o impacto dentro da operação.",
     "presential": {
-      "title": "Ingressos presenciais",
+      "title": "Ingressos em grupo",
       "badge": "Até 40% OFF",
       "quantityInstruction": "Selecione a quantidade de pessoas que você deseja levar",
       "initialPriceIndex": 1,
-      "cta": "COMPRAR INGRESSO PRESENCIAL",
+      "cta": "COMPRAR COMBo Presencial",
       "href": "https://www.sympla.com.br/evento/cupola-aluguel-day/3465310?_gl=1*1y313uh*_gcl_au*NDY0NzIyODgxLjE3ODIxNTY1MjA.*_ga*MjEwODk2MTQwOS4xNzgyMTU2NTIw*_ga_KXH10SQTZF*czE3ODI1MDExMDckbzQkZzEkdDE3ODI1MDI4OTkkajU0JGwwJGgzODczMDM5MzU",
       "prices": [
         {
           "label": "1",
-          "price": 299,
+          "price": 329,
           "oldPrice": null,
           "discount": null
         },
         {
           "label": "2 a 5",
-          "price": 239,
-          "oldPrice": 299,
+          "price": 263,
+          "oldPrice": 329,
           "discount": 20
         },
         {
           "label": "6 a 9",
-          "price": 209,
-          "oldPrice": 299,
+          "price": 230,
+          "oldPrice": 329,
           "discount": 30
         },
         {
           "label": "10+",
-          "price": 179,
-          "oldPrice": 299,
+          "price": 197,
+          "oldPrice": 329,
           "discount": 40
         }
       ],
@@ -168,11 +168,30 @@
           "Participação nos sorteios de prêmios dos patrocinadores",
           "Certificado individual de participação"
         ]
+      },
+      "individual": {
+        "title": "Presencial individual",
+        "price": 329,
+        "priceDescription": "(para uma pessoa)",
+        "cta": "COMPRAR INGRESSO PRESENCIAL",
+        "href": "https://www.sympla.com.br/evento/cupola-aluguel-day/3465310?_gl=1*1y313uh*_gcl_au*NDY0NzIyODgxLjE3ODIxNTY1MjA.*_ga*MjEwODk2MTQwOS4xNzgyMTU2NTIw*_ga_KXH10SQTZF*czE3ODI1MDExMDckbzQkZzEkdDE3ODI1MDI4OTkkajU0JGwwJGgzODczMDM5MzU",
+        "included": {
+          "title": "Confira o que está incluso",
+          "items": [
+            "Acesso presencial à programação completa",
+            "Participação nos Workshops em grupo com mentores CUPOLA (mediante inscrição prévia)",
+            "Acesso à feira de negócios com condições exclusivas dos patrocinadores",
+            "Inscrição para perguntas aos palestrantes e painelistas",
+            "Coffee-break nos intervalos",
+            "Participação nos sorteios de prêmios dos patrocinadores",
+            "Certificado individual de participação"
+          ]
+        }
       }
     },
     "online": {
-      "title": "Ingresso Online",
-      "price": "R$199,00",
+      "title": "Online",
+      "price": "R$229,00",
       "cta": "COMPRAR INGRESSO ONLINE",
       "href": "https://www.sympla.com.br/evento/cupola-aluguel-day/3465310?_gl=1*1y313uh*_gcl_au*NDY0NzIyODgxLjE3ODIxNTY1MjA.*_ga*MjEwODk2MTQwOS4xNzgyMTU2NTIw*_ga_KXH10SQTZF*czE3ODI1MDExMDckbzQkZzEkdDE3ODI1MDI4OTkkajU0JGwwJGgzODczMDM5MzU",
       "included": {
@@ -224,18 +243,6 @@
       }
     ]
   },
-  "about": {
-    "title": "Evento realizado por: CUPOLA",
-    "description1": "A CUPOLA é um ecossistema de estratégias para gestão imobiliária com frentes integradas de educação, consultoria e marketing que atuam dentro do mercado. Há 19 anos organiza a complexidade do setor em direção clara: forma visão, estrutura operação e conecta líderes que escolhem crescer com consistência.",
-    "description2": "É o mesmo ecossistema que realiza o CUPOLA Summit, o evento imobiliário mais estratégico para líderes do setor, com mais de 2,5 mil participantes por edição. No CUPOLA Aluguel Day, essa mesma curadoria se dedica inteiramente ao mercado de locação: viajando, trocando e conversando com imobiliárias de todo o Brasil todos os dias.",
-    "cta": "Saiba mais",
-    "href": "https://cupola.com.br/",
-    "taglinePart1": "ONDE O MERCADO IMOBILIÁRIO SE",
-    "taglineHighlight1": "FORMA",
-    "taglinePart2": "E SE",
-    "taglineHighlight2": "TRANSFORMA",
-    "variant": "blue"
-  },
   "venue": {
     "title": "Nos vemos em Curitiba!",
     "description": {
@@ -248,6 +255,27 @@
     "imageAlt": "Teatro UP Experience",
     "address": "R. Prof. Pedro Viriato Parigot de Souza, 5300, Estacionamento, 8 - Campo Comprido",
     "online": "Para quem acompanha de qualquer lugar do Brasil, a transmissão ao vivo começa no mesmo horário."
+  },
+  "about": {
+    "title": "Evento realizado por: CUPOLA",
+    "description1": "A CUPOLA é um ecossistema de estratégias para gestão imobiliária com frentes integradas de educação, consultoria e marketing que atuam dentro do mercado. Há 19 anos organiza a complexidade do setor em direção clara: forma visão, estrutura operação e conecta líderes que escolhem crescer com consistência.",
+    "description2": "É o mesmo ecossistema que realiza o CUPOLA Summit, o evento imobiliário mais estratégico para líderes do setor, com mais de 2,5 mil participantes por edição. No CUPOLA Aluguel Day, essa mesma curadoria se dedica inteiramente ao mercado de locação: viajando, trocando e conversando com imobiliárias de todo o Brasil todos os dias.",
+    "cta": "Saiba mais",
+    "href": "https://cupola.com.br/",
+    "taglinePart1": "ONDE O MERCADO IMOBILIÁRIO SE",
+    "taglineHighlight1": "FORMA",
+    "taglinePart2": "E SE",
+    "taglineHighlight2": "TRANSFORMA",
+    "variant": "blue"
+  },
+  "travelBanner": {
+    "title": "Agência de Viagens Oficial do CUPOLA Aluguel Day",
+    "description": "Para passagens e hospedagens em Curitiba, conte com a Destinos Viagens.",
+    "phone": "(41) 3013-7474",
+    "email": "eventos@destinosturismo.com.br",
+    "cta": "Entre em contato",
+    "href": "https://wa.me/554130137474",
+    "imageAlt": "Malas e logo da Destinos Viagens e Turismo"
   },
   "faq": {
     "title": "FAQ",
