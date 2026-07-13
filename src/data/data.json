@@ -125,19 +125,13 @@
     "title": "Compre seu ingresso ou monte seu combo e venha com seu time",
     "description": "Os combos de ingresso presencial oferecem desconto progressivo: 20% para grupos de 2 a 5 pessoas, 30% para grupos de 6 a 9 e 40% para grupos de 10 ou mais, quanto mais pessoas da imobiliária participam, maior o desconto e maior o impacto dentro da operação.",
     "presential": {
-      "title": "Ingressos em grupo",
+      "title": "Presenciais em grupo",
       "badge": "Até 40% OFF",
       "quantityInstruction": "Selecione a quantidade de pessoas que você deseja levar",
-      "initialPriceIndex": 1,
-      "cta": "COMPRAR COMBo Presencial",
+      "initialPriceIndex": 0,
+      "cta": "COMPRAR COMBO PRESENCIAL",
       "href": "https://www.sympla.com.br/evento/cupola-aluguel-day/3465310?_gl=1*1y313uh*_gcl_au*NDY0NzIyODgxLjE3ODIxNTY1MjA.*_ga*MjEwODk2MTQwOS4xNzgyMTU2NTIw*_ga_KXH10SQTZF*czE3ODI1MDExMDckbzQkZzEkdDE3ODI1MDI4OTkkajU0JGwwJGgzODczMDM5MzU",
       "prices": [
-        {
-          "label": "1",
-          "price": 329,
-          "oldPrice": null,
-          "discount": null
-        },
         {
           "label": "2 a 5",
           "price": 263,
