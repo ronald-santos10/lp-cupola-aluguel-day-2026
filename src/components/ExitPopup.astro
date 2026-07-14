@@ -1,7 +1,4 @@
 ---
-import Text from "./Text.astro";
-
-import bgBottom from "../assets/popup-bottom.webp";
 import logo from "../assets/logos/aluguel-day.svg";
 ---
 
@@ -65,6 +62,32 @@ import logo from "../assets/logos/aluguel-day.svg";
   .popup-fade-out {
     animation: popupFadeOut 0.2s ease both;
   }
+
+  /* .exit-popup-art {
+    background:
+      linear-gradient(116deg, transparent 0 77%, #fe122a 77.2% 90%, transparent 90.2%),
+      linear-gradient(116deg, transparent 0 73%, #3d36ff 73.2% 77.2%, transparent 77.4%),
+      linear-gradient(55deg, transparent 0 9%, #3d36ff 9.2% 14.8%, transparent 15%),
+      linear-gradient(55deg, transparent 0 5.5%, #fe122a 5.7% 8.8%, transparent 9%),
+      #090e24;
+  } */
+
+  .exit-popup-ribbon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 360px;
+    height: 54px;
+    transform: translate(-28%, 52%) rotate(-35deg);
+  }
+
+  @media (max-width: 640px) {
+    .exit-popup-ribbon {
+      width: 310px;
+      height: 48px;
+      transform: translate(-18%, 56%) rotate(-35deg);
+    }
+  }
 </style>
 
 <div
@@ -75,56 +98,73 @@ import logo from "../assets/logos/aluguel-day.svg";
     id="exit-popup-card"
     class="relative w-full max-w-180 overflow-hidden rounded-card bg-navy shadow-2xl"
   >
-    <div id="exit-popup-content">
+    <div
+      id="exit-popup-content"
+      class="exit-popup-art relative flex min-h-140 w-full flex-col px-6 py-8 text-center text-white sm:min-h-155 sm:px-10 md:px-12 md:py-10"
+    >
       <button
         id="exit-popup-close"
-        class="absolute right-5 top-5 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20"
+        aria-label="Fechar popup"
+        class="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full bg-white/10 font-sans text-2xl leading-none text-white transition hover:bg-white/20 md:right-6 md:top-6 md:h-10 md:w-10"
       >
-        ✕
+        &times;
       </button>
 
-      <div class="absolute -left-17.5 top-8 rotate-[-35deg] bg-red px-24 py-2">
-        <Text variant="button" color="white"> PRÉ-VENDA </Text>
+      <div
+        class="exit-popup-ribbon absolute left-0 top-0 z-10 bg-red"
+      >
+        <span
+          class="block whitespace-nowrap font-sans text-sm font-medium uppercase tracking-normal text-white sm:text-lg md:text-xl"
+        >
+          LOTE 1 ABERTO
+        </span>
       </div>
 
-      <div class="relative z-10 px-8 pt-16 pb-44 text-center md:px-14">
-        <img
-          src={logo.src}
-          alt="CUPOLA Aluguel Day"
-          class="mx-auto mt-4 w-48 md:w-64"
-        />
-
-        <Text
-          variant="h1"
-          color="white"
-          class="mx-auto mt-4 max-w-145 leading-[1.05]"
+      <div
+        class="relative z-10 mx-auto flex flex-1 flex-col items-center justify-center pt-8 sm:pt-12"
+      >
+        <p
+          class="font-display text-xl font-bold uppercase leading-none tracking-normal sm:text-3xl md:text-[34px]"
         >
-          VAI MESMO SAIR SEM
-          <br />
-          O
-          <span class="underline decoration-4 underline-offset-6">
-            MENOR PREÇO
-          </span>
-          DO
-          <br />
-          <strong>CUPOLA ALUGUEL DAY?</strong>
-        </Text>
+          ANTES DE IR...
+        </p>
+
+        <h2
+          class="mt-8 max-w-135 font-display text-[25px] font-bold uppercase leading-[1.15] tracking-normal sm:mt-10 sm:text-[34px] md:text-[40px]"
+        >
+          O Cupola Aluguel Day já está com vendas abertas.
+        </h2>
+
+        <p
+          class="mt-6 max-w-115 font-sans text-lg uppercase leading-tight tracking-normal sm:text-[22px] md:text-[28px]"
+        >
+          Você e seu time merecem estar nesse encontro.
+        </p>
 
         <a
           id="exit-popup-action"
           href="#ingressos"
-          class="mx-auto mt-10 inline-flex min-h-11 items-center justify-center rounded-button border border-lime/35 bg-lime px-7 font-sans text-base uppercase tracking-normal text-ink transition hover:-translate-y-0.5"
+          class="mt-7 inline-flex min-h-10 items-center justify-center rounded-[10px] border border-lime/35 bg-lime px-7 font-sans text-sm font-bold uppercase tracking-normal text-ink transition hover:-translate-y-0.5 sm:px-8 sm:text-base md:text-lg"
           style="box-shadow:0 0 0 3px rgb(176 249 10 / .35)"
         >
-          QUERO GARANTIR
+          GARANTIR AGORA
         </a>
       </div>
 
-      <img
-        src={bgBottom.src}
-        alt=""
-        class="pointer-events-none absolute bottom-0 left-1/2 w-full -translate-x-1/2"
-      />
+      <div
+        class="relative z-10 grid grid-cols-3 items-end gap-3 font-sans text-sm tracking-normal sm:text-base md:text-lg"
+      >
+        <p class="text-left">30 Set 2026</p>
+        <img
+          src={logo.src}
+          alt="CUPOLA Aluguel Day"
+          class="mx-auto w-36 sm:w-48 md:w-56"
+        />
+        <p class="text-right leading-none">
+          Presencial<br />
+          em Curitiba
+        </p>
+      </div>
     </div>
   </div>
 </div>
@@ -155,7 +195,6 @@ import logo from "../assets/logos/aluguel-day.svg";
 
       cardEl.classList.remove("popup-fade-out");
 
-      // Reinicia a animação sempre que abrir
       cardEl.classList.remove("popup-bounce-in");
       void cardEl.offsetWidth;
       cardEl.classList.add("popup-bounce-in");
