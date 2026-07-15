@@ -82,6 +82,10 @@ import logo from "../assets/logos/aluguel-day.svg";
   }
 
   @media (max-width: 640px) {
+    #exit-popup {
+      display: none;
+    }
+
     .exit-popup-ribbon {
       width: 310px;
       height: 48px;
@@ -172,6 +176,7 @@ import logo from "../assets/logos/aluguel-day.svg";
 <script>
   (() => {
     const STORAGE_KEY = "exit-popup-opened";
+    const mobileViewport = window.matchMedia("(max-width: 640px)");
 
     const popup = document.getElementById("exit-popup")!;
     const content = document.getElementById("exit-popup-content")!;
@@ -180,12 +185,18 @@ import logo from "../assets/logos/aluguel-day.svg";
     const popupEl = popup;
     const cardEl = document.getElementById("exit-popup-card")!;
 
-    if (!popup || !content || sessionStorage.getItem(STORAGE_KEY)) return;
+    if (
+      !popup ||
+      !content ||
+      mobileViewport.matches ||
+      sessionStorage.getItem(STORAGE_KEY)
+    )
+      return;
 
     let opened = false;
 
     function openPopup() {
-      if (opened) return;
+      if (opened || mobileViewport.matches) return;
 
       opened = true;
 
