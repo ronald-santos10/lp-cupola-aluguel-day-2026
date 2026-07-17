@@ -334,7 +334,10 @@
     "silver": [
       "compagno",
       "flexpro",
-      "lugui",
+      "lugui"
+    ],
+    "supporterLabel": "APOIADOR",
+    "supporter": [
       "orago"
     ]
   },
