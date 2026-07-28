@@ -1,39 +1,107 @@
 {
   "header": {
     "marquee": "Dos mesmos realizadores do CUPOLA Summit",
-    "eventInfo": "30 de setembro | Curitiba (PR) | Presencial e Online",
+    "eventInfo": "30 de Set | Curitiba (PR) | Presencial e Online",
     "preSale": "Pré-venda clientes CUPOLA aberta - 29/06 a 05/07"
   },
   "hero": {
     "preSale": "VENDAS ABERTAS",
     "title": "O evento imobiliário de quem vive a locação",
     "description": "Um dia inteiro sobre locação para quem opera, decide e quer crescer.",
-    "cta": "GARANTIR INGRESSOS"
+    "cta": "GARANTIR INGRESSO"
   },
   "market": {
-    "title": "O mercado de locação mudou mais nos últimos dois anos do que na década anterior. Você e o seu time estão acompanhando?",
+    "title": "O que vai estar no palco do CUPOLA Aluguel Day",
     "cta": "QUERO ESTAR PRESENTE",
     "items": [
       {
-        "title": "Inadimplência e gestão de risco"
+        "title": "Panorama da Locação",
+        "description": "Para onde o mercado de locação está indo e o que isso significa para quem opera hoje.",
+        "icon": "panorama-da-locacao"
       },
       {
-        "title": "Concorrência e crescimento de mercado"
+        "title": "Locação Direta e Sonegação",
+        "description": "Proprietários que alugam por fora estão expostos. Como transformar essa pressão da Receita em janela de captação.",
+        "icon": "locacao-direta-e-sonegacao"
       },
       {
-        "title": "Reforma tributária e impacto na locação"
+        "title": "Captação: Concorrência e Crescimento de Mercado",
+        "description": "As imobiliárias de venda estão de olho na sua carteira. Crescer em locação hoje exige estratégia clara sobre onde você quer estar daqui a dois anos.",
+        "icon": "captacao-concorrencia-e-crescimento-de-mercado"
       },
       {
-        "title": "Inquilino mais informado, operação mais exigida"
+        "title": "Inadimplência, Crédito e Gestão de Risco",
+        "description": "Os índices sobem, os processos travam e o proprietário cobra resposta. O que as imobiliárias que estão controlando isso estão fazendo diferente.",
+        "icon": "inadimplencia-credito-e-gestao-de-risco"
       },
       {
-        "title": "Locação direta e novas formas de captação"
+        "title": "Saúde Mental e Clima Organizacional",
+        "description": "Locação é operação pesada. Alta rotatividade, pressão constante e time esgotado comprometem resultado. Como estruturar a gestão de pessoas para sustentar crescimento.",
+        "icon": "saude-mental-e-clima-organizacional"
       },
       {
-        "title": "Saúde mental e clima organizacional"
+        "title": "Remuneração Variável para Times Administrativos",
+        "description": "Como construir um modelo de remuneração que engaja o time, reduz rotatividade e alinha resultado individual com resultado da imobiliária.",
+        "icon": "remuneracao-variavel-para-times-administrativos"
+      },
+      {
+        "title": "Jurídico e Cobrança",
+        "description": "O inquilino está mais informado e a judicialização cresce. Como estruturar processos que protegem a imobiliária sem comprometer o relacionamento com o proprietário.",
+        "icon": "juridico-e-cobranca"
+      },
+      {
+        "title": "Reforma Tributária",
+        "description": "As mudanças já estão chegando e quem entende as regras antes consegue se posicionar melhor. O que sua operação precisa ajustar agora.",
+        "icon": "reforma-tributaria"
+      },
+      {
+        "title": "Inteligência Artificial na Locação",
+        "description": "O que já está funcionando, o que ainda é promessa e como usar IA para ganhar eficiência sem perder o que diferencia sua imobiliária.",
+        "icon": "inteligencia-artificial-na-locacao"
+      },
+      {
+        "title": "Tração Comercial",
+        "description": "Como estruturar o crescimento de carteira de forma consistente sem depender de indicação, sem reduzir taxa e sem queimar o time.",
+        "icon": "tracao-comercial"
       }
     ],
-    "text": "No dia 30 de setembro, você e o seu time vão estar dentro das conversas que mais importam para quem opera locação hoje."
+    "text": ""
+  },
+  "speakers": {
+    "title": "Palestrantes confirmados",
+    "eyebrow": "Em breve programação completa",
+    "cta": "QUERO ESTAR PRESENTE",
+    "items": [
+      {
+        "name": "Rodrigo Werneck",
+        "company": "CUPOLA",
+        "image": "rodrigo"
+      },
+      {
+        "name": "Franciele Rocha",
+        "company": "CONTIMOB",
+        "image": "franciele"
+      },
+      {
+        "name": "Ana Salatiel",
+        "company": "URBS IMOBILIÁRIA",
+        "image": "ana"
+      }
+    ]
+  },
+  "recognition": {
+    "title": "Um encontro que o mercado já reconhece",
+    "cta": "COMPRAR INGRESSOS",
+    "items": [
+      {
+        "value": "+1.000",
+        "label": "participantes por edição"
+      },
+      {
+        "value": "5",
+        "label": "edições consecutivas"
+      }
+    ]
   },
   "formats": {
     "title": "Como o CUPOLA Aluguel Day prepara você e o seu time",
@@ -280,7 +348,7 @@
       },
       {
         "question": "Quais temas serão abordados no CUPOLA Aluguel Day 2026?",
-        "answer": "A programação é construída em torno dos temas que mais impactam quem trabalha com locação hoje: inadimplência e gestão de risco, concorrência e crescimento de mercado, impacto da reforma tributária na locação, empoderamento do inquilino e judicialização crescente, locação direta e sonegação como janela de captação, e saúde mental e clima organizacional em operações de locação. A curadoria é da CUPOLA, que acompanha e conversa com imobiliárias de todo o Brasil todos os dias."
+        "answer": "A programação é construída em torno de dez temas que mais impactam quem opera locação hoje: panorama do mercado de locação, locação direta e sonegação como janela de captação, captação e crescimento diante da concorrência, inadimplência e gestão de risco, saúde mental e clima organizacional, remuneração variável para times administrativos, jurídico e cobrança, reforma tributária, inteligência artificial na locação e tração comercial. A curadoria é da CUPOLA, que visita e conversa com imobiliárias de todo o Brasil todos os dias."
       },
       {
         "question": "O que são as mentorias em grupo do CUPOLA Aluguel Day?",

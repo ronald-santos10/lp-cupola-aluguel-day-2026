@@ -2,72 +2,104 @@
 import Button from "./Button.astro";
 import SectionHeading from "./SectionHeading.astro";
 import Text from "./Text.astro";
-import closeIcon from "../assets/vectors/close.svg";
+import captacaoConcorrenciaIcon from "../assets/vectors/captacao-concorrencia-e-crescimento-de-mercado.svg";
+import inadimplenciaIcon from "../assets/vectors/inadimplencia-credito-e-gestao-de-risco.svg";
+import inteligenciaArtificialIcon from "../assets/vectors/inteligencia-artificial-na-locacao.svg";
+import juridicoIcon from "../assets/vectors/juridico-e-cobranca.svg";
+import locacaoDiretaIcon from "../assets/vectors/locacao-direta-e-sonegacao.svg";
+import panoramaIcon from "../assets/vectors/panorama-da-locacao.svg";
+import reformaTributariaIcon from "../assets/vectors/reforma-tributaria.svg";
+import remuneracaoIcon from "../assets/vectors/remuneracao-variavel-para-times-administrativos.svg";
+import saudeMentalIcon from "../assets/vectors/saude-mental-e-clima-organizacional.svg";
+import tracaoComercialIcon from "../assets/vectors/tracao-comercial.svg";
 
 const { data } = Astro.props;
 const { market } = data;
+
+const icons = {
+  "captacao-concorrencia-e-crescimento-de-mercado": captacaoConcorrenciaIcon,
+  "inadimplencia-credito-e-gestao-de-risco": inadimplenciaIcon,
+  "inteligencia-artificial-na-locacao": inteligenciaArtificialIcon,
+  "juridico-e-cobranca": juridicoIcon,
+  "locacao-direta-e-sonegacao": locacaoDiretaIcon,
+  "panorama-da-locacao": panoramaIcon,
+  "reforma-tributaria": reformaTributariaIcon,
+  "remuneracao-variavel-para-times-administrativos": remuneracaoIcon,
+  "saude-mental-e-clima-organizacional": saudeMentalIcon,
+  "tracao-comercial": tracaoComercialIcon,
+} as const;
+
+const midpoint = Math.ceil(market.items.length / 2);
+const columns = [
+  market.items.slice(0, midpoint),
+  market.items.slice(midpoint),
+];
 ---
 
-<section class="bg-cream py-12 lg:py-20">
-  <div class="flex flex-col gap-8">
+<section class="bg-cream py-12 lg:py-20" data-topic-grid>
+  <div class="flex flex-col gap-8 lg:gap-10">
     <SectionHeading title={market.title} titleColor="blue" />
 
-    <div class="container max-w-3xl">
+    <div class="container max-w-5xl">
       <div class="grid gap-3 md:grid-cols-2">
         {
-          market.items.map((topic: any) => (
-            <article
-              class="
-                flex
-                items-center
-                gap-3
-                rounded-2xl
-                bg-red
-                px-5
-                py-4
-                text-white
-                shadow-sm
-              "
-            >
-              <div
-                class="
-                flex
-                h-5
-                w-5
-                shrink-0
-                items-center
-                justify-center  
-              "
-              >
-                <img
-                  src={closeIcon.src}
-                  width={20}
-                  height={20}
-                  alt=""
-                  class="h-full w-full object-contain"
-                />
-              </div>
+          columns.map((columnItems: any[], columnIndex: number) => (
+            <div class="flex flex-col gap-3">
+              {
+                columnItems.map((topic: any, itemIndex: number) => {
+                  const index = columnIndex * midpoint + itemIndex;
+                  const icon = icons[topic.icon as keyof typeof icons];
 
-              <Text
-                as="span"
-                color="white"
-                class="text-sm font-medium leading-snug"
-              >
-                {topic.title}
-              </Text>
-            </article>
+                  return (
+                    <details
+                      data-topic-details
+                      class="topic-card group rounded-[14px] bg-blue text-white"
+                      open={index === 0}
+                    >
+                      <summary class="flex min-h-17 cursor-pointer list-none items-center gap-4 px-5 py-4">
+                        {icon && (
+                          <img
+                            src={icon.src}
+                            alt=""
+                            width="36"
+                            height="36"
+                            class="size-9 shrink-0"
+                            loading="lazy"
+                          />
+                        )}
+
+                        <Text
+                          as="span"
+                          color="white"
+                          class="flex-1 text-sm font-bold leading-snug md:text-base"
+                        >
+                          {topic.title}
+                        </Text>
+
+                        <span class="topic-toggle text-lg leading-none opacity-70">
+                          +
+                        </span>
+                      </summary>
+
+                      {topic.description && (
+                        <div class="topic-card__body">
+                          <Text
+                            color="white"
+                            class="border-t border-white/10 px-5 pb-5 pt-4 text-sm leading-relaxed opacity-90 md:text-base"
+                          >
+                            {topic.description}
+                          </Text>
+                        </div>
+                      )}
+                    </details>
+                  );
+                })
+              }
+            </div>
           ))
         }
       </div>
     </div>
-
-    <Text
-      as="p"
-      color="ink"
-      class="mx-auto max-w-4xl px-4 text-center text-sm md:text-base"
-    >
-      {market.text}
-    </Text>
 
     <div class="text-center">
       <Button>
@@ -76,3 +108,73 @@ const { market } = data;
     </div>
   </div>
 </section>
+
+<style>
+  .topic-card {
+    transition:
+      background-color 220ms ease,
+      transform 220ms ease;
+  }
+
+  .topic-card:hover {
+    transform: translateY(-1px);
+  }
+
+  .topic-card summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .topic-toggle {
+    transition: transform 240ms ease;
+  }
+
+  .topic-card[open] .topic-toggle {
+    transform: rotate(45deg);
+  }
+
+  .topic-card__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition:
+      grid-template-rows 280ms ease,
+      opacity 220ms ease;
+  }
+
+  .topic-card[open] .topic-card__body {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  .topic-card__body > * {
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  const setupTopicGrid = () => {
+    document.querySelectorAll("[data-topic-grid]").forEach((grid) => {
+      const items = Array.from(
+        grid.querySelectorAll<HTMLDetailsElement>("[data-topic-details]"),
+      );
+
+      items.forEach((item) => {
+        item.addEventListener("toggle", () => {
+          if (!item.open) return;
+
+          items.forEach((otherItem) => {
+            if (otherItem !== item) {
+              otherItem.open = false;
+            }
+          });
+        });
+      });
+    });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupTopicGrid, { once: true });
+  } else {
+    setupTopicGrid();
+  }
+</script>

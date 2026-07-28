@@ -1,5 +1,4 @@
 ---
-import { getImage } from "astro:assets";
 import Button from "./Button.astro";
 import Text from "./Text.astro";
 const { data } = Astro.props;
@@ -9,41 +8,48 @@ import AluguelDayLogo from "../assets/logos/aluguel-day.svg";
 
 const { hero } = data;
 
-const desktopBg = await getImage({
-  src: heroBgDesktop,
-  width: 1440,
-  format: "webp",
-  quality: 100,
-});
-
-const mobileBg = await getImage({
-  src: heroBgMobile,
-  width: 768,
-  format: "webp",
-  quality: 100,
-});
-
 const {
-  backgroundImage = desktopBg.src,
-  mobileBackgroundImage = mobileBg.src,
+  backgroundImage = heroBgDesktop.src,
+  mobileBackgroundImage = heroBgMobile.src,
 } = Astro.props;
+
+const titleBreak = " de quem vive a ";
+const [titleFirstLine, titleSecondLine] = hero.title.includes(titleBreak)
+  ? hero.title.split(titleBreak)
+  : [hero.title, ""];
 ---
 
 <section
-  class="hero-section relative w-full overflow-visible rounded-b-[64px] bg-navy bg-cover bg-center bg-no-repeat"
+  class="hero-section relative w-full overflow-visible rounded-b-[64px] bg-navy bg-center bg-no-repeat"
   style={`--hero-bg-desktop: url("${backgroundImage}"); --hero-bg-mobile: url("${mobileBackgroundImage}");`}
 >
   <div
-    class="flex min-h-192 max-w-216 flex-col items-center gap-7 pt-12 text-center lg:min-h-180 lg:justify-center lg:pt-0 lg:pl-80"
+    class="hero-content relative z-10 mx-auto flex max-w-216 flex-col items-center gap-5 px-6 pt-12 text-center lg:justify-center lg:gap-6 lg:px-0 lg:pt-0"
   >
     <img
       src={AluguelDayLogo.src}
       alt="Aluguel Day Logo"
-      class="h-11 w-auto md:h-16"
+      class="h-11 w-auto md:h-15"
     />
 
-    <Text as="h1" variant="h1" color="white" align="center">
-      {hero.title}
+    <Text
+      as="h1"
+      variant="h1"
+      color="white"
+      align="center"
+      class="hero-title"
+    >
+      {
+        titleSecondLine ? (
+          <>
+            {titleFirstLine}
+            <br />
+            de quem vive a {titleSecondLine}
+          </>
+        ) : (
+          hero.title
+        )
+      }
     </Text>
     <Text
       as="p"
@@ -83,11 +89,26 @@ const {
 <style>
   .hero-section {
     background-image: var(--hero-bg-mobile);
+    background-size: cover;
+  }
+
+  .hero-content {
+    min-height: 48rem;
+  }
+
+  .hero-title {
+    max-width: 760px;
   }
 
   @media (min-width: 1024px) {
     .hero-section {
       background-image: var(--hero-bg-desktop);
+      background-size: cover;
+    }
+
+    .hero-content {
+      min-height: 620px;
+      padding-bottom: 1.25rem;
     }
   }
 </style>

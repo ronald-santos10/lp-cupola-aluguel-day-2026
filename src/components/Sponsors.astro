@@ -2,8 +2,6 @@
 import Text from "./Text.astro";
 import data from "../data/data.json";
 
-import cupolaLogo from "../assets/logos/cupola.svg";
-
 import credalugaLogo from "../assets/logos/credaluga.svg";
 import fcanaliseLogo from "../assets/logos/fcanalise.svg";
 import grazonLogo from "../assets/logos/grazon.svg";
@@ -20,81 +18,61 @@ import oragoLogo from "../assets/logos/orago.webp";
 const { sponsors } = data;
 
 const logos = {
-  cupola: cupolaLogo,
-
   credaluga: credalugaLogo,
-  pipeimob: pipeimobLogo,
   realmate: realmateLogo,
+  pipeimob: pipeimobLogo,
   grazon: grazonLogo,
-  lais: laisLogo,
   upstate: upstateLogo,
   fcanalise: fcanaliseLogo,
-
+  lais: laisLogo,
   compagno: compagnoLogo,
   flexpro: flexproLogo,
   lugui: luguiLogo,
   orago: oragoLogo,
 };
-
-type LogoKey = keyof typeof logos;
-const realizationLogo = sponsors.realizationLogo as LogoKey;
 ---
 
 <section class="bg-cream py-12 lg:py-20">
-  <div class="container flex flex-col items-center">
-    <!-- REALIZAÇÃO -->
-
-    <Text as="h2" variant="h3" color="ink" align="center">
-      {sponsors.realizationTitle}
-    </Text>
-
-    <img
-      src={logos[realizationLogo].src}
-      alt="CUPOLA"
-      class="mt-5 h-12 w-auto"
-    />
-
-    <!-- PATROCINADORES -->
-
-    <Text as="h2" variant="h3" color="ink" align="center" class="mt-20">
+  <div class="sponsors-container">
+    <Text as="h2" color="ink" align="center" class="sponsors-title">
       {sponsors.title}
     </Text>
 
-    <!-- OURO -->
-
-    <div class="mt-10 w-full max-w-155">
-      <div class="flex items-center gap-6">
-        <span class="h-px flex-1 bg-ink/40"></span>
-
-        <Text variant="body" color="ink" class="uppercase">
+    <div class="sponsor-tier sponsor-tier--gold">
+      <div class="sponsor-tier__heading">
+        <span></span>
+        <Text as="h3" color="ink" class="sponsor-tier__label">
           {sponsors.goldLabel}
         </Text>
-
-        <span class="h-px flex-1 bg-ink/40"></span>
+        <span></span>
       </div>
 
-      <div
-        class="mt-8
-        grid
-        grid-cols-2
-        items-center
-        gap-x-14
-        gap-y-10
-        md:grid-cols-3"
-      >
+      <div class="sponsor-logo-grid sponsor-logo-grid--gold-top">
         {
-          sponsors.gold.map((item) => {
+          sponsors.gold.slice(0, 3).map((item) => {
             const logo = logos[item as keyof typeof logos];
 
             return (
               <img
                 src={logo.src}
                 alt={item}
-                class="
-                mx-auto
-                max-h-10
-                w-auto
-                "
+                class:list={["sponsor-logo", `sponsor-logo--${item}`]}
+              />
+            );
+          })
+        }
+      </div>
+
+      <div class="sponsor-logo-grid sponsor-logo-grid--gold-bottom">
+        {
+          sponsors.gold.slice(3).map((item) => {
+            const logo = logos[item as keyof typeof logos];
+
+            return (
+              <img
+                src={logo.src}
+                alt={item}
+                class:list={["sponsor-logo", `sponsor-logo--${item}`]}
               />
             );
           })
@@ -102,28 +80,16 @@ const realizationLogo = sponsors.realizationLogo as LogoKey;
       </div>
     </div>
 
-    <!-- PRATA -->
-
-    <div class="mt-14 w-full max-w-155">
-      <div class="flex items-center gap-6">
-        <span class="h-px flex-1 bg-ink/40"></span>
-
-        <Text variant="body" color="ink" class="uppercase">
+    <div class="sponsor-tier">
+      <div class="sponsor-tier__heading">
+        <span></span>
+        <Text as="h3" color="ink" class="sponsor-tier__label">
           {sponsors.silverLabel}
         </Text>
-
-        <span class="h-px flex-1 bg-ink/40"></span>
+        <span></span>
       </div>
 
-      <div
-        class="mt-8
-        grid
-        grid-cols-2
-        items-center
-        gap-x-14
-        gap-y-10
-        md:grid-cols-3"
-      >
+      <div class="sponsor-logo-grid sponsor-logo-grid--silver">
         {
           sponsors.silver.map((item) => {
             const logo = logos[item as keyof typeof logos];
@@ -132,11 +98,7 @@ const realizationLogo = sponsors.realizationLogo as LogoKey;
               <img
                 src={logo.src}
                 alt={item}
-                class="
-                  mx-auto
-                  max-h-10
-                  w-auto
-                "
+                class:list={["sponsor-logo", `sponsor-logo--${item}`]}
               />
             );
           })
@@ -144,45 +106,183 @@ const realizationLogo = sponsors.realizationLogo as LogoKey;
       </div>
     </div>
 
-    <!-- APOIADOR -->
-
-    <div class="mt-14 w-full max-w-155">
-      <div class="flex items-center gap-6">
-        <span class="h-px flex-1 bg-ink/40"></span>
-
-        <Text variant="body" color="ink" class="uppercase">
+    <div class="sponsor-tier">
+      <div class="sponsor-tier__heading">
+        <span></span>
+        <Text as="h3" color="ink" class="sponsor-tier__label">
           {sponsors.supporterLabel}
         </Text>
-
-        <span class="h-px flex-1 bg-ink/40"></span>
+        <span></span>
       </div>
 
-      <div
-        class="mt-8
-        grid
-        grid-cols-1
-        items-center
-        gap-x-14
-        gap-y-10"
-      >
-        {
-          sponsors.supporter.map((item) => {
-            const logo = logos[item as keyof typeof logos];
+      {
+        sponsors.supporter.map((item) => {
+          const logo = logos[item as keyof typeof logos];
 
-            return (
-              <img
-                src={logo.src}
-                alt={item}
-                class="
-                  mx-auto
-                  max-h-10
-                  w-auto
-                "
-              />
-            );
-          })
-        }
-      </div>
+          return (
+            <img
+              src={logo.src}
+              alt={item}
+              class:list={["sponsor-logo", `sponsor-logo--${item}`]}
+            />
+          );
+        })
+      }
     </div>
   </div>
 </section>
+
+<style>
+  .sponsors-container {
+    width: min(100% - 32px, 792px);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .sponsors-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0;
+  }
+
+  .sponsor-tier {
+    width: min(100%, 660px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .sponsor-tier--gold {
+    width: min(100%, 792px);
+  }
+
+  .sponsor-tier__heading {
+    width: min(100%, 660px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+  }
+
+  .sponsor-tier__heading span {
+    height: 1px;
+    flex: 1;
+    background: rgba(0, 0, 0, 0.55);
+  }
+
+  .sponsor-tier__label {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+
+  .sponsor-logo-grid {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    column-gap: 80px;
+  }
+
+  .sponsor-logo-grid--gold-top,
+  .sponsor-logo-grid--silver {
+    grid-template-columns: repeat(3, auto);
+  }
+
+  .sponsor-logo-grid--gold-bottom {
+    grid-template-columns: repeat(4, auto);
+  }
+
+  .sponsor-logo {
+    width: auto;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  .sponsor-logo--credaluga {
+    width: 214px;
+  }
+
+  .sponsor-logo--realmate {
+    width: 193px;
+  }
+
+  .sponsor-logo--pipeimob {
+    width: 184px;
+  }
+
+  .sponsor-logo--grazon {
+    width: 131px;
+  }
+
+  .sponsor-logo--upstate {
+    width: 135px;
+  }
+
+  .sponsor-logo--fcanalise {
+    width: 159px;
+  }
+
+  .sponsor-logo--lais {
+    width: 127px;
+  }
+
+  .sponsor-logo--compagno {
+    width: 162px;
+  }
+
+  .sponsor-logo--flexpro {
+    width: 112px;
+  }
+
+  .sponsor-logo--lugui {
+    width: 98px;
+  }
+
+  .sponsor-logo--orago {
+    width: 142px;
+    height: 42px;
+  }
+
+  @media (max-width: 767px) {
+    .sponsors-container {
+      gap: 44px;
+    }
+
+    .sponsor-tier__heading {
+      gap: 16px;
+    }
+
+    .sponsor-tier__label {
+      font-size: 18px;
+      line-height: 22px;
+    }
+
+    .sponsor-logo-grid,
+    .sponsor-logo-grid--gold-top,
+    .sponsor-logo-grid--gold-bottom,
+    .sponsor-logo-grid--silver {
+      width: 100%;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 28px;
+    }
+
+    .sponsor-logo {
+      max-width: 100%;
+      height: 58px;
+    }
+
+    .sponsor-logo--orago {
+      height: 38px;
+    }
+  }
+</style>

@@ -1,0 +1,111 @@
+---
+import Button from "./Button.astro";
+import Text from "./Text.astro";
+
+import rodrigoImg from "../assets/speakers/rodrigo-werneck.webp";
+import francieleImg from "../assets/speakers/franciele-rocha.webp";
+import anaImg from "../assets/speakers/ana-salatiel.webp";
+
+const { data } = Astro.props;
+const { speakers } = data;
+
+const images = {
+  rodrigo: rodrigoImg,
+  franciele: francieleImg,
+  ana: anaImg,
+};
+---
+
+<section class="bg-navy text-white">
+  <div class="container flex flex-col items-center gap-10 py-12 lg:py-20">
+    <div class="text-center">
+      <Text as="h2" variant="h2" color="white">{speakers.title}</Text>
+      <Text
+        color="white"
+        class="mt-2 text-sm uppercase tracking-normal opacity-90"
+      >
+        {speakers.eyebrow}
+      </Text>
+    </div>
+
+    <div class="grid w-full max-w-4xl gap-10 md:grid-cols-3">
+      {
+        speakers.items.map((speaker: any) => {
+          const image = images[speaker.image as keyof typeof images];
+
+          return (
+            <article class="flex flex-col items-center text-center">
+              <img
+                src={image.src}
+                width={image.width}
+                height={image.height}
+                alt={speaker.name}
+                class="speaker-image"
+              />
+
+              <Text as="h3" color="white" class="mt-3 text-base leading-tight">
+                {speaker.name}
+              </Text>
+              <Text
+                color="white"
+                class="mt-1 text-xs uppercase leading-tight opacity-50"
+              >
+                {speaker.company}
+              </Text>
+            </article>
+          );
+        })
+      }
+    </div>
+
+    <Button>{speakers.cta}</Button>
+  </div>
+</section>
+
+<style>
+  .speaker-portrait {
+    position: relative;
+    width: min(64vw, 230px);
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+  }
+
+  .speaker-portrait::before,
+  .speaker-portrait::after {
+    content: "";
+    position: absolute;
+    inset: 14%;
+    rotate: 45deg;
+  }
+
+  .speaker-portrait::before {
+    border: 14px solid var(--color-red);
+    translate: -12px 0;
+  }
+
+  .speaker-portrait::after {
+    border: 14px solid var(--color-blue);
+    translate: 12px 0;
+  }
+
+  .speaker-portrait img {
+    position: relative;
+    z-index: 1;
+    width: 72%;
+    height: 72%;
+    object-fit: cover;
+    clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+  }
+
+  .speaker-image {
+    width: min(74vw, 280px);
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .speaker-image {
+      width: min(100%, 200px);
+    }
+  }
+</style>
