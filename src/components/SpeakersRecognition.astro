@@ -5,6 +5,15 @@ import Text from "./Text.astro";
 import rodrigoImg from "../assets/speakers/rodrigo-werneck.webp";
 import francieleImg from "../assets/speakers/franciele-rocha.webp";
 import anaImg from "../assets/speakers/ana-salatiel.webp";
+import beatrizImg from "../assets/speakers/beatriz-marino.webp";
+import coimbraImg from "../assets/speakers/coimbra.webp";
+import dionerImg from "../assets/speakers/dioner-segala.webp";
+import leandroImg from "../assets/speakers/leandro-paulino.webp";
+import marcusImg from "../assets/speakers/marcus-costa.webp";
+import matheusImg from "../assets/speakers/matheus-penna.webp";
+import michelImg from "../assets/speakers/michel-prado.webp";
+import robertoImg from "../assets/speakers/roberto-nascimento.webp";
+import thiagoImg from "../assets/speakers/thiago-grazionale.webp";
 
 const { data } = Astro.props;
 const { speakers } = data;
@@ -13,6 +22,15 @@ const images = {
   rodrigo: rodrigoImg,
   franciele: francieleImg,
   ana: anaImg,
+  "beatriz-marino": beatrizImg,
+  coimbra: coimbraImg,
+  "dioner-segala": dionerImg,
+  "leandro-paulino": leandroImg,
+  "marcus-costa": marcusImg,
+  "matheus-penna": matheusImg,
+  "michel-prado": michelImg,
+  "roberto-nascimento": robertoImg,
+  "thiago-grazionale": thiagoImg,
 };
 ---
 
@@ -28,13 +46,13 @@ const images = {
       </Text>
     </div>
 
-    <div class="grid w-full max-w-4xl gap-10 md:grid-cols-3">
+    <div class="grid gap-7.5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
       {
         speakers.items.map((speaker: any) => {
           const image = images[speaker.image as keyof typeof images];
 
           return (
-            <article class="flex flex-col items-center text-center">
+            <article class="max-w-60 w-full flex flex-col items-center text-center justify-center">
               <img
                 src={image.src}
                 width={image.width}
@@ -46,12 +64,14 @@ const images = {
               <Text as="h3" color="white" class="mt-3 text-base leading-tight">
                 {speaker.name}
               </Text>
-              <Text
-                color="white"
-                class="mt-1 text-xs uppercase leading-tight opacity-50"
-              >
-                {speaker.company}
-              </Text>
+              {speaker.company && (
+                <Text
+                  color="white"
+                  class="mt-1 text-xs uppercase leading-tight opacity-50"
+                >
+                  {speaker.company}
+                </Text>
+              )}
             </article>
           );
         })
@@ -99,13 +119,10 @@ const images = {
   }
 
   .speaker-image {
-    width: min(74vw, 280px);
+    width: min(240px, 100%);
+    max-width: 240px;
     height: auto;
-  }
-
-  @media (min-width: 768px) {
-    .speaker-image {
-      width: min(100%, 200px);
-    }
+    display: block;
+    margin: 0 auto;
   }
 </style>

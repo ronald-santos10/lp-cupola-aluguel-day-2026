@@ -86,6 +86,51 @@
         "name": "Ana Salatiel",
         "company": "URBS IMOBILIÁRIA",
         "image": "ana"
+      },
+      {
+        "name": "Beatriz Marino",
+        "company": "LAGO IMÓVEIS",
+        "image": "beatriz-marino"
+      },
+      {
+        "name": "Coimbra",
+        "company": "ROTINA IMOBILIÁRIA",
+        "image": "coimbra"
+      },
+      {
+        "name": "Thiago Grazionale",
+        "company": "GRAZON SEGUROS",
+        "image": "thiago-grazionale"
+      },
+      {
+        "name": "Dioner Segala",
+        "company": "CUPOLA",
+        "image": "dioner-segala"
+      },
+      {
+        "name": "Matheus Penna",
+        "company": "UP ESTATE",
+        "image": "matheus-penna"
+      },
+      {
+        "name": "Leandro Paulino",
+        "company": "ACAPULCO IMÓVEIS",
+        "image": "leandro-paulino"
+      },
+      {
+        "name": "Marcus Costa",
+        "company": "FC ANÁLISE",
+        "image": "marcus-costa"
+      },
+      {
+        "name": "Roberto Nascimento",
+        "company": "PIPEIMOB",
+        "image": "roberto-nascimento"
+      },
+      {
+        "name": "Michel Prado",
+        "company": "CUPOLA",
+        "image": "michel-prado"
       }
     ]
   },

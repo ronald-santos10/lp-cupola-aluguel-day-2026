@@ -63,33 +63,116 @@ import logo from "../assets/logos/aluguel-day.svg";
     animation: popupFadeOut 0.2s ease both;
   }
 
-  /* .exit-popup-art {
-    background:
-      linear-gradient(116deg, transparent 0 77%, #fe122a 77.2% 90%, transparent 90.2%),
-      linear-gradient(116deg, transparent 0 73%, #3d36ff 73.2% 77.2%, transparent 77.4%),
-      linear-gradient(55deg, transparent 0 9%, #3d36ff 9.2% 14.8%, transparent 15%),
-      linear-gradient(55deg, transparent 0 5.5%, #fe122a 5.7% 8.8%, transparent 9%),
-      #090e24;
-  } */
+  /* Card is a 1:1 square, matching the 1200x1200 Figma frame. Every
+     measurement below is derived directly from that 1200px frame so the
+     proportions stay exact regardless of rendered size (cqw = % of the
+     card's own width, since the card is always square). */
+  .exit-popup-card {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 1;
+    border-radius: 8.333%; /* 100 / 1200 */
+    background: #3d36ff;
+    container-type: inline-size;
+    overflow: hidden;
+  }
 
-  .exit-popup-ribbon {
-    display: flex;
+  .exit-popup-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .exit-popup-title {
+    position: absolute;
+    left: 50%;
+    top: 14.917%; /* 179 / 1200 */
+    width: 82.167%; /* 986 / 1200 */
+    transform: translateX(-50%);
+    font-family: var(--font-boldonse);
+    font-size: clamp(24px, 6.611cqw, 79.329px); /* 79.329 / 1200 */
+    line-height: 1.537; /* 121.913 / 79.329 */
+    letter-spacing: -0.01em;
+  }
+
+  .exit-popup-description {
+    position: absolute;
+    left: 50%;
+    top: 37%; /* 444 / 1200 */
+    width: 84.083%; /* 1009 / 1200 */
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: clamp(16px, 3.663cqw, 43.959px); /* 43.959 / 1200 */
+    line-height: 1.34; /* 58.907 / 43.959 */
+    letter-spacing: -0.01em;
+  }
+
+  .exit-popup-price {
+    position: absolute;
+    left: 50%;
+    top: 48.5%; /* 582 / 1200 */
+    width: 84.083%; /* 1009 / 1200 */
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: clamp(18px, 4.353cqw, 52.237px); /* 52.237 / 1200 */
+    line-height: 1.34; /* 70 / 52.237 */
+    letter-spacing: -0.01em;
+    text-underline-offset: 0.11em;
+    text-decoration-thickness: 0.05em;
+  }
+
+  .exit-popup-cta {
+    position: absolute;
+    left: 50%;
+    top: 59.75%; /* 717 / 1200 */
+    width: 51.167%; /* 614 / 1200 */
+    min-height: 10.833cqw; /* 130 / 1200 */
+    transform: translateX(-50%);
+    border: 0.833cqw solid rgb(176 249 10 / 0.4); /* 10 / 1200 */
+    border-radius: 999px;
+    padding: 0;
+    font-family: var(--font-display);
+    font-size: clamp(18px, 3.75cqw, 45px); /* 45 / 1200 */
+    line-height: 1;
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .exit-popup-footer {
+    position: absolute;
+    left: 50%;
+    bottom: 8.168%;
+    width: 82.167%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    column-gap: 1rem;
     align-items: center;
+    justify-items: center;
+    font-family: var(--font-display);
+    font-size: clamp(12px, 2.162cqw, 25.949px);
+    line-height: 1.156;
+    letter-spacing: -0.03em;
+  }
+
+  .exit-popup-logo {
+    width: min(200px, 100%);
+    display: flex;
     justify-content: center;
-    width: 360px;
-    height: 54px;
-    transform: translate(-28%, 52%) rotate(-35deg);
+    align-items: center;
+  }
+
+  .exit-popup-logo-aluguel {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    display: block;
   }
 
   @media (max-width: 640px) {
     #exit-popup {
       display: none;
-    }
-
-    .exit-popup-ribbon {
-      width: 310px;
-      height: 48px;
-      transform: translate(-18%, 56%) rotate(-35deg);
     }
   }
 </style>
@@ -100,11 +183,11 @@ import logo from "../assets/logos/aluguel-day.svg";
 >
   <div
     id="exit-popup-card"
-    class="relative w-full max-w-180 overflow-hidden rounded-card bg-navy shadow-2xl"
+    class="exit-popup-card shadow-2xl"
   >
     <div
       id="exit-popup-content"
-      class="exit-popup-art relative flex min-h-140 w-full flex-col px-6 py-8 text-center text-white sm:min-h-155 sm:px-10 md:px-12 md:py-10"
+      class="exit-popup-content text-white text-center"
     >
       <button
         id="exit-popup-close"
@@ -114,59 +197,43 @@ import logo from "../assets/logos/aluguel-day.svg";
         &times;
       </button>
 
-      <div
-        class="exit-popup-ribbon absolute left-0 top-0 z-10 bg-red"
+      <h2 class="exit-popup-title z-10 uppercase text-lime">
+        Vai sair sem garantir sua vaga?
+      </h2>
+
+      <p class="exit-popup-description z-10 text-white font-light">
+        O CUPOLA Aluguel Day reúne <strong class="font-bold">+15 conteúdos</strong> em um dia inteiro dedicado a quem opera locação.
+      </p>
+
+      <p class="exit-popup-price z-10 font-bold text-white underline">
+        Tudo isso a partir de R$ 229,00
+      </p>
+
+      <a
+        id="exit-popup-action"
+        href="#ingressos"
+        class="exit-popup-cta z-10 inline-flex items-center justify-center bg-lime font-bold uppercase text-navy transition"
       >
-        <span
-          class="block whitespace-nowrap font-sans text-sm font-medium uppercase tracking-normal text-white sm:text-lg md:text-xl"
-        >
-          LOTE 1 ABERTO
-        </span>
-      </div>
+        GARANTIR AGORA
+      </a>
 
       <div
-        class="relative z-10 mx-auto flex flex-1 flex-col items-center justify-center pt-8 sm:pt-12"
+        class="exit-popup-footer z-10 grid grid-cols-[1fr_1.42fr_1fr] items-end text-white"
       >
-        <p
-          class="font-display text-xl font-bold uppercase leading-none tracking-normal sm:text-3xl md:text-[34px] text-lime"
-        >
-          ANTES DE IR...
+        <p class="text-left">
+          Curitiba<br />
+          30 Set 2026
         </p>
 
-        <h2
-          class="mt-8 max-w-135 font-display text-[25px] font-bold uppercase leading-[1.15] tracking-normal sm:mt-10 sm:text-[34px] md:text-[40px]"
-        >
-          O Cupola Aluguel Day já está com vendas abertas.
-        </h2>
-
-        <p
-          class="mt-6 max-w-115 font-sans text-lg uppercase leading-tight tracking-normal sm:text-[22px] md:text-[28px]"
-        >
-          Você e seu time merecem estar nesse encontro.
-        </p>
-
-        <a
-          id="exit-popup-action"
-          href="#ingressos"
-          class="mt-7 inline-flex min-h-10 items-center justify-center rounded-[10px] border border-lime/35 bg-lime px-7 font-sans text-sm font-bold uppercase tracking-normal text-ink transition hover:-translate-y-0.5 sm:px-8 sm:text-base md:text-lg"
-          style="box-shadow:0 0 0 3px rgb(176 249 10 / .35)"
-        >
-          GARANTIR AGORA
-        </a>
-      </div>
-
-      <div
-        class="relative z-10 grid grid-cols-3 items-end gap-3 font-sans text-sm tracking-normal sm:text-base md:text-lg"
-      >
-        <p class="text-left">30 Set 2026</p>
-        <img
-          src={logo.src}
-          alt="CUPOLA Aluguel Day"
-          class="mx-auto w-36 sm:w-48 md:w-56"
-        />
-        <p class="text-right leading-none">
-          Presencial<br />
-          em Curitiba
+        <div class="exit-popup-logo relative mx-auto">
+          <img
+            src={logo.src}
+            alt="CUPOLA Aluguel Day"
+            class="exit-popup-logo-aluguel"
+          />
+        </div>
+        <p class="text-right">
+          Presencial<br />e Online
         </p>
       </div>
     </div>
