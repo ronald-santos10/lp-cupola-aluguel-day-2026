@@ -13,6 +13,7 @@ import upstateLogo from "../assets/logos/upstate.svg";
 import compagnoLogo from "../assets/logos/compagno.svg";
 import flexproLogo from "../assets/logos/flexpro.svg";
 import luguiLogo from "../assets/logos/lugui.svg";
+import guiaAlmaLogo from "../assets/logos/guia-alma.svg";
 import oragoLogo from "../assets/logos/orago.webp";
 
 const { sponsors } = data;
@@ -28,6 +29,7 @@ const logos = {
   compagno: compagnoLogo,
   flexpro: flexproLogo,
   lugui: luguiLogo,
+  "guia-alma": guiaAlmaLogo,
   orago: oragoLogo,
 };
 ---
@@ -89,7 +91,7 @@ const logos = {
         <span></span>
       </div>
 
-      <div class="sponsor-logo-grid sponsor-logo-grid--silver">
+      <div class="sponsor-logo-grid sponsor-logo-grid--silver sponsor-logo-row">
         {
           sponsors.silver.map((item) => {
             const logo = logos[item as keyof typeof logos];
@@ -193,13 +195,20 @@ const logos = {
     column-gap: 80px;
   }
 
-  .sponsor-logo-grid--gold-top,
-  .sponsor-logo-grid--silver {
+  .sponsor-logo-grid--gold-top {
     grid-template-columns: repeat(3, auto);
   }
 
+  .sponsor-logo-row,
   .sponsor-logo-grid--gold-bottom {
-    grid-template-columns: repeat(4, auto);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+  }
+
+  .sponsor-logo-grid--gold-bottom {
+    flex-wrap: wrap;
   }
 
   .sponsor-logo {
@@ -237,15 +246,23 @@ const logos = {
   }
 
   .sponsor-logo--compagno {
-    width: 162px;
+    width: 118.76px;
+    height: 31.32px;
   }
 
   .sponsor-logo--flexpro {
-    width: 112px;
+    width: 97.24px;
+    height: 28.26px;
   }
 
   .sponsor-logo--lugui {
-    width: 98px;
+    width: 82px;
+    height: 80px;
+  }
+
+  .sponsor-logo--guia-alma {
+    width: 244px;
+    height: 53px;
   }
 
   .sponsor-logo--orago {
