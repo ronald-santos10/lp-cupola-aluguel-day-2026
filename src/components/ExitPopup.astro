@@ -84,48 +84,80 @@ import logo from "../assets/logos/aluguel-day.svg";
     height: 100%;
   }
 
+  .exit-popup-kicker {
+    position: absolute;
+    left: 50%;
+    top: 14%; /* 168 / 1200 */
+    width: 82.167%;
+    transform: translateX(-50%);
+    font-family: var(--font-display);
+    font-size: clamp(22px, 5.25cqw, 63px);
+    font-weight: 500;
+    line-height: 1.571;
+    letter-spacing: -0.01em;
+  }
+
   .exit-popup-title {
     position: absolute;
     left: 50%;
-    top: 14.917%; /* 179 / 1200 */
-    width: 82.167%; /* 986 / 1200 */
+    top: 26.792%; /* 321.5 / 1200 */
+    width: 92%;
     transform: translateX(-50%);
     font-family: var(--font-boldonse);
-    font-size: clamp(24px, 6.611cqw, 79.329px); /* 79.329 / 1200 */
-    line-height: 1.537; /* 121.913 / 79.329 */
-    letter-spacing: -0.01em;
+    font-size: clamp(42px, 9.396cqw, 112.75px);
+    line-height: 1.494;
+    letter-spacing: 0;
   }
 
-  .exit-popup-description {
+  .exit-popup-title-main {
     position: absolute;
     left: 50%;
-    top: 37%; /* 444 / 1200 */
-    width: 84.083%; /* 1009 / 1200 */
+    top: 24.5%;
+    width: 92%;
     transform: translateX(-50%);
-    font-family: var(--font-display);
-    font-size: clamp(16px, 3.663cqw, 43.959px); /* 43.959 / 1200 */
-    line-height: 1.34; /* 58.907 / 43.959 */
-    letter-spacing: -0.01em;
+    font-family: var(--font-boldonse);
+    font-size: clamp(48px, 9.396cqw, 120px);
+    line-height: 1.06; /* increased line-height for more vertical spacing */
+    letter-spacing: 0;
+    margin: 0;
   }
 
-  .exit-popup-price {
+  .exit-popup-title-date {
     position: absolute;
     left: 50%;
-    top: 48.5%; /* 582 / 1200 */
-    width: 84.083%; /* 1009 / 1200 */
+    top: 37.5%; /* moved slightly down to increase gap from main title */
+    width: 92%;
     transform: translateX(-50%);
+    font-family: var(--font-boldonse);
+    font-size: clamp(48px, 9.396cqw, 120px);
+    line-height: 1.06; /* match increased line-height */
+    letter-spacing: 0;
+    margin: 0;
+  }
+
+  .exit-popup-offer {
+    position: absolute;
+    left: 50%;
+    top: 50.25%; /* 603 / 1200 */
+    width: 84.083%;
+    transform: translateX(-50%);
+    border-bottom: 0.331cqw solid white; /* 3.969 / 1200 */
+    border-top: 0.331cqw solid white;
+    padding: 2.067cqw 0.827cqw; /* 24.805 / 1200, 9.922 / 1200 */
     font-family: var(--font-display);
-    font-size: clamp(18px, 4.353cqw, 52.237px); /* 52.237 / 1200 */
-    line-height: 1.34; /* 70 / 52.237 */
+    font-size: clamp(18px, 4.824cqw, 57.89px);
+    font-weight: 400;
+    line-height: 1;
     letter-spacing: -0.01em;
-    text-underline-offset: 0.11em;
-    text-decoration-thickness: 0.05em;
+    white-space: nowrap;
+    /* add a little extra visual gap below the offer */
+    margin-bottom: 1.5cqw;
   }
 
   .exit-popup-cta {
     position: absolute;
     left: 50%;
-    top: 59.75%; /* 717 / 1200 */
+    top: 64.5%; /* moved down to create spacing from the offer */
     width: 51.167%; /* 614 / 1200 */
     min-height: 10.833cqw; /* 130 / 1200 */
     transform: translateX(-50%);
@@ -197,21 +229,27 @@ import logo from "../assets/logos/aluguel-day.svg";
         &times;
       </button>
 
-      <h2 class="exit-popup-title z-10 uppercase text-lime">
-        Vai sair sem garantir sua vaga?
-      </h2>
-
-      <p class="exit-popup-description z-10 text-white font-light">
-        O CUPOLA Aluguel Day reúne <strong class="font-bold">+15 conteúdos</strong> em um dia inteiro dedicado a quem opera locação.
+      <p class="exit-popup-kicker z-10 text-white">
+        QUEM AVISA, AMIGO É!
       </p>
 
-      <p class="exit-popup-price z-10 font-bold text-white underline">
-        Tudo isso a partir de R$ 229,00
+      <h2 class="exit-popup-title-main z-10 text-white">
+        VIRADA DE LOTE
+      </h2>
+
+      <h3 class="exit-popup-title-date z-10 text-white">
+        12/08 às 23:59
+      </h3>
+
+      <p class="exit-popup-offer z-10 text-white">
+        <strong class="font-extrabold">ATÉ 40% OFF</strong> em ingressos em grupo
       </p>
 
       <a
         id="exit-popup-action"
-        href="#ingressos"
+        href="https://www.sympla.com.br/evento/cupola-aluguel-day/3465310"
+        rel="noopener noreferrer"
+        target="_blank"
         class="exit-popup-cta z-10 inline-flex items-center justify-center bg-lime font-bold uppercase text-navy transition"
       >
         GARANTIR AGORA
@@ -221,8 +259,9 @@ import logo from "../assets/logos/aluguel-day.svg";
         class="exit-popup-footer z-10 grid grid-cols-[1fr_1.42fr_1fr] items-end text-white"
       >
         <p class="text-left">
-          Curitiba<br />
-          30 Set 2026
+            Curitiba
+            <br />
+            30 Set 2026
         </p>
 
         <div class="exit-popup-logo relative mx-auto">
